@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "FuenteTitulo";
+    src: url("../fonts/blackRadiant/BlackRadiantDemo.ttf");
+}
+
+@font-face {
+    font-family: "FuenteParrafos";
+    src: url("../fonts/WDXLLubrifont/WDXLLubrifontTC-Regular.ttf");
+}
+
 body 
 {
     background-color: #255A91;
@@ -8,7 +18,7 @@ body
     min-height: 100vh;
 }
 
-.estilo 
+.recuadro 
 {
     background-color: #A5C5CC; /*Recuadro interior*/
     margin: 80px;
@@ -21,28 +31,23 @@ body
     border-bottom: 10px solid #977086;
 }
 
-h1 
-{
+#titulos { /*Diseño de Titulos*/
+    font-family: "FuenteTitulo", sans-serif;
+    font-size: 50px ;
     color: #021334;
-    margin: 20px 0;
+    margin: 20px 0; 
 }
 
-h2 
-{
+#subtitulos{ /*Diseño de Subtitulos*/
+    font-family: "FuenteTitulo", sans-serif;
+    font-size: 30px ;
     color: #021334;
-    margin: 20px 0;
-}
-
-h3 
-{
-
-    color: #000000;
-    margin: 30px 0;
-
+    margin: 20px 0; 
 }
 
 p 
 {
+    font-family: "FuenteParrafos", sans-serif;
     margin: 10px 0;
     color: #021334;
 }
@@ -65,4 +70,5 @@ hr
     border: 2px solid #977086; /*Línea divisoria*/
     margin: 20px 0;
 }
+
 
