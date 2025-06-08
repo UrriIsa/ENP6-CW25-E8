@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "FuenteTitulo";
+    src: url("../fonts/blackRadiant/BlackRadiantDemo.ttf");
+}
+
+@font-face {
+    font-family: "FuenteParrafos";
+    src: url("../fonts/WDXLLubrifont/WDXLLubrifontTC-Regular.ttf");
+}
+
+h1 {
+    font-family: "FuenteTitulo", sans-serif;
+    font-size: 100px;
+    text-align: center;
+}
+
+h2 {
+    font-family: "FuenteTitulo", sans-serif;
+    font-size: 75px;
+    text-align: center;   
+}
+
+body{
+    font-family: "FuenteParrafos", sans-serif;
+    font-size: 50px;
+    text-align: center;
+}
