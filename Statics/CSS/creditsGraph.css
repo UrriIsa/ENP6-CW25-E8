@@ -33,14 +33,14 @@ body
 
 #titulos { /*Diseño de Titulos*/
     font-family: "FuenteTitulo", sans-serif;
-    font-size: 50px ;
+    font-size: 70px ;
     color: #021334;
-    margin: 20px 0; 
+    margin: 10px 0; 
 }
 
 #subtitulos{ /*Diseño de Subtitulos*/
     font-family: "FuenteTitulo", sans-serif;
-    font-size: 30px ;
+    font-size: 35px ;
     color: #021334;
     margin: 20px 0; 
 }
@@ -48,6 +48,7 @@ body
 p 
 {
     font-family: "FuenteParrafos", sans-serif;
+    font-size: 18px;
     margin: 10px 0;
     color: #021334;
 }
