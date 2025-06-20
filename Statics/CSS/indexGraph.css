@@ -56,9 +56,67 @@ body{
 }
 
 
-.interfazMusica{
+footer{
     width: 100%;
     height: 12vh;
+    padding: 0;
 
     background-color: #012A61 ;
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3%;
+
+    button{
+        width: 2%;
+        height: 40%;
+        margin: 1%;
+        padding: 0;
+
+        border: 0 transparent;
+        background-color: transparent;
+        color: #ffff;
+
+        transition: .5s;
+        cursor: pointer;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        
+    }
+    
+    #backBtn{   
+        font-size: 125%;
+    }
+
+    #pauseBtn{
+        font-size: 125%;
+    }
+
+    #skipBtn{
+        font-size: 125%;
+    }
+
+    #listRepo{
+        font-size: 125%;
+    }
+    
+    #soundBtn{
+        font-size: 125%;    
+    }
+    #barraTiempo{
+        margin: 1%;
+        width: 70%;
+        height: 3%;
+        
+        background-color: #ffff ;
+    }
+    span{
+        color: #ffff;
+    }
 }
