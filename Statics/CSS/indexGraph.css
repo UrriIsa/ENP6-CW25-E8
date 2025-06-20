@@ -1,6 +1,7 @@
 body{
     display: flex;
     flex-direction: column;
+    background-color: aqua;
     margin: 0;
 }
 
@@ -50,4 +51,24 @@ body{
     height: 12vh;
 
     background-color: #012A61 ;
+}
+
+.contenedorPrincipal{ /* Contenedor padre de los elementos Article*/
+    width: 800px;
+    height: 25%;
+    margin: 25px;
+    background-color: #012A61;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.bienvenida{ /* elemento Article para el mensaje de bienvenida*/
+    width: 100%;
+    height: 25%;
+    margin: 25px;
+    border-radius: 25px;
+    padding: 25px;
+    background-color:aliceblue;
+    align-items: center;
 }
