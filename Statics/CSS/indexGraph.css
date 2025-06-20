@@ -4,6 +4,17 @@ body{
     margin: 0;
 }
 
+#busqueda{
+    font: Arial;
+    font-size: medium;
+    margin-left: 20%;
+    margin-top: 10px;
+    background-color: lightgoldenrodyellow;
+    padding: 10px;
+    padding-left: 30px;
+    border-radius: 12px;
+    width: 60%;
+}
 .interfazBuscar{
     width: 100%;
     height: 10vh ;
