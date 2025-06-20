@@ -1,0 +1,75 @@
+@font-face {
+    font-family: "FuenteTitulo";
+    src: url("../fonts/blackRadiant/BlackRadiantDemo.ttf");
+}
+
+@font-face {
+    font-family: "FuenteParrafos";
+    src: url("../fonts/WDXLLubrifont/WDXLLubrifontTC-Regular.ttf");
+}
+
+body 
+{
+    background-color: #255A91;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.recuadro 
+{
+    background-color: #A5C5CC; /*Recuadro interior*/
+    margin: 80px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 1100px;
+    width: 95%;
+    padding: 60px 30px;
+    border-top: 10px solid #977086;
+    border-bottom: 10px solid #977086;
+}
+
+#titulos { /*Diseño de Titulos*/
+    font-family: "FuenteTitulo", sans-serif;
+    font-size: 70px ;
+    color: #021334;
+    margin: 10px 0; 
+}
+
+#subtitulos{ /*Diseño de Subtitulos*/
+    font-family: "FuenteTitulo", sans-serif;
+    font-size: 35px ;
+    color: #021334;
+    margin: 20px 0; 
+}
+
+p 
+{
+    font-family: "FuenteParrafos", sans-serif;
+    font-size: 18px;
+    margin: 10px 0;
+    color: #021334;
+}
+
+/*Nombres de los integrantes del equipo*/
+.nombre 
+{
+    color: #012A61;
+}
+
+/*Mentor*/
+.mentor 
+{
+
+    color: #5E3A8C;
+}
+
+hr 
+{
+    border: 2px solid #977086; /*Línea divisoria*/
+    margin: 20px 0;
+}
+
+
