@@ -1,6 +1,6 @@
 html, body {
-    height: 100%;
-    margin: 0;
+    height: 100%; /*OCUPAR EL 100% DE LA PANTALLA*/
+    margin: 0; /*NO ME ACUERDO COMO SE LLAMA PERO REINICIA*/
     padding: 0;
 }
 
@@ -28,7 +28,7 @@ header{
 }
 
 .mainCont{
-    flex: 1;
+    flex: 1; /*Propiedad abreviada (hace que el elemento crezca o se encoja en el espacio disponible y el tamaño inicial es cero)*/
     display: flex;
     background-color: white;
 }
@@ -44,18 +44,23 @@ aside{
     flex-direction: column;
     align-items: center;
 
-    button{
+    button{ /*Diseño para los botones dentro de aside*/
         
-        font-size: 110%;
+        font-size: 110%; 
         margin: 5%;
 
         color: #FDC787;
         display: inline-block;
 
-        cursor: pointer;
-        border: 0 transparent;
+        cursor: pointer; /*Hace que el cursor cambie a la manita*/
+        border: 0 transparent; /*Quita el borde*/
         background-color: transparent;
     }
+}
+main{
+    flex: 1; /*Lo mismo que main Content*/
+    margin: 0; /*reiniciar propiedades*/
+    padding: 0;
 }
 
 #homeImg{
@@ -83,7 +88,8 @@ aside{
 footer{
     width: 100%;
     height: 12vh;
-    padding: 0;
+    padding: 0; /*Igual que arriba reinicia*/
+    margin: 0;
 
     background-color: #012A61 ;
 
@@ -92,7 +98,7 @@ footer{
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 3%;
+    gap: 3%; 
 
     button{
         width: 2%;
