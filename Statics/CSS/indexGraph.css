@@ -62,16 +62,16 @@ main{
     margin: 0; /*reiniciar propiedades*/
     padding: 0;
 }
-.bienvenida{
+
+.bienvenida{ /*Clase para el contenedor del mensaje de bienvenida*/
     width: 80%;
-    margin: 0 auto;
+    margin: 25.79px; /*contenedor centrado*/ 
     padding: 30px 45px; /* Menos padding vertical */
     background: #1155d4ee;
     color: white;
     border-radius: 25px;
     display: flex;
     justify-content: space-between; /* Separa texto y mascota */
-    align-items: center; /* Centra verticalmente */
     position: relative; /* Para posicionamiento absoluto de la mascota */
 }
 
@@ -80,11 +80,12 @@ main{
     margin-right: 20px; /* Espacio antes de la mascota */
 }
 
-.mascota{
+.mascota{ 
   position: absolute;
-  right: 40px; /* Igual al padding del contenedor */
-  width: 85px;
-  height: 85px;
+  right: 45px; /* Espacio a la derecha entre el borde del contenedor "bienvenida"
+                y el contenedor "mascota" (es igual al padding de "bienvenida")*/
+  width: 100px;
+  height: 100px;
   background-color: red;
   border-radius: 50%;
 }
