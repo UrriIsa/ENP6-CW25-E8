@@ -1,0 +1,151 @@
+html, body {
+    height: 100%; /*OCUPAR EL 100% DE LA PANTALLA*/
+    margin: 0; /*NO ME ACUERDO COMO SE LLAMA PERO REINICIA*/
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#busqueda{
+    font: Arial;
+    font-size: medium;
+    margin-left: 20%;
+    margin-top: 10px;
+    background-color: lightgoldenrodyellow;
+    padding: 10px;
+    padding-left: 30px;
+    border-radius: 12px;
+    width: 60%;
+}
+header{
+    width: 100%;
+    height: 10vh ;
+
+    background-color: #012A61 ;
+}
+
+.mainCont{
+    flex: 1; /*Propiedad abreviada (hace que el elemento crezca o se encoja en el espacio disponible y el tamaño inicial es cero)*/
+    display: flex;
+    background-color: white;
+}
+
+aside{
+    width: 15%;
+    height: 90%;
+    padding: 3%;
+    margin: 0;
+    background-color: #021334 ;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button{ /*Diseño para los botones dentro de aside*/
+        
+        font-size: 110%; 
+        margin: 5%;
+
+        color: #FDC787;
+        display: inline-block;
+
+        cursor: pointer; /*Hace que el cursor cambie a la manita*/
+        border: 0 transparent; /*Quita el borde*/
+        background-color: transparent;
+    }
+}
+main{
+    flex: 1; /*Lo mismo que main Content*/
+    margin: 0; /*reiniciar propiedades*/
+    padding: 0;
+}
+
+#homeImg{
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+#listaImg{
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+#artistaImg{
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+
+#estrellaImg{
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+
+footer{
+    width: 100%;
+    height: 12vh;
+    padding: 0; /*Igual que arriba reinicia*/
+    margin: 0;
+
+    background-color: #012A61 ;
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3%; 
+
+    button{
+        width: 2%;
+        height: 40%;
+        margin: 1%;
+        padding: 0;
+
+        border: 0 transparent;
+        background-color: transparent;
+        color: #ffff;
+
+        transition: .5s;
+        cursor: pointer;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        
+    }
+    
+    #backBtn{   
+        font-size: 125%;
+    }
+
+    #pauseBtn{
+        font-size: 125%;
+    }
+
+    #skipBtn{
+        font-size: 125%;
+    }
+
+    #listRepo{
+        font-size: 125%;
+    }
+    
+    #soundBtn{
+        font-size: 125%;    
+    }
+    #barraTiempo{
+        width: 70%;
+        height: 3%;
+        
+        background-color: #ffff ;
+    }
+    span{
+        color: #ffff;
+    }
+}
