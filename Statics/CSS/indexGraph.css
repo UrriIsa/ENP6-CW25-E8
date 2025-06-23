@@ -1,4 +1,4 @@
-SShtml, body {
+html, body {
     height: 100%; /*OCUPAR EL 100% DE LA PANTALLA*/
     margin: 0; /*NO ME ACUERDO COMO SE LLAMA PERO REINICIA*/
     padding: 0;
