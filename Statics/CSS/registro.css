@@ -98,6 +98,8 @@ article{
     align-items:center;
     margin: 1em;
     width: 80%;
+
+ 
 }
 
 article p{
@@ -151,6 +153,9 @@ span{
     gap: 0.5em;
 }   
 
+#user{
+    border: .3em solid transparent;
+}
 
 
 

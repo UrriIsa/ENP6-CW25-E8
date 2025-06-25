@@ -44,14 +44,22 @@ header button{ /*SOLO AFECTA A LOS BOTONES DENTRO DE HEADER*/
     color: #ffff;
     font-size: 110%;
 
-    transition: .5s;
     cursor: pointer;
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: ease-in-out;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
 }
+
+header button:hover{
+    color: #FDC787;
+    font-size: 150%;
+}
+
 .mainCont{
     flex: 1; /*Propiedad abreviada (hace que el elemento crezca o se encoja en el espacio disponible y el tamaño inicial es cero)*/
     display: flex;
