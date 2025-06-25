@@ -31,19 +31,21 @@ const artistsBtn = document.getElementById("artistsBtn");
 const playlistsBtn = document.getElementById("playlistsBtn");
 const creditsBtn = document.getElementById("creditsBtn");
 
-activeColor = "#FDC787";
-normalColor = "#ffff";
+activeColor = "#FDC787"; //DEFINE EL COLOR SI ESTA ACTIVO
+normalColor = "#ffff"; //DEFINE EL COLOR SI NO ESTA ACTIVO
 
-function btnActivo(btn){
-    homeBtn.style.color = (btn === homeBtn) ? activeColor : normalColor;
-    artistsBtn.style.color = (btn === artistsBtn) ? activeColor : normalColor;
-    playlistsBtn.style.color = (btn === playlistsBtn) ? activeColor : normalColor;
+function btnActivo(btn){/* Establece el color del boton*/
+    homeBtn.style.color = (btn === homeBtn) ? activeColor : normalColor; 
+    artistsBtn.style.color = (btn === artistsBtn) ? activeColor : normalColor; 
+    playlistsBtn.style.color = (btn === playlistsBtn) ? activeColor : normalColor; 
     creditsBtn.style.color = (btn === creditsBtn) ? activeColor : normalColor;
+    /*Si el boton es igual al boton home por ejemplo, si eso devuelve TRUE el color se establece ACTIVECOLOR, si devuelve FALSE el color
+    se establece  NORMALCOLOR*/
 }
 
-btnActivo(homeBtn);
+btnActivo(homeBtn); //ESTABLECE HOME CON EL COLOR DE ACTIVO AL INICIO DE LA PAGINA  
 
-homeBtn.addEventListener("click",()=> btnActivo(homeBtn));
+homeBtn.addEventListener("click",()=> btnActivo(homeBtn)); //SI HACES CLICK LLAMA A LA FUNCION btnActivo(); y manda como parametro el btn presionado
 
 artistsBtn.addEventListener("click",()=> btnActivo(artistsBtn));
 

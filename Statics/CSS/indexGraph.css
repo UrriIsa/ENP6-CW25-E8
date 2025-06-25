@@ -33,7 +33,7 @@ header{
     color: #ffff;
 }
 
-header button{
+header button{ /*SOLO AFECTA A LOS BOTONES DENTRO DE HEADER*/
     width: 2%;
     height: 50%;
     margin: 1%;
@@ -155,7 +155,7 @@ footer{
     gap: 3%; 
 }
 
-footer button{
+footer button{ /*SOLO AFECTA A LOS BOTONES DENTRO DE FOOTER*/
     width: 2%;
     height: 40%;
     margin: 1%;
