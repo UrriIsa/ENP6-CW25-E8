@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="../Statics/CSS/registro.css">
+</head>
+<body>
+    <main>
+        <form method="post" id="form-registro" >
+            <h1>Crear cuenta</h1>
+            <article class="texto">
+                <label>
+                    <input type="text" id="usuario" name="usuario" minlength="3" maxlength="15" placeholder="Nombre de usuario" required/><!-- Espacio en placeholder es para que se vea bien -->
+                </label>
+                <span class="span-dentro" id="errorUsuario"></span>
+            </article>
+            <article class="texto">
+                <label>
+                    <input type="password" id="contraseña" name="contraseña" minlength="5" placeholder="Contraseña" required/>
+                </label>
+                <span class="span-dentro" id="errorContraseña"></span>
+            </article>
+            <article class="texto">
+                <label>
+                    <input type="email" id="email" name="email" minlength="5" placeholder="Email" required/>
+                </label>
+                <span class="span-dentro" id="errorEmail"></span>
+            </article>
+            <article id="inline">
+                <label>
+                    <input type="radio" id="terminos" required>
+                    Acepto los <a href="terminos.html" target="_blank">términos y condiciones</a>
+                </label>
+                <span class="span-fuera" id="errorTerminos"></span>
+            </article>
+            <button type="submit">Crear cuenta</button>
+            <article id="inline">Si ya tienes una cuenta, <a href="./login.html">inicia sesion.</a></article>
+        </form>
+    </main> 
+    <script src="../Dynamics/JS/verificaRegistro.js"></script>
+</body>
+</html>
