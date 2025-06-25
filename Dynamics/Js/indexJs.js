@@ -52,3 +52,21 @@ artistsBtn.addEventListener("click",()=> btnActivo(artistsBtn));
 playlistsBtn.addEventListener("click",()=> btnActivo(playlistsBtn));
 
 creditsBtn.addEventListener("click",()=> btnActivo(creditsBtn));
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+let artistas = document.getElementById("artistas");
+
+html = '';
+for(i=0;i<baseDatosJSON.artistas.length;i++){
+    html+= `<div class="artista" onclick ="reproduce()" id="${baseDatosJSON.artistas[i].id}"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
+}
+
+artistas.innerHTML += html;
+///////////////////////////////////////////////////////////////////////////////////////////////////
+function reproduce(){
+    let reproductor = document.getElementById("reproductor")
+    isOn = reproductor.style.display === "none";
+    reproductor.style.display = isOn ? "block" : "none";
+    
+}
