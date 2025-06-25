@@ -11,6 +11,7 @@ body {
 
 #busqueda{
     font: Arial;
+    height: 25%;
     font-size: medium;
     margin-left: 20%;
     margin-top: 10px;
@@ -25,8 +26,32 @@ header{
     height: 10vh ;
 
     background-color: #012A61 ;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    color: #ffff;
 }
 
+header button{
+    width: 2%;
+    height: 50%;
+    margin: 1%;
+    padding: 0;
+
+    border: 0 transparent;
+    background-color: transparent;
+    color: #ffff;
+    font-size: 110%;
+
+    transition: .5s;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
 .mainCont{
     flex: 1; /*Propiedad abreviada (hace que el elemento crezca o se encoja en el espacio disponible y el tamaño inicial es cero)*/
     display: flex;
@@ -44,18 +69,19 @@ aside{
     flex-direction: column;
     align-items: center;
 
-    button{ /*Diseño para los botones dentro de aside*/
-        
-        font-size: 110%; 
-        margin: 5%;
 
-        color: #FDC787;
-        display: inline-block;
+}
+aside button{ /*Diseño para los botones dentro de aside*/
+    
+    font-size: 110%; 
+    margin: 5%;
 
-        cursor: pointer; /*Hace que el cursor cambie a la manita*/
-        border: 0 transparent; /*Quita el borde*/
-        background-color: transparent;
-    }
+    color: #ffff;
+    display: inline-block;
+
+    cursor: pointer; /*Hace que el cursor cambie a la manita*/
+    border: 0 transparent; /*Quita el borde*/
+    background-color: transparent;
 }
 main{
     flex: 1; /*Lo mismo que main Content*/
@@ -88,6 +114,7 @@ main{
   height: 100px;
   background-color: red;
   border-radius: 50%;
+  
 }
 
 #homeImg{
@@ -126,53 +153,31 @@ footer{
     flex-direction: row;
     flex-wrap: wrap;
     gap: 3%; 
+}
 
-    button{
-        width: 2%;
-        height: 40%;
-        margin: 1%;
-        padding: 0;
+footer button{
+    width: 2%;
+    height: 40%;
+    margin: 1%;
+    padding: 0;
 
-        border: 0 transparent;
-        background-color: transparent;
-        color: #ffff;
+    border: 0 transparent;
+    background-color: transparent;
+    color: #ffff;
+    font-size: 125%;
 
-        transition: .5s;
-        cursor: pointer;
+    transition: .5s;
+    cursor: pointer;
 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-content: center;
-        
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
     
-    #backBtn{   
-        font-size: 125%;
-    }
+}
 
-    #pauseBtn{
-        font-size: 125%;
-    }
-
-    #skipBtn{
-        font-size: 125%;
-    }
-
-    #listRepo{
-        font-size: 125%;
-    }
-    
-    #soundBtn{
-        font-size: 125%;    
-    }
-    #barraTiempo{
-        width: 70%;
-        height: 3%;
-        
-        background-color: #ffff ;
-    }
-    span{
-        color: #ffff;
-    }
+#barraTiempo{
+    width: 70%;
+    height: 3%;      
+    background-color: #ffff ;
 }
