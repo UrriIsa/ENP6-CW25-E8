@@ -27,6 +27,11 @@ mainForm.addEventListener("submit", (e)=>{
   getCookie(usuario.value); //MANDA A LLAMAR A getCookie();
   if(usuario.value === ''||password.value === ''|| email.value === ''){ //SI X = '' EVITA QUE SE ENVIE EL FORMULARIO
     e.preventDefault(); //FALTA MOSTRAR O DARLE A SABER AL USUARIO QUE SE EQUIVOCO***
+    password.value = '';
+    email.value = '';
+    usuario.placeholder = "USUARIO YA EXISTENTE"
+    let userArt = document.getElementById("user");
+    userArt.style.borderBlockColor = "red"
   } else{ //SI PASO LOS FILTROS
     let datos = { //CREA DATOS
       nombre: usuario.value.trim(),
@@ -34,6 +39,8 @@ mainForm.addEventListener("submit", (e)=>{
       email: email.value.trim()
     }
     setCookie(datos.nombre,datos); //MANDA A LLAMAR A setCookie(); y como parametro manda el nombre del usuario y los datos de este
+    e.preventDefault();
+    window.location.href = "./login.html";
   }
 });
 

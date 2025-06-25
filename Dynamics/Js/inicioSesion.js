@@ -3,9 +3,18 @@ const usuarioI = document.getElementById("usuario");
 const passwordI = document.getElementById("contraseña")
 
 function setCookie(nombre,datos){ //CREA UNA COOKIE (AUN EN TRABAJO)***
-  let valor = encodeURIComponent(JSON.stringify(datos));
-  document.cookie = `${nombre}=${valor};max-age=3600`
+  let valor = datos;
+  document.cookie = `${nombre}=${valor};`
 }
+
+let cookies = document.cookie;
+    cookies = cookies.split(";");
+    for(i=0;i<cookies.length;i++){ //RECORRE LAS COOKIES
+        let cookie = cookies[i].trim();
+        if(cookie.indexOf("ACTUAL"+"=")===0){
+            window.location.href = "./index.html"; //VALOR DE LA COOKIE
+        }
+    }
 
 function getCookie(nombre){ //FUNCION PARA VERIFICAR QUE "LA COOKIE EXISTA Y DEVUELVE SU VALOR"
     let cookies = document.cookie;
@@ -27,16 +36,28 @@ mainForm.addEventListener("submit",(e)=>{
     if(cookieUser != null){ //SI NO REGRESA NULL (osea si la encontro)
         let decodedCookie = JSON.parse(decodeURIComponent(cookieUser)); //DECODIFICA EL VALOR y LO TRANSFORMA A UN DICCIONARIO PARA UTILIZARLO
         if(passwordI.value === decodedCookie.password){
-            //AUN EN TRABAJO***
+            e.preventDefault();
+            setCookie("ACTUAL","sesionIn")
+            window.location.href = "./index.html";
         }
         else{
             e.preventDefault(); //EVITA QUE SE MANDE EL FORMULARIO
-            passwordI.value = ''; //BORRA EL VALOR DE LA PASSWORD
+            passwordI.value = ''; 
+            passwordI.placeholder = "CONTRASEÑA INVALIDA"
+            let passwordArt = document.getElementById("password")
+            passwordArt.style.borderBlockColor = "red";
+            //BORRA EL VALOR DE LA PASSWORD
             //FALTA MOSTRAR O DARLE A SABER AL USUARIO QUE SE EQUIVOCO***
         }
     }else{
         usuarioI.value = '';//BORRA EL VALOR DEL USUARIO
-        passwordI.value = '';//BORRA EL VALOR DE LA PASSWORD
+        passwordI.value = '';
+        let passwordArt = document.getElementById("password")
+        passwordArt.style.borderBlockColor = "red";
+        let userArt = document.getElementById("user")
+        userArt.style.borderBlockColor = "red";
+        usuarioI.placeholder = "USUARIO INVALIDO"
+        passwordI.placeholder = "CONTRASEÑA INVALIDA"//BORRA EL VALOR DE LA PASSWORD
         e.preventDefault(); //EVITA QUE SE MANDE EL FORMULARIO
         //FALTA MOSTRAR O DARLE A SABER AL USUARIO QUE SE EQUIVOCO***
     }
