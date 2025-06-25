@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../Statics/CSS/indexGraph.css">
+        <script src="https://kit.fontawesome.com/19e0c4481e.js" crossorigin="anonymous"></script> <!--LINKEO DE LA PAGINA FONTAWESOME-->
         <script src="../Dynamics/BaseDeDatos/baseDeDatos.js"></script> <!--LINKEO DE LA PSEUDO-BASE-DE-DATOS que se subio al classroom-->
         <title>[NOMBRE]</title> <!--DEBEMOS QUE ELEGIR EL NOMBRE-->
     </head>
@@ -11,35 +12,41 @@
         <header>   
             <label for="busqueda"></label>
             <input type="text" id="busqueda" name="busqueda" placeholder="Buscar canciones, artistas ..."> <!--INPUT PARA LA BARRA DE BUSQUEDA-->
-            <button id="buscar" name="buscar">🔍</button> <!--No se su funcionamiento (Santiago)-->
+            <button id="buscar" name="buscar"><i class="fa-solid fa-magnifying-glass"></i></button> <!--No se su funcionamiento (Santiago)-->
+            <button id="perfil" onclick="location.href='./login.html'"><i class="fa-regular fa-circle-user"></i></i></button> <!--BOTON PARA IR A LA PAGINA DE INICIO DE SESION-->
         </header>
 
         <section class="mainCont">
             <aside>    <!--ESTA "ACABADO" SOLO FALTA LINKEAR LO QUE SE TENGA QUE LINKEAR-->
-                <button> <img src="../Statics/imagenes/home.png" id="homeImg"> Home</button> <!--Boton para regresar a home-->
-                <button> <img src="../Statics/imagenes/personastrans.png" id="artistaImg"> Artistas</button><!--Boton para ir a Artistas-->
-                <button> <img src="../Statics/imagenes/lista (2).png" id="listaImg"> Playlist</button><!--Boton para ir a Playlists-->
-                <button> <img src="../Statics/imagenes/estrellaImg.png" id="estrellaImg">Creditos</button><!--Boton para ir a Creditos-->
+                <button id="homeBtn"><i class="fa-solid fa-house"></i> Home</button> <!--Boton para regresar a home-->
+                <button id="artistsBtn"><i class="fa-solid fa-user"></i> Artistas</button><!--Boton para ir a Artistas-->
+                <button id="playlistsBtn"><i class="fa-solid fa-list"></i> Playlist</button><!--Boton para ir a Playlists-->
+                <button id="creditsBtn"><i class="fa-solid fa-star"></i> Creditos</button><!--Boton para ir a Creditos-->
             </aside>
         <!--Main-->
-            <main> <!--MENSAJE DE BIENVENIDOS-->
-                <article class="bienvenida">
-                    <div class="texto-bienvenida"> <!--Clase que da estructura al texto del contenedor-->
-                    <h1>¡Bienvenido a (NOMBRE)!</h1>
-                    <p> Tu plataforma musical favorita</p>
-                    </div>
-                    <div class="mascota"></div> <!--ES UNA REFERNCIA PARA DONDE COLOCAR A LA MASCOTA-->
-                </article>
+            <main>
+                <section id="home">    
+                    <article class="bienvenida"> <!--MENSAJE DE BIENVENIDOS-->
+                        <div class="texto-bienvenida"> <!--Clase que da estructura al texto del contenedor-->
+                        <h1>¡Bienvenido a (NOMBRE)!</h1>
+                        <p> Tu plataforma musical favorita</p>
+                        </div>
+                        <div class="mascota"></div> <!--ES UNA REFERNCIA PARA DONDE COLOCAR A LA MASCOTA-->
+                    </article>
+                <section>
+                <section id="artists"></section>
+                <section id="playlist"></section>
+                <section id="credits"></section>
             </main>
         </section>
 
         <footer>
-            <button id="backBtn">⏮</button> <!--Boton para regresar a la cancion pasada-->
-            <button id="pauseBtn">▶</button> <!--Boton para pausar/play a la cancion-->
-            <button id="skipBtn">⏭</button> <!--Boton para saltar a la siguiente cancion-->
-            <button id="listRepo">☰</button>  <!--Boton para ver la lista de Reproduccion-->
-            <button id="soundBtn">🔊</button> <!--Boton apra ajustar el sonido-->
-            <div id="barraTiempo"></div> <!--Barra para mover la cancion-->
+            <button id="backBtn"><i class="fa-solid fa-backward"></i></button> <!--Boton para regresar a la cancion pasada-->
+            <button id="pauseBtn"><i class="fa-solid fa-play"></i></button> <!--Boton para pausar/play a la cancion-->
+            <button id="skipBtn"><i class="fa-solid fa-forward"></i></button> <!--Boton para saltar a la siguiente cancion-->
+            <button id="listRepo"><i class="fa-solid fa-bars"></i></button>  <!--Boton para ver la lista de Reproduccion-->
+            <button id="soundBtn"><i class="fa-solid fa-volume-high"></i></button> <!--Boton apra ajustar el sonido-->
+            <input type="range" max="100"  id="barraTiempo"> <!--Barra para mover la cancion-->
         </footer>
         
     <script src="../Dynamics/Js/indexJs.js"></script> <!--LINKEO del JavaScript del index-->
