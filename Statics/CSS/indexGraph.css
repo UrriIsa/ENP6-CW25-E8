@@ -55,7 +55,7 @@ header button{ /*SOLO AFECTA A LOS BOTONES DENTRO DE HEADER*/
 .mainCont{
     flex: 1; /*Propiedad abreviada (hace que el elemento crezca o se encoja en el espacio disponible y el tamaño inicial es cero)*/
     display: flex;
-    background-color: white;
+    background-color: #20807B;
 }
 
 aside{
@@ -83,10 +83,15 @@ aside button{ /*Diseño para los botones dentro de aside*/
     border: 0 transparent; /*Quita el borde*/
     background-color: transparent;
 }
+
 main{
     flex: 1; /*Lo mismo que main Content*/
     margin: 0; /*reiniciar propiedades*/
     padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .bienvenida{ /*Clase para el contenedor del mensaje de bienvenida*/
@@ -117,26 +122,34 @@ main{
   
 }
 
-#homeImg{
-    display: inline-block;
-    height: 20px;
-    width: 20px;
+article[id="artistas"]{
+    display: flex;
+    flex-direction: row;
+    gap: 3%;
 }
-#listaImg{
-    display: inline-block;
-    height: 20px;
-    width: 20px;
-}
-#artistaImg{
-    display: inline-block;
-    height: 20px;
-    width: 20px;
+.artista{
+    width: 10%;
+    cursor: pointer;
 }
 
-#estrellaImg{
-    display: inline-block;
-    height: 20px;
-    width: 20px;
+.artista img{
+    width: 100%;
+    height: 100%;
+    border-radius: 150%;
+}
+
+#reproductor{
+    width: 25%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+#reproductor img{
+    width: 95%;
+    height: 30% ;
+    margin: 1%;
 }
 
 footer{
