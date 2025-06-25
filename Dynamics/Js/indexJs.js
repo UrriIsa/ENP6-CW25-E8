@@ -22,3 +22,31 @@ busquedaInput.addEventListener("input",()=>{
         return posA - posB; //SI EL VALOR A ES MENOR QUE EL VALOR B => A VA ANTES QUE B (0 - 2 = -2 como es negativo A va antes que B)
     });
 });
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const homeBtn = document.getElementById("homeBtn");
+
+const artistsBtn = document.getElementById("artistsBtn");
+const playlistsBtn = document.getElementById("playlistsBtn");
+const creditsBtn = document.getElementById("creditsBtn");
+
+activeColor = "#FDC787";
+normalColor = "#ffff";
+
+function btnActivo(btn){
+    homeBtn.style.color = (btn === homeBtn) ? activeColor : normalColor;
+    artistsBtn.style.color = (btn === artistsBtn) ? activeColor : normalColor;
+    playlistsBtn.style.color = (btn === playlistsBtn) ? activeColor : normalColor;
+    creditsBtn.style.color = (btn === creditsBtn) ? activeColor : normalColor;
+}
+
+btnActivo(homeBtn);
+
+homeBtn.addEventListener("click",()=> btnActivo(homeBtn));
+
+artistsBtn.addEventListener("click",()=> btnActivo(artistsBtn));
+
+playlistsBtn.addEventListener("click",()=> btnActivo(playlistsBtn));
+
+creditsBtn.addEventListener("click",()=> btnActivo(creditsBtn));
