@@ -19,11 +19,11 @@ busquedaInput.addEventListener("input",()=>{
         artista = artista.toUpperCase(); //VUELVE AL NOMBRE DEL ARTISTA A MAYUS
 
         if(artista.includes(palabra)){ //SI LA PALABRA QUE INGRESO EL USUARIO ESTA INCLUIDA
-            listaDeBusqueda[j] = {
-                nombre: baseDatosJSON.artistas[i].nombre.trim(),
-                id: baseDatosJSON.artistas[i].id,
-                tipo: 0
-            } //SE LA ASIGNA A LISTADEBUSQUEDA
+            listaDeBusqueda[j] = { //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
+                nombre: baseDatosJSON.artistas[i].nombre.trim(), //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
+                id: baseDatosJSON.artistas[i].id, //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
+                tipo: 0 //Y LE DA UN TIPO (0=ARTISTA,1=ALBUM Y 2=CANCION)
+            } 
             j++; //RECORRE EL ARREGLO DE BUSQUEDA
         }
     }
@@ -33,11 +33,11 @@ busquedaInput.addEventListener("input",()=>{
         album = album.toUpperCase(); //VUELVE AL NOMBRE DEL ARTISTA A MAYUS
 
         if(album.includes(palabra)){ //SI LA PALABRA QUE INGRESO EL USUARIO ESTA INCLUIDA
-            listaDeBusqueda[j] = {
-                nombre: baseDatosJSON.album[i].nombre.trim(),
-                id: baseDatosJSON.album[i].id,
-                tipo: 1
-            } //SE LA ASIGNA A LISTADEBUSQUEDA
+            listaDeBusqueda[j] = { //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
+                nombre: baseDatosJSON.album[i].nombre.trim(), //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
+                id: baseDatosJSON.album[i].id, //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
+                tipo: 1 //Y LE DA UN TIPO (0=ARTISTA,1=ALBUM Y 2=CANCION)
+            } 
             j++; //RECORRE EL ARREGLO DE BUSQUEDA
         }
     }
@@ -47,10 +47,10 @@ busquedaInput.addEventListener("input",()=>{
         cancion = cancion.toUpperCase(); //VUELVE AL NOMBRE DEL ARTISTA A MAYUS
 
         if(cancion.includes(palabra)){ //SI LA PALABRA QUE INGRESO EL USUARIO ESTA INCLUIDA
-            listaDeBusqueda[j] = {
-                nombre: baseDatosJSON.canciones[i].nombre.trim(),
-                id: baseDatosJSON.canciones[i].id,
-                tipo: 2
+            listaDeBusqueda[j] = { //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
+                nombre: baseDatosJSON.canciones[i].nombre.trim(), //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
+                id: baseDatosJSON.canciones[i].id, //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
+                tipo: 2 //Y LE DA UN TIPO (0=ARTISTA,1=ALBUM Y 2=CANCION)
             }
             j++; //RECORRE EL ARREGLO DE BUSQUEDA
         }
@@ -63,9 +63,9 @@ busquedaInput.addEventListener("input",()=>{
         return posA - posB; //SI EL VALOR A ES MENOR QUE EL VALOR B => A VA ANTES QUE B (0 - 2 = -2 como es negativo A va antes que B)
     });
     html ='';
-    for(i=0;i<listaDeBusqueda.length;i++){
+    for(i=0;i<listaDeBusqueda.length;i++){ //recorre el arreglo listaDeBusqueda
         html += `<div class="opcion" onclick="busqueda('${listaDeBusqueda[i].id},${listaDeBusqueda[i].tipo}')"><h1>${listaDeBusqueda[i].nombre}</h1></div>`
-    }
+    } //se crea un DIV con clase opcion y le añade una funcion onClick con parametos el id y el tipo y dentro el titulo(NOMBRE)
     listaBusquedaHtml.style.display = "block";
     listaBusquedaHtml.innerHTML = html;
 });
@@ -92,7 +92,7 @@ function busqueda(param) {
             };
             console.log("Artista", result);
             html ='';
-            html = `<img src="${result.datos.url_img}">`;
+            html = `<div id="player"></div><img id="imgArt" src="${result.datos.url_img}">`;
             html += `<h1>${result.datos.nombre}</h1>`;
             for(i = 0; i< result.canciones.length;i++){
                 html += `<p onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
@@ -109,7 +109,7 @@ function busqueda(param) {
                 canciones: cancionesAlbum
             };
             console.log("Album", result);
-            html = `<img src="${result.datos.url_img}">`;
+            html = `<div id="player"></div><img id="imgArt" src="${result.datos.url_img}">`;
             html += `<h1>${result.datos.nombre}</h1>`;
             for(i = 0; i< result.canciones.length;i++){
                 html += `<p onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
@@ -127,7 +127,7 @@ function busqueda(param) {
                 canciones: cancionesArtista
             };
             console.log("Artista", result);
-            html = `<img src="${result.datos.url_img}">`;
+            html = `<div id="player"></div><img id="imgArt" src="${result.datos.url_img}">`;
             html += `<h1>${result.datos.nombre}</h1>`;
             for(i = 0; i< result.canciones.length;i++){
                 html += `<p onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
@@ -154,7 +154,7 @@ normalColor = "#ffff"; //DEFINE EL COLOR SI NO ESTA ACTIVO
 
 function btnActivo(btn){/* Establece el color del boton*/
     homeBtn.style.color = (btn === homeBtn) ? activeColor : normalColor;
-    sectionHome.style.display = (btn === homeBtn) ? "block" : "none"; 
+    sectionHome.style.display = (btn === homeBtn) ? "flex" : "none"; 
     artistsBtn.style.color = (btn === artistsBtn) ? activeColor : normalColor; 
     sectionArtists.style.display = (btn === artistsBtn) ? "flex" : "none"; 
     playlistsBtn.style.color = (btn === playlistsBtn) ? activeColor : normalColor; 
@@ -177,12 +177,12 @@ creditsBtn.addEventListener("click",()=> btnActivo(creditsBtn));
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
-let artistas = document.getElementById("artistas");
+let artistas = document.getElementById("artistas"); //EN EL ARTICULO ARTISTAS
 
 html = '';
-for(i=0;i<baseDatosJSON.artistas.length;i++){
-    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].id},${0}')"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
-}
+for(i=0;i<baseDatosJSON.artistas.length;i++){ //RECORRE LA BASE DE DATOS
+    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].id},${0}')"><img src="${baseDatosJSON.artistas[i].url_img}"></div>` 
+} //CREA UN DIV con clase ARTISTA le asigna una funcion ONCLICK con parametros el id y el tipo  y coloca la imagen del artista
 
 artistas.innerHTML += html;
 
@@ -190,11 +190,11 @@ html = '';
 html += `<h1>Artistas</h1>`
 for(i=0;i<baseDatosJSON.artistas.length;i++){
     html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].id},${0}')"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
-}
+} //CREA UN DIV con clase ARTISTA le asigna una funcion ONCLICK con parametros el id y el tipo  y coloca la imagen del artista
 html += `<h1>Albumes</h1>`
 for(i=0;i<baseDatosJSON.album.length;i++){
     html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.album[i].id},${1}')" ><img src="${baseDatosJSON.album[i].url_img}"></div>`
-}
+} //CREA UN DIV con clase ARTISTA le asigna una funcion ONCLICK con parametros el id y el tipo  y coloca la imagen del album
 sectionArtists.innerHTML += html;
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 function reproduce(param){
@@ -214,7 +214,7 @@ function reproduce(param){
                 canciones: cancionesArtista
             };
             console.log("Artista", result);
-            html = `<img src="${result.datos.url_img}">`;
+            html = `<div id="player"></div><img id="imgArt" src="${result.datos.url_img}">`;
             html += `<h1>${result.datos.nombre}</h1>`;
             for(i = 0; i< result.canciones.length;i++){
                 html += `<p onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
@@ -231,7 +231,8 @@ function reproduce(param){
                 canciones: cancionesAlbum
             };
             console.log("Album", result);
-            html = `<h1>${result.datos.nombre}</h1>`;
+            html = `<div id="player"></div><img id="imgArt" src="${result.datos.url_img}">`;
+            html += `<h1>${result.datos.nombre}</h1>`;
             for(i = 0; i< result.canciones.length;i++){
                 html += `<p onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
             }
@@ -245,9 +246,7 @@ function reproduce(param){
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function reproduccion(link){
-    cambiarVideo(link);
-}
+
 // REPRODUCIR VIDEOS
 ////////////////////
 let player;
@@ -263,26 +262,39 @@ const muteBtn = document.getElementById("soundBtn");
 const canciones = [""];
 
 //Funcion que toma el link de un video y lo reproduce
+function reproduccion(link) {
+    const playerContainer = document.getElementById("player");
+    const playerImg = document.getElementById("imgArt");
 
-function cambiarVideo(nuevoVideoId) {
-  player.loadVideoById(nuevoVideoId); // Cambia el video sin iniciar la reproducción
+    if (playerImg) {
+        playerImg.style.display = "none";
+    }
+    if (player) {
+        cambiarVideo(link);
+    } else {
+        player = new YT.Player("player", {
+            videoId: link,
+            playerVars: {
+                controls: 0,
+                modestbranding: 1,
+                rel: 0,
+                showinfo: 0,
+            },
+            events: {
+                onReady: onPlayerReady,
+            },
+        });
+    }
+
+    playerContainer.style.display = "block";
 }
 
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player("player", {
-//Hay que hacer que no sea necesario que tu escribas el link manulmente
-        videoId: "SsYXnH9lzCY",
-        playerVars: {
-            controls: 0,
-            modestbranding: 1,
-            rel: 0,
-            showinfo: 0,
-        },
-        events: {
-            onReady: onPlayerReady,
+function cambiarVideo(nuevoVideoId) {
+    player.loadVideoById(nuevoVideoId); // Cambia el video sin iniciar la reproducción
+}
 
-        },
-    });
+function onYouTubeIframeAPIReady(videoId) {
+
 }
 function onPlayerReady(event){
     duration = player.getDuration();
@@ -303,7 +315,6 @@ function onPlayerReady(event){
 }
 
 /*BOTONES*/
-
 playPauseBtn.addEventListener("click", () => {
     let state = player.getPlayerState();
     if (state === YT.PlayerState.PLAYING) {
