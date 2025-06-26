@@ -142,37 +142,62 @@ let artistas = document.getElementById("artistas");
 
 html = '';
 for(i=0;i<baseDatosJSON.artistas.length;i++){
-    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].nombre}')"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
+    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].nombre}')"></div>`
 }
 
 artistas.innerHTML += html;
 
-html = '';
-html += `<h1>Artistas</h1>`
-for(i=0;i<baseDatosJSON.artistas.length;i++){
-    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].nombre}')"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
-}
-html += `<h1>Albumes</h1>`
-for(i=0;i<baseDatosJSON.album.length;i++){
-    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.album[i].nombre}')" ><img src="${baseDatosJSON.album[i].url_img}"></div>`
-}
+// Para artistas (buscar alguna canción)
+html += `<div class="artista" onclick="reproduce('${baseDatosJSON.artistas[i].nombre}')">
+<img src="${baseDatosJSON.artistas[i].url_img}"></div>`;
+
+// Para álbumes (buscar algun album)
+html += `<div class="artista" onclick="reproduce('${baseDatosJSON.album[i].nombre}')">
+<img src="${baseDatosJSON.album[i].url_img}"></div>`;
+
 sectionArtists.innerHTML += html;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 let result
-function reproduce(nombre){
 
-    let reproductor = document.getElementById("reproductor")
-    isOn = reproductor.style.display === "none";
-    reproductor.style.display = isOn ? "block" : "none";
+function reproduce(nombre) {
+    // Busca la canción por el nombre
+    const cancionEncontrada = baseDatosJSON.canciones.find(c => 
+        c.nombre.trim().toUpperCase() === nombre.trim().toUpperCase()
+    );
+    
+    // Si no encuentra en canciones, va a buscar en álbumes
+    if (!cancionEncontrada) {
+        const albumEncontrado = baseDatosJSON.album.find(a => 
+            a.nombre.trim().toUpperCase() === nombre.trim().toUpperCase()
+        );
+        
+        if (albumEncontrado && albumEncontrado.link) {
+            reproducirVideo(albumEncontrado.link);
+            return;
+        }
+    }
+    
+    if (cancionEncontrada && cancionEncontrada.link) {
+        reproducirVideo(cancionEncontrada.link);
+    }
+}
 
-    nombre = nombre.trim().toUpperCase();
-
+function reproducirVideo(link) {
+    let reproductor = document.getElementById("reproductor");
+    reproductor.style.display = "block";
+    
+    if (player) {
+        player.loadVideoById(link);
+    } else {
+        videoIdPendiente = link;
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // REPRODUCIR VIDEOS
-////////////////////
+//////////////////////
 let player;
 let duration = 0;
 let lastVolume;
@@ -192,10 +217,12 @@ function cambiarVideo(nuevoVideoId) {
   // O usa player.loadVideoById(nuevoVideoId) para iniciar la reproducción
 }
 
+let videoIdPendiente = null;
+
 function onYouTubeIframeAPIReady() {
     player = new YT.Player("player", {
-//Hay que hacer que no sea necesario que tu escribas el link manulmente
-        videoId: "SsYXnH9lzCY",
+
+        videoId: videoIdPendiente,
         playerVars: {
             controls: 0,
             modestbranding: 1,
@@ -204,7 +231,6 @@ function onYouTubeIframeAPIReady() {
         },
         events: {
             onReady: onPlayerReady,
-
         },
     });
 }
