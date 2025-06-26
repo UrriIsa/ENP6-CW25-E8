@@ -179,6 +179,7 @@ article[id="artistas"]{
     gap: 3%;
 }
 .artista{
+   
     width: 10%;
     cursor: pointer;
 }
