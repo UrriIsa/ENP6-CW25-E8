@@ -1,4 +1,3 @@
-
 let busquedaInput = document.getElementById("busqueda"); 
 
 /////////////////////////////////////////////////
@@ -286,26 +285,24 @@ const seekBar = document.getElementById("barraTiempo");
 const volumeSlider = document.getElementById("volumeSlider");
 const playPauseBtn = document.getElementById("pauseBtn");
 const muteBtn = document.getElementById("soundBtn");
+//Falta hacer que tome cualquier link de la base de datos
 const canciones = [""];
 
 //Funcion que toma el link de un video y lo reproduce
 function reproduccion(link) {
     const playerContainer = document.getElementById("player");
-    const imgArt = document.getElementById("imgArt");
-    const reproductorSection = document.getElementById("reproductor");
+    const playerImg = document.getElementById("imgArt");
 
-    // Oculta la imagen y muestra el reproductor
-    if (imgArt) imgArt.style.display = "none";
-    playerContainer.style.display = "block";
-
+    if (playerImg) {
+        playerImg.style.display = "none";
+    }
     if (player) {
-        cambiarVideo(link); // Si ya existe, solo cambia el video
+        cambiarVideo(link);
     } else {
-        // Si no existe, crea el reproductor
         player = new YT.Player("player", {
             videoId: link,
             playerVars: {
-                controls: 0,  
+                controls: 0,
                 modestbranding: 1,
                 rel: 0,
                 showinfo: 0,
@@ -315,10 +312,17 @@ function reproduccion(link) {
             },
         });
     }
+
+    playerContainer.style.display = "block";
 }
 
+function cambiarVideo(nuevoVideoId) {
+    player.loadVideoById(nuevoVideoId); // Cambia el video sin iniciar la reproducción
+}
 
-/*sincroniza los controles de la pagina con el video de YouTube*/
+function onYouTubeIframeAPIReady(videoId) {
+
+}
 function onPlayerReady(event){
     duration = player.getDuration();
     player.playVideo();
