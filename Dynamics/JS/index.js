@@ -3,6 +3,8 @@ let busquedaInput = document.getElementById("busqueda");
 /////////////////////////////////////////////////
 
 busquedaInput.addEventListener("input",()=>{ 
+    const reproductor = document.getElementById("reproductor");
+    reproductor.style.display = "none";
     let listaDeBusqueda  = []; //SE GUARDA LA LISTA DE BUSQUEDAS
     let j = 0;
     const listaBusquedaHtml = document.getElementById("listaBusqueda");
@@ -17,8 +19,12 @@ busquedaInput.addEventListener("input",()=>{
         artista = artista.toUpperCase(); //VUELVE AL NOMBRE DEL ARTISTA A MAYUS
 
         if(artista.includes(palabra)){ //SI LA PALABRA QUE INGRESO EL USUARIO ESTA INCLUIDA
-          listaDeBusqueda[j] =  baseDatosJSON.artistas[i].nombre.trim(); //SE LA ASIGNA A LISTADEBUSQUEDA
-          j++; //RECORRE EL ARREGLO DE BUSQUEDA
+            listaDeBusqueda[j] = {
+                nombre: baseDatosJSON.artistas[i].nombre.trim(),
+                id: baseDatosJSON.artistas[i].id,
+                tipo: 0
+            } //SE LA ASIGNA A LISTADEBUSQUEDA
+            j++; //RECORRE EL ARREGLO DE BUSQUEDA
         }
     }
     for(i=0;i<baseDatosJSON.album.length;i++){ //RECORRE EL ARREGLO ARTISTAS
@@ -27,7 +33,11 @@ busquedaInput.addEventListener("input",()=>{
         album = album.toUpperCase(); //VUELVE AL NOMBRE DEL ARTISTA A MAYUS
 
         if(album.includes(palabra)){ //SI LA PALABRA QUE INGRESO EL USUARIO ESTA INCLUIDA
-            listaDeBusqueda[j] =  baseDatosJSON.album[i].nombre.trim(); //SE LA ASIGNA A LISTADEBUSQUEDA
+            listaDeBusqueda[j] = {
+                nombre: baseDatosJSON.album[i].nombre.trim(),
+                id: baseDatosJSON.album[i].id,
+                tipo: 1
+            } //SE LA ASIGNA A LISTADEBUSQUEDA
             j++; //RECORRE EL ARREGLO DE BUSQUEDA
         }
     }
@@ -37,65 +47,94 @@ busquedaInput.addEventListener("input",()=>{
         cancion = cancion.toUpperCase(); //VUELVE AL NOMBRE DEL ARTISTA A MAYUS
 
         if(cancion.includes(palabra)){ //SI LA PALABRA QUE INGRESO EL USUARIO ESTA INCLUIDA
-            listaDeBusqueda[j] =  baseDatosJSON.canciones[i].nombre.trim(); //SE LA ASIGNA A LISTADEBUSQUEDA
+            listaDeBusqueda[j] = {
+                nombre: baseDatosJSON.canciones[i].nombre.trim(),
+                id: baseDatosJSON.canciones[i].id,
+                tipo: 2
+            }
             j++; //RECORRE EL ARREGLO DE BUSQUEDA
         }
     }
     listaDeBusqueda.sort(); //SORTEA POR ORDEN ALFABETICO LA LISTADEBUSQUEDA
     listaDeBusqueda.sort((a,b)=>{ //SORTEA POR LO QUE INGRESO EL USUARIO "SI INGRESA N" => COLOCA LAS N PRIMERO EN EL ARREGLO
-        let posA = a.indexOf(busquedaInput.value); //BUSCA LA POSICION DE X EN A (SI ES N Y LA PALABRA ES NARANJA ES IGUAL A 0)
-        let posB = b.indexOf(busquedaInput.value); //BUSCA LA POSICION DE X EN B (SI ES N Y LA PALABRA ES MANZANA ES IGUAL A 2)
+        let posA = a.nombre.indexOf(busquedaInput.value); //BUSCA LA POSICION DE X EN A (SI ES N Y LA PALABRA ES NARANJA ES IGUAL A 0)
+        let posB = b.nombre.indexOf(busquedaInput.value); //BUSCA LA POSICION DE X EN B (SI ES N Y LA PALABRA ES MANZANA ES IGUAL A 2)
         
         return posA - posB; //SI EL VALOR A ES MENOR QUE EL VALOR B => A VA ANTES QUE B (0 - 2 = -2 como es negativo A va antes que B)
     });
     html ='';
     for(i=0;i<listaDeBusqueda.length;i++){
-        html += `<div class="opcion" onclick="busqueda('${listaDeBusqueda[i]}')"><h1>${listaDeBusqueda[i]}</h1></div>`
+        html += `<div class="opcion" onclick="busqueda('${listaDeBusqueda[i].id},${listaDeBusqueda[i].tipo}')"><h1>${listaDeBusqueda[i].nombre}</h1></div>`
     }
     listaBusquedaHtml.style.display = "block";
     listaBusquedaHtml.innerHTML = html;
 });
 
-let resultadoSeleccionado = null;
+function busqueda(param) {
+    param = param.split(",");
+    id = param[0]
+    id = Number(id)
+    const listaBusquedaHtml = document.getElementById("listaBusqueda");
+    listaBusquedaHtml.innerHTML = '';
+    listaBusquedaHtml.style.display = "none"
+    const reproductor = document.getElementById("reproductor");
+    isOn = reproductor.style.display === "none";
+    reproductor.style.display = isOn ? "block" : "none";
 
-function busqueda(nombre) {
-    nombre = nombre.trim().toUpperCase();
 
-    const cancion = baseDatosJSON.canciones.find(c => c.nombre.toUpperCase() === nombre);
-    if (cancion) {
-        resultadoSeleccionado = {
-            tipo: "cancion",
-            datos: cancion
-        };
-        console.log("Cancion", resultadoSeleccionado);
-        return resultadoSeleccionado;
+    if(param[1]==="0"){
+        const artista = baseDatosJSON.artistas.find(a => a.id === id);
+        if (artista) {
+            const cancionesArtista = baseDatosJSON.canciones.filter(c => c.id_artista === artista.id);
+            result = {
+                datos: artista,
+                canciones: cancionesArtista
+            };
+            console.log("Artista", result);
+            html ='';
+            html = `<img src="${result.datos.url_img}">`;
+            html += `<h1>${result.datos.nombre}</h1>`;
+            for(i = 0; i< result.canciones.length;i++){
+                html += `<p onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
+            }
+            reproductor.innerHTML = html;
+        }
+    }    
+    if(param[1]==="1"){
+        const album = baseDatosJSON.album.find(a => a.id === id);
+        if (album) {
+            const cancionesAlbum = baseDatosJSON.canciones.filter(c => c.id_album === album.id);
+            result = {
+                datos: album,
+                canciones: cancionesAlbum
+            };
+            console.log("Album", result);
+            html = `<img src="${result.datos.url_img}">`;
+            html += `<h1>${result.datos.nombre}</h1>`;
+            for(i = 0; i< result.canciones.length;i++){
+                html += `<p onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
+            }
+            reproductor.innerHTML = html;
+        }
     }
-
-    const artista = baseDatosJSON.artistas?.find(a => a.nombre.toUpperCase() === nombre);
-    if (artista) {
-        const cancionesArtista = baseDatosJSON.canciones.filter(c => c.id_artista === artista.id);
-        resultadoSeleccionado = {
-            tipo: "artista",
-            datos: artista,
-            canciones: cancionesArtista
-        };
-        console.log("Artista", resultadoSeleccionado);
-        return resultadoSeleccionado;
+    if(param[1]==="2"){
+        const cancion = baseDatosJSON.canciones.find(a=> a.id === id);
+        const artista = baseDatosJSON.artistas.find(a => a.id === cancion.id_artista);
+        if (artista) {
+            const cancionesArtista = baseDatosJSON.canciones.filter(c => c.id_artista === artista.id);
+            result = {
+                datos: artista,
+                canciones: cancionesArtista
+            };
+            console.log("Artista", result);
+            html = `<img src="${result.datos.url_img}">`;
+            html += `<h1>${result.datos.nombre}</h1>`;
+            for(i = 0; i< result.canciones.length;i++){
+                html += `<p onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
+            }
+            reproductor.innerHTML = html;
+        }
     }
-
-    // Buscar coincidencia exacta en álbumes
-    const album = baseDatosJSON.album?.find(a => a.nombre.toUpperCase() === nombre);
-    if (album) {
-        const cancionesAlbum = baseDatosJSON.canciones.filter(c => c.id_album === album.id);
-        resultadoSeleccionado = {
-            tipo: "album",
-            datos: album,
-            canciones: cancionesAlbum
-        };
-        console.log("Album", resultadoSeleccionado);
-        return resultadoSeleccionado;
-    }
-    return null;
 }
 
 
@@ -142,7 +181,7 @@ let artistas = document.getElementById("artistas");
 
 html = '';
 for(i=0;i<baseDatosJSON.artistas.length;i++){
-    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].nombre}')"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
+    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].id},${0}')"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
 }
 
 artistas.innerHTML += html;
@@ -150,27 +189,65 @@ artistas.innerHTML += html;
 html = '';
 html += `<h1>Artistas</h1>`
 for(i=0;i<baseDatosJSON.artistas.length;i++){
-    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].nombre}')"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
+    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].id},${0}')"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
 }
 html += `<h1>Albumes</h1>`
 for(i=0;i<baseDatosJSON.album.length;i++){
-    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.album[i].nombre}')" ><img src="${baseDatosJSON.album[i].url_img}"></div>`
+    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.album[i].id},${1}')" ><img src="${baseDatosJSON.album[i].url_img}"></div>`
 }
 sectionArtists.innerHTML += html;
-///////////////////////////////////////////////////////////////////////////////////////////////////
-let result
-function reproduce(nombre){
-
-    let reproductor = document.getElementById("reproductor")
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+function reproduce(param){
+    param = param.split(",");
+    id = param[0]
+    id = Number(id)
+    let reproductor = document.getElementById("reproductor");
     isOn = reproductor.style.display === "none";
     reproductor.style.display = isOn ? "block" : "none";
 
-    nombre = nombre.trim().toUpperCase();
-
+    if(param[1]==="0"){
+        const artista = baseDatosJSON.artistas.find(a => a.id === id);
+        if (artista) {
+            const cancionesArtista = baseDatosJSON.canciones.filter(c => c.id_artista === artista.id);
+            result = {
+                datos: artista,
+                canciones: cancionesArtista
+            };
+            console.log("Artista", result);
+            html = `<img src="${result.datos.url_img}">`;
+            html += `<h1>${result.datos.nombre}</h1>`;
+            for(i = 0; i< result.canciones.length;i++){
+                html += `<p onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
+            }
+            reproductor.innerHTML = html;
+        }
+    } 
+    if(param[1]==="1"){
+        const album = baseDatosJSON.album.find(a => a.id === id);
+        if (album) {
+            const cancionesAlbum = baseDatosJSON.canciones.filter(c => c.id_album === album.id);
+            result = {
+                datos: album,
+                canciones: cancionesAlbum
+            };
+            console.log("Album", result);
+            html = `<h1>${result.datos.nombre}</h1>`;
+            for(i = 0; i< result.canciones.length;i++){
+                html += `<p onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
+            }
+            reproductor.innerHTML = html;
+        }
+    }
+    if(param[1]==="2"){
+        const cancion = baseDatosJSON.canciones.find(a=> a.id === id);
+        console.log(id)
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+function reproduccion(link){
+    cambiarVideo(link);
+}
 // REPRODUCIR VIDEOS
 ////////////////////
 let player;
@@ -189,7 +266,6 @@ const canciones = [""];
 
 function cambiarVideo(nuevoVideoId) {
   player.loadVideoById(nuevoVideoId); // Cambia el video sin iniciar la reproducción
-  // O usa player.loadVideoById(nuevoVideoId) para iniciar la reproducción
 }
 
 function onYouTubeIframeAPIReady() {
