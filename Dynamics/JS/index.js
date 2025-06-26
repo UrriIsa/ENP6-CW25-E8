@@ -420,7 +420,7 @@ function busqueda(param) {
     isOn = reproductor.style.display === "none";
     reproductor.style.display = isOn ? "block" : "none";
 
-  /*  if(param[1]==="2"){
+   if(param[1]==="2"){
         const cancion = baseDatosJSON.canciones.find(a=> a.id === id);
         const artista = baseDatosJSON.artistas.find(a => a.id === cancion.id_artista);
         if (artista) {
@@ -437,7 +437,7 @@ function busqueda(param) {
             }
             reproductor.innerHTML = html;
         }
-    }*/
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -508,7 +508,7 @@ mainForm.addEventListener("submit",(e)=>{
         e.preventDefault(); //EVITA QUE SE MANDE EL FORMULARIO
         //FALTA MOSTRAR O DARLE A SABER AL USUARIO QUE SE EQUIVOCO***
     }
-});/*
+});*/
 
 
 
