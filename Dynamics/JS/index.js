@@ -49,17 +49,53 @@ busquedaInput.addEventListener("input",()=>{
     });
     html ='';
     for(i=0;i<listaDeBusqueda.length;i++){
-        html += `<div id="opcion" onclick="busqueda("${listaDeBusqueda[i]}")"><h1>${listaDeBusqueda[i]}</h1></div>`
+        html += `<div class="opcion" onclick="busqueda('${listaDeBusqueda[i]}')"><h1>${listaDeBusqueda[i]}</h1></div>`
     }
     listaBusquedaHtml.style.display = "block";
     listaBusquedaHtml.innerHTML = html;
 });
 
+let resultadoSeleccionado = null;
 
+function busqueda(nombre) {
+    nombre = nombre.trim().toUpperCase();
 
+    const cancion = baseDatosJSON.canciones.find(c => c.nombre.toUpperCase() === nombre);
+    if (cancion) {
+        resultadoSeleccionado = {
+            tipo: "cancion",
+            datos: cancion
+        };
+        console.log("Cancion", resultadoSeleccionado);
+        return resultadoSeleccionado;
+    }
 
+    const artista = baseDatosJSON.artistas?.find(a => a.nombre.toUpperCase() === nombre);
+    if (artista) {
+        const cancionesArtista = baseDatosJSON.canciones.filter(c => c.id_artista === artista.id);
+        resultadoSeleccionado = {
+            tipo: "artista",
+            datos: artista,
+            canciones: cancionesArtista
+        };
+        console.log("Artista", resultadoSeleccionado);
+        return resultadoSeleccionado;
+    }
 
-
+    // Buscar coincidencia exacta en álbumes
+    const album = baseDatosJSON.album?.find(a => a.nombre.toUpperCase() === nombre);
+    if (album) {
+        const cancionesAlbum = baseDatosJSON.canciones.filter(c => c.id_album === album.id);
+        resultadoSeleccionado = {
+            tipo: "album",
+            datos: album,
+            canciones: cancionesAlbum
+        };
+        console.log("Album", resultadoSeleccionado);
+        return resultadoSeleccionado;
+    }
+    return null;
+}
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

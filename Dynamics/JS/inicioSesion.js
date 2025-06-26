@@ -3,7 +3,7 @@ const usuarioI = document.getElementById("usuario");
 const passwordI = document.getElementById("contraseña")
 
 function setCookie(nombre,datos){ //CREA UNA COOKIE (AUN EN TRABAJO)***
-  let valor = datos;
+  let valor = datos.trim();
   document.cookie = `${nombre}=${valor};`
 }
 
@@ -32,12 +32,12 @@ mainForm.addEventListener("submit",(e)=>{
     if(usuarioI.value === ''|| passwordI.value === ''){
         return; //SI ALGUN VALOR ES '' DEVUELVE LA FUNCION
     }
-    const cookieUser = getCookie(usuarioI.value); //MANDA A LLAMAR A getCookie(); y manda como parametro el USUARIO ingresado por el usuario
+    const cookieUser = getCookie(usuarioI.value.trim()); //MANDA A LLAMAR A getCookie(); y manda como parametro el USUARIO ingresado por el usuario
     if(cookieUser != null){ //SI NO REGRESA NULL (osea si la encontro)
         let decodedCookie = JSON.parse(decodeURIComponent(cookieUser)); //DECODIFICA EL VALOR y LO TRANSFORMA A UN DICCIONARIO PARA UTILIZARLO
         if(passwordI.value === decodedCookie.password){
             e.preventDefault();
-            setCookie("ACTUAL","sesionIn")
+            setCookie("ACTUAL",usuarioI.value)
             window.location.href = "./index.html";
         }
         else{
