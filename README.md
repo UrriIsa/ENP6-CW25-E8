@@ -16,6 +16,7 @@ El equipo 8 está conformado por:
 - Carlos Alberto Pérez Banda (@Carlos-651)
 - Hirales Correa Paloma (@palomahirales)
 - Márquez Arias Luisa Yaretzi (@LuisaMarq)
+
 Y contamos con la asesoría de:
 - Isaac Arturo Urrutia Alfaro (@UrriIsa)
 ---
