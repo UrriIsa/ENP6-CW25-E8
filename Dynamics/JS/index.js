@@ -142,62 +142,37 @@ let artistas = document.getElementById("artistas");
 
 html = '';
 for(i=0;i<baseDatosJSON.artistas.length;i++){
-    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].nombre}')"></div>`
+    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].nombre}')"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
 }
 
 artistas.innerHTML += html;
 
-// Para artistas (buscar alguna canción)
-html += `<div class="artista" onclick="reproduce('${baseDatosJSON.artistas[i].nombre}')">
-<img src="${baseDatosJSON.artistas[i].url_img}"></div>`;
-
-// Para álbumes (buscar algun album)
-html += `<div class="artista" onclick="reproduce('${baseDatosJSON.album[i].nombre}')">
-<img src="${baseDatosJSON.album[i].url_img}"></div>`;
-
+html = '';
+html += `<h1>Artistas</h1>`
+for(i=0;i<baseDatosJSON.artistas.length;i++){
+    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].nombre}')"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
+}
+html += `<h1>Albumes</h1>`
+for(i=0;i<baseDatosJSON.album.length;i++){
+    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.album[i].nombre}')" ><img src="${baseDatosJSON.album[i].url_img}"></div>`
+}
 sectionArtists.innerHTML += html;
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 let result
+function reproduce(nombre){
 
-function reproduce(nombre) {
-    // Busca la canción por el nombre
-    const cancionEncontrada = baseDatosJSON.canciones.find(c => 
-        c.nombre.trim().toUpperCase() === nombre.trim().toUpperCase()
-    );
-    
-    // Si no encuentra en canciones, va a buscar en álbumes
-    if (!cancionEncontrada) {
-        const albumEncontrado = baseDatosJSON.album.find(a => 
-            a.nombre.trim().toUpperCase() === nombre.trim().toUpperCase()
-        );
-        
-        if (albumEncontrado && albumEncontrado.link) {
-            reproducirVideo(albumEncontrado.link);
-            return;
-        }
-    }
-    
-    if (cancionEncontrada && cancionEncontrada.link) {
-        reproducirVideo(cancionEncontrada.link);
-    }
-}
+    let reproductor = document.getElementById("reproductor")
+    isOn = reproductor.style.display === "none";
+    reproductor.style.display = isOn ? "block" : "none";
 
-function reproducirVideo(link) {
-    let reproductor = document.getElementById("reproductor");
-    reproductor.style.display = "block";
-    
-    if (player) {
-        player.loadVideoById(link);
-    } else {
-        videoIdPendiente = link;
-    }
+    nombre = nombre.trim().toUpperCase();
+
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // REPRODUCIR VIDEOS
-//////////////////////
+////////////////////
 let player;
 let duration = 0;
 let lastVolume;
@@ -217,12 +192,10 @@ function cambiarVideo(nuevoVideoId) {
   // O usa player.loadVideoById(nuevoVideoId) para iniciar la reproducción
 }
 
-let videoIdPendiente = null;
-
 function onYouTubeIframeAPIReady() {
     player = new YT.Player("player", {
-
-        videoId: videoIdPendiente,
+//Hay que hacer que no sea necesario que tu escribas el link manulmente
+        videoId: "SsYXnH9lzC",
         playerVars: {
             controls: 0,
             modestbranding: 1,
@@ -231,6 +204,7 @@ function onYouTubeIframeAPIReady() {
         },
         events: {
             onReady: onPlayerReady,
+
         },
     });
 }
@@ -295,24 +269,27 @@ seekBar.addEventListener("input", ()=>{
 });
 
 
-///////////////////////////////////////////////////////////////////////////77
-//MOSTRAR CANCIONES
+// FUNCIÓN PARA MOSTRAR CANCIONES
 
 function mostrarCanciones() {
+    // 1. Obtiene el contenedor donde va a mostrarar las canciones
     const contenedor = document.getElementById('canciones-container');
+
+    // 2. Genera el contenido del HTML para cada canción
     let html = '';
-    
-    baseDeDatos.canciones.forEach(cancion => {  
-        html += `
+    baseDatosJSON.canciones.forEach(cancion => {
+        const linkVideo = cancion.link;
+        contenedor.innerHTML = `
             <div class="cancion-item">
-                <h3>${canciones.nombre}</h3>
-                <p>Artista: ${canciones.artista}</p>  // Directamente de cancion.artista
-                <p>Álbum: ${canciones.album}</p>
-                <p>Género: ${canciones.genero}</p>
-                <button onclick="reproduce('${canciones.nombre}')"></button>
+                <div>
+                    <h3>${cancion.nombre}</h3>
+                    <p>${cancion.artista}</p>
+                <button class="btn-reproducir" onclick = "onYouTubeIframeAPIReady.replace("SsYXnH9lzC", cancion.link")">Reproducir</button>
+                console.log = ""
             </div>
         `;
     });
-    
+
+    // 3. Mandar el texto a el contenedor "Canciones-contenedor"
     contenedor.innerHTML = html;
 }
