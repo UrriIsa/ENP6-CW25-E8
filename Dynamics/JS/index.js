@@ -361,3 +361,156 @@ seekBar.addEventListener("input", ()=>{
     let seekTo = seekBar.value;
     player.seekTo(seekTo, true);
 });
+
+
+////////////////////////////////////////////////////////
+/*BUSCADOR PLAYLISTS ( AGREGAR CANCIONES)*/
+
+let busquedaCanciones = document.getElementById("can"); 
+
+/////////////////////////////////////////////////
+
+busquedaCanciones.addEventListener("input",()=>{ 
+    let listaDeBusqueda  = []; //SE GUARDA LA LISTA DE BUSQUEDAS
+    let j = 0;
+    const listaBusquedaPlaylists = document.getElementById("listaBusqueda");
+    if(busquedaCanciones.value.trim() === ""){
+        listaBusquedaPlaylists.innerHTML = '';
+        listaBusquedaPlaylists.style.display = "none"
+        return;
+    }
+     /*DESPLIEGA BUSCADOR DE CANCIONES*/
+    for(i=0;i<baseDatosJSON.canciones.length;i++){ //RECORRE EL ARREGLO ARTISTAS
+        let palabra = busquedaCanciones.value.toUpperCase(); //VUELVE LO QUE INGRESO EL USUARIO EN MAYUSCULAS
+        let cancion = baseDatosJSON.canciones[i].nombre; 
+        cancion = cancion.toUpperCase(); //VUELVE AL NOMBRE DEL ARTISTA A MAYUS
+
+        if(cancion.includes(palabra)){ //SI LA PALABRA QUE INGRESO EL USUARIO ESTA INCLUIDA
+            listaDeBusqueda[j] = { //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
+                nombre: baseDatosJSON.canciones[i].nombre.trim(), //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
+                id: baseDatosJSON.canciones[i].id, //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
+                tipo: 2 //Y LE DA UN TIPO (0=ARTISTA,1=ALBUM Y 2=CANCION)
+            }
+            j++; //RECORRE EL ARREGLO DE BUSQUEDA
+        }
+    }
+    listaDeBusqueda.sort(); //SORTEA POR ORDEN ALFABETICO LA LISTADEBUSQUEDA
+    listaDeBusqueda.sort((a,b)=>{ //SORTEA POR LO QUE INGRESO EL USUARIO "SI INGRESA N" => COLOCA LAS N PRIMERO EN EL ARREGLO
+        let posA = a.nombre.indexOf(busquedaCanciones.value); //BUSCA LA POSICION DE X EN A (SI ES N Y LA PALABRA ES NARANJA ES IGUAL A 0)
+        let posB = b.nombre.indexOf(busquedaCanciones.value); //BUSCA LA POSICION DE X EN B (SI ES N Y LA PALABRA ES MANZANA ES IGUAL A 2)
+        
+        return posA - posB; //SI EL VALOR A ES MENOR QUE EL VALOR B => A VA ANTES QUE B (0 - 2 = -2 como es negativo A va antes que B)
+    });
+    html ='';
+    for(i=0;i<listaDeBusqueda.length;i++){ //recorre el arreglo listaDeBusqueda
+        html += `<div class="opcion" onclick="busqueda('${listaDeBusqueda[i].id},${listaDeBusqueda[i].tipo}')"><h1>${listaDeBusqueda[i].nombre}</h1></div>`
+    } //se crea un DIV con clase opcion y le añade una funcion onClick con parametos el id y el tipo y dentro el titulo(NOMBRE)
+    listaBusquedaPlaylists.style.display = "block";
+    listaBusquedaPlaylists.innerHTML = html;
+});
+
+function busqueda(param) {
+    param = param.split(",");
+    id = param[0]
+    id = Number(id)
+    const listaBusquedaPlaylists = document.getElementById("listaBusqueda");
+    listaBusquedaPlaylists.innerHTML = '';
+    listaBusquedaPlaylists.style.display = "none"
+    const reproductor = document.getElementById("reproductor");
+    isOn = reproductor.style.display === "none";
+    reproductor.style.display = isOn ? "block" : "none";
+
+  /*  if(param[1]==="2"){
+        const cancion = baseDatosJSON.canciones.find(a=> a.id === id);
+        const artista = baseDatosJSON.artistas.find(a => a.id === cancion.id_artista);
+        if (artista) {
+            const cancionesArtista = baseDatosJSON.canciones.filter(c => c.id_artista === artista.id);
+            result = {
+                datos: artista,
+                canciones: cancionesArtista
+            };
+            console.log("Artista", result);
+            html = `<div id="player"></div><img id="imgArt" src="${result.datos.url_img}">`;
+            html += `<h1>${result.datos.nombre}</h1>`;
+            for(i = 0; i< result.canciones.length;i++){
+                html += `<p onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
+            }
+            reproductor.innerHTML = html;
+        }
+    }*/
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*CREACIÓN DE PLAYLIST*/
+
+/*
+const formPlaylist = document.getElementById("formularioPlaylist");
+const nombrePlaylist = document.getElementById("nombrePlaylist");
+const cancionesPlaylist = document.getElementById("can");
+
+function setCookie(nombre,datos){ //CREA UNA COOKIE (AUN EN TRABAJO)***
+  let valor = datos.trim();
+  document.cookie = `${nombre}=${valor};`
+}
+
+let cookies = document.cookie;
+    cookies = cookies.split(";");
+    for(i=0;i<cookies.length;i++){ //RECORRE LAS COOKIES
+        let cookie = cookies[i].trim();
+        if(cookie.indexOf("ACTUAL"+"=")===0){
+            console.log("hola")
+            window.location.href = "./inicio.html"; //VALOR DE LA COOKIE
+        }
+    }
+
+function getCookie(nombre){ //FUNCION PARA VERIFICAR QUE "LA COOKIE EXISTA Y DEVUELVE SU VALOR"
+    let cookies = document.cookie;
+    cookies = cookies.split(";");
+    for(i=0;i<cookies.length;i++){ //RECORRE LAS COOKIES
+        let cookie = cookies[i].trim();
+        if(cookie.indexOf(nombre+"=")===0){
+            return cookie.slice(nombre.length+1); //VALOR DE LA COOKIE
+        }
+    }
+    return null;
+}
+
+mainForm.addEventListener("submit",(e)=>{
+    if(nombrePlaylist.value === ''|| cancionesPlaylist.value === ''){
+        return; //SI ALGUN VALOR ES '' DEVUELVE LA FUNCION
+    }
+    const cookieUser = getCookie(.value.trim()); //MANDA A LLAMAR A getCookie(); y manda como parametro el USUARIO ingresado por el usuario
+    if(cookieUser != null){ //SI NO REGRESA NULL (osea si la encontro)
+        let decodedCookie = JSON.parse(decodeURIComponent(cookieUser)); //DECODIFICA EL VALOR y LO TRANSFORMA A UN DICCIONARIO PARA UTILIZARLO
+        if(passwordI.value === decodedCookie.password){
+            e.preventDefault();
+            setCookie("ACTUAL",usuarioI.value)
+            window.location.href = "./index.html";
+        }
+        else{
+            e.preventDefault(); //EVITA QUE SE MANDE EL FORMULARIO
+            passwordI.value = ''; 
+            passwordI.placeholder = "CONTRASEÑA INVALIDA"
+            let passwordArt = document.getElementById("password")
+            passwordArt.style.borderBlockColor = "red";
+            //BORRA EL VALOR DE LA PASSWORD
+            //FALTA MOSTRAR O DARLE A SABER AL USUARIO QUE SE EQUIVOCO***
+        }
+    }else{
+        usuarioI.value = '';//BORRA EL VALOR DEL USUARIO
+        passwordI.value = '';
+        let passwordArt = document.getElementById("password")
+        passwordArt.style.borderBlockColor = "red";
+        let userArt = document.getElementById("user")
+        userArt.style.borderBlockColor = "red";
+        usuarioI.placeholder = "USUARIO INVALIDO"
+        passwordI.placeholder = "CONTRASEÑA INVALIDA"//BORRA EL VALOR DE LA PASSWORD
+        e.preventDefault(); //EVITA QUE SE MANDE EL FORMULARIO
+        //FALTA MOSTRAR O DARLE A SABER AL USUARIO QUE SE EQUIVOCO***
+    }
+});/*
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+
