@@ -11,8 +11,8 @@ La página web permite al usuario reproducir canciones a partir de una pseudo-ba
 ---
 ## Desarrolladores
 El equipo 8 está conformado por: 
-- Acevedo Rea Stefany Nahomi (@stefanyna1)
-- Alvarado Pérez Santiago (@Santiago-Alv)
+- Acevedo Rea Stefany Nahomi [@stefanyna1]
+- Alvarado Pérez Santiago [@Santiago-Alv](https://github.com/Santiago-Alv)
 - Carlos Alberto Pérez Banda (@Carlos-651)
 - Hirales Correa Paloma (@palomahirales)
 - Márquez Arias Luisa Yaretzi (@LuisaMarq)
