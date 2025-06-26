@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de sesión</title>
-    <link rel="stylesheet" href="../Statics/CSS/login.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Limelight&family=Ribeye&family=Righteous&family=Ubuntu+Condensed&family=VT323&display=swap" rel="stylesheet">
-    
-</head>
-<body>
-    <main>
-        <form id="login" >
-            <h1>Inicio de Sesión</h1>
-            <label class="input" id="user">
-                <input type="text" id="usuario" minlength="3" maxlength="15" placeholder="Nombre de usuario" required/>
-            </label>
-            <label class="input" id="password">
-                <input type="password" id="contraseña" minlength="5"  placeholder="Contraseña" required/>
-            </label>
-            <button type="submit">Iniciar sesion</button>
-            <article class="text" id="cambio">Si no tienes una cuenta, <a href="./registro.html">crea una.</a></article>
-        </form>
-    </main>    
-    <script src="../Dynamics/JS/inicioSesion.js" defer></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <form id="login">
+        <div class="ajolote-container">
+            <img src="../Statics/imagenes/ajolotep.png" alt="Ajolote mascota" class="ajolote-mascota">
+        </div>
+
+        <title>Inicio de sesión</title>
+        <link rel="stylesheet" href="../Statics/CSS/login.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Ribeye&family=Righteous&family=Ubuntu+Condensed&family=VT323&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <main>
+            <form id="login" >
+                <h1>Inicio de sesión</h1>
+                <label class="input" id="user">
+                    <input type="text" id="usuario" minlength="3" maxlength="15" placeholder="Nombre de usuario" required/>
+                </label>
+                <label class="input" id="password">
+                    <input type="password" id="contraseña" minlength="5"  placeholder="Contraseña" required/>
+                </label>
+                <button type="submit">Iniciar sesion</button>
+                <article class="text" id="cambio">¿No tienes una cuenta?, <a href="./registro.html">Registrate aquí</a></article>
+            </form>
+        </main>    
+        <script src="../Dynamics/JS/inicioSesion.js" defer></script>
+    </body>
 </html>
