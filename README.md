@@ -33,19 +33,19 @@ La página web permite al usuario reproducir canciones a partir de una pseudo-ba
    
 ### Para usuarios de Linux:
 1. En la terminal, ejecutar los siguientes comandos para la instalación de XAMPP:
-   ```bash
+```bash
   chmod +x xampp-Linux-x64-5.2.12-0-installer.run
   sudo ./xampp-linux-x64-8.2.12-0-installer.run
   sudo dnf provides libcrypt.so.1
   sudo dnf install Libxcrypt-compat 
   sudo dnf install libnsl
-  ```bash
+```
 ! Es probable que se requiera la contraseña del usuario.
 ! Las librerías son necesarias para el funcionamiento de XAMPP (distribuidor de Apache)
 2. Para activar "Apache", escribir la siguiente línea en la terminal:
  ```bash
 sudo rutaEnLaQueSeEncuentraXampp start
-```bash
+```
 3. Clonar este repositorio o descargar todas las carpetas en la ruta en la que se encuentra xampp, en el directorio htdocs. 
 ---
 ## Uso
