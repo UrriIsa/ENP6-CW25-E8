@@ -1,8 +1,5 @@
 let busquedaInput = document.getElementById("busqueda"); 
-////////////////////
-let player;
-let currentVideo = null;
-let playerReady = false;
+
 /////////////////////////////////////////////////
 
 busquedaInput.addEventListener("input",()=>{ 
@@ -169,7 +166,8 @@ function reproduce(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // REPRODUCIR VIDEOS
-
+////////////////////
+let player;
 const seekBar = document.getElementById("seekBar");
 const volumeSlider = document.getElementById("volumeSlider");
 const playPauseBtn = document.getElementById("playPauseBtn");
