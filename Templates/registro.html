@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link rel="stylesheet" href="../Statics/CSS/registro.css">
-</head>
-<body>
-    <main>
-        <form method="post" id="form-registro" >
-            <h1>Crear cuenta</h1>
-            <label class="texto" id="user">
-                <input type="text" id="usuario" name="usuario" minlength="3" maxlength="15" placeholder="Nombre de usuario" required/><!-- Espacio en placeholder es para que se vea bien -->
-            </label>
-
-            <label class="texto">
-                <input type="password" id="contraseña" name="contraseña" minlength="5" placeholder="Contraseña" required/>
-            </label>
-            <label class="texto">
-                <input type="email" id="email" name="email" minlength="5" placeholder="Email" required/>
-            </label>
-            <article id="inline">
-                <label>
-                    <input type="radio" id="terminos" required>
-                    Acepto los <a href="terminos.html" target="_blank">términos y condiciones</a>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registro</title>
+        <link rel="stylesheet" href="../Statics/CSS/registro.css">
+        <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Ribeye&family=Righteous&family=Ubuntu+Condensed&family=VT323&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <main>
+            <form method="post" id="form-registro" >
+                <h1>Crear cuenta</h1>
+                <label class="texto" id="user">
+                    <input type="text" id="usuario" name="usuario" minlength="3" maxlength="15" placeholder="Nombre de usuario" required/><!-- Espacio en placeholder es para que se vea bien -->
                 </label>
-            </article>
-            <button type="submit">Crear cuenta</button>
-            <article id="inline">Si ya tienes una cuenta, <a href="./login.html">inicia sesion.</a></article>
-        </form>
-    </main> 
-    <script src="../Dynamics/JS/verificaRegistro.js"></script>
-</body>
+
+                <label class="texto">
+                    <input type="password" id="contraseña" name="contraseña" minlength="5" placeholder="Contraseña" required/>
+                </label>
+                <label class="texto">
+                    <input type="email" id="email" name="email" minlength="5" placeholder="Email" required/>
+                </label>
+                <article id="inline">
+                    <label>
+                        <input type="radio" id="terminos" required>
+                        Acepto todos los <a href="terminos.html" target="_blank">términos y condiciones</a>
+                    </label>
+                </article>
+                <button type="submit">Crear cuenta</button>
+                <article id="inline">¿Ya eres usuario?<a href="./login.html">inicia sesión</a></article>
+            </form>
+        </main> 
+        <script src="../Dynamics/JS/verificaRegistro.js"></script>
+    </body>
 </html>

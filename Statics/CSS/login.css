@@ -1,18 +1,19 @@
-*{
+asi esta mi css y sigue sin verse dentro *{
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    
+    overflow: visible;
+
 }
 
 body {
+    border-radius: 66%;
+    font-family: "Righteous", sans-serif; 
     width: 100vw;
     height: 100vh;
     margin: 0;
     padding: 0;
     background: #6BA19B;
     color: #f0f0f0;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -23,22 +24,24 @@ body {
 /* = FORM
 --------------------------------------------- */
 main{
+    border-radius: 33%;
+    font-family: "Righteous", sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     align-items: center;
     width: 88%;
-    height: 90%
+    height: 88%
 
 }
 
 form{
 
+    border-radius: 22%;
     font-family: "Righteous", sans-serif;
     font-weight: 400;
     font-style: normal;
-
     font-size: 0.9em;
     position: relative;
     display: flex;
@@ -46,8 +49,8 @@ form{
     justify-content: center;
     align-items: center;
     gap: 1em;
-    width: 50%;
-    height: 100%;
+    width: 41%;
+    height: 80%;
     padding: 2% 5%;
     background: #054C4E;
     overflow: hidden;    
@@ -55,16 +58,17 @@ form{
 
 
 h1 {
+    font-family: "Righteous", sans-serif;
     text-align: center;
     font-size: 2.5rem;
     margin-top: 20px;
     margin-bottom: 20px;
-    color: #ffffff;
+    color: #e7c6c6;
 }
 
 h3{
-     font-family: "Righteous", sans-serif;
-    width: 50%;
+    font-family: "Righteous", sans-serif;
+    width: 20%;
     text-align: center;
     
 }
@@ -80,6 +84,7 @@ input{
 }
 
 button {
+    border-radius: 49%;
     background: #C76B5D;
     color: #ffffff;
     border: none;
@@ -89,7 +94,8 @@ button {
     font-size: 1rem;
     margin: 5px 0;
     transition: background 0.3s ease;
-    width: 100%;
+    width: 28%;
+    height: 11%;
 }
 
 button:hover {
@@ -129,4 +135,23 @@ label {
 
 #user,#password{
     border: .3em solid transparent;
+}
+
+.ajolote-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.ajolote-mascota {
+  max-width: 120px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.ajolote-mascota:hover {
+  transform: scale(1.1) rotate(5deg);
 }
