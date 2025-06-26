@@ -293,3 +293,26 @@ seekBar.addEventListener("input", ()=>{
     let seekTo = seekBar.value;
     player.seekTo(seekTo, true);
 });
+
+
+///////////////////////////////////////////////////////////////////////////77
+//MOSTRAR CANCIONES
+
+function mostrarCanciones() {
+    const contenedor = document.getElementById('canciones-container');
+    let html = '';
+    
+    baseDeDatos.canciones.forEach(cancion => {  
+        html += `
+            <div class="cancion-item">
+                <h3>${canciones.nombre}</h3>
+                <p>Artista: ${canciones.artista}</p>  // Directamente de cancion.artista
+                <p>Álbum: ${canciones.album}</p>
+                <p>Género: ${canciones.genero}</p>
+                <button onclick="reproduce('${canciones.nombre}')"></button>
+            </div>
+        `;
+    });
+    
+    contenedor.innerHTML = html;
+}
