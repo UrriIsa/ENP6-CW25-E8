@@ -194,33 +194,6 @@ section [id="artists"]{
 }
 
 
-<<<<<<< HEAD
-=======
-/*************************************************************************************************************************************************/
-/*EMPIEZA CSS DE LISTAS DE PLAYLISTS*/
-
-.playlistHead{
-    background-color: #c86350;
-    padding: 20px;
-    margin:30px;
-    border-radius: 20px;
-    color: black;
-    flex-direction: row;
-}
-
-.playlistHead h1{
-    font-family: 'Titulos';
-}
-
-.playlistHead img{
-    width: 200px;
-    height: 200px;
-}
-
-
-
-/***********************************************************************************************************************************************/
->>>>>>> LuisaMarquez
 /*EMPIEZA CSS DE CRÉDITOS*/
 
 .creditHead {
