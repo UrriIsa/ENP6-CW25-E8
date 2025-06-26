@@ -198,23 +198,66 @@ section [id="artists"]{
 /*EMPIEZA CSS DE LISTAS DE PLAYLISTS*/
 
 .playlistHead{
+    background-color: #56a999;
+    padding: 20px;
+    margin:30px;
+    border-radius: 20px;
+    color: black;
+    position:relative;
+}
+
+.headPlay h1{
+    display: inline-block;
+    font-family: 'Titulos';
+    font-size: 60px;
+}
+
+.playlistHead img{
+    left:20%;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left:70%;
+}
+
+.grupoIzquierdo{
+    display:inline-block;
+    padding: 20px;
+    margin:30px;
+    position: absolute;
+}
+.playlist{
+    background-color: #c86350;
+    padding: 10px;
+    margin:10px;
+    border-radius: 20px;
+    color: black;
+    position: relative;
+    right:20%;
+}
+
+.formPlaylist{
+    display:inline-block;
+    background-color: #56a999;
+    padding: 20px;
+    margin:30px;
+    border-radius: 20px;
+    color: black;
+    position: relative;
+    left:60%;
+}
+
+.submit-btn{
     background-color: #c86350;
     padding: 20px;
     margin:30px;
     border-radius: 20px;
     color: black;
-    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-
-.playlistHead h1{
-    font-family: 'Titulos';
-}
-
-.playlistHead img{
-    width: 200px;
-    height: 200px;
-}
-
 
 
 /***********************************************************************************************************************************************/
@@ -241,7 +284,6 @@ section [id="artists"]{
     display: flex;
     flex-direction: column;
     font-family: 'Texto';
-
 }
 
 .creditHead img {  /*AJOLOTE EN CRÉDITOS*/
@@ -288,9 +330,8 @@ section [id="artists"]{
 }
 
 .grupoDerecho12{
-    float: right;
-    flex-direction: row;
-    gap: 20px;
+    display: flex;
+    align-items: right;
 }
    
    
