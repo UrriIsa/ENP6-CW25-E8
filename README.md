@@ -11,14 +11,14 @@ La página web permite al usuario reproducir canciones a partir de una pseudo-ba
 ---
 ## Desarrolladores
 El equipo 8 está conformado por: 
-- Acevedo Rea Stefany Nahomi (@stefanyna1)
-- Alvarado Pérez Santiago (@Santiago-Alv)
-- Carlos Alberto Pérez Banda (@Carlos-651)
-- Hirales Correa Paloma (@palomahirales)
-- Márquez Arias Luisa Yaretzi (@LuisaMarq)
+- Acevedo Rea Stefany Nahomi [@stefanyna1](https://github.com/stefanyna1)
+- Alvarado Pérez Santiago [@Santiago-Alv](https://github.com/Santiago-Alv)
+- Carlos Alberto Pérez Banda [@Carlos-651](https://github.com/Carlos-651)
+- Hirales Correa Paloma [@palomahirales](https://github.com/palomahirales)
+- Márquez Arias Luisa Yaretzi [@LuisaMarq](https://github.com/LuisaMarq)
 
 Y contamos con la asesoría de:
-- Isaac Arturo Urrutia Alfaro (@UrriIsa)
+- Isaac Arturo Urrutia Alfaro [@UrriIsa](https://github.com/UrriIsa)
 ---
 ## Características
 - La página cuenta con 4 apartados: Home, Artistas, Playlist y Créditos, todas localizadas en el sidebar.
