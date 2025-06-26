@@ -213,8 +213,8 @@ const baseDatosJSON = {
       genero: "Rock Clásico",
       id_genero: id_genero++
     }
-    ],
-  artistas: [
+  ],
+artistas: [
     {
       id: 1,
       nombre: "Avicii",
@@ -288,35 +288,35 @@ const baseDatosJSON = {
       url_img: "../Statics/imagenes/amyw.jpeg"
     },
     {
-      id: id_artista++,
+      id: id_artista,
       nombre: "Cigarettes After Sex",
       descripcion: "Cigarettes After Sex es una banda estadounidense de dream pop/indie, liderada por Greg Gonzalez y conocida por su sonido etéreo y melancólico :contentReference[oaicite:4]{index=4}.",
       url_img: "../Statics/imagenes/cigarrosdespuesdesex.jpeg"
     },
     {
-      id: id_artista++,
+      id: id_artista,
       nombre: "Kanye West",
       descripcion: "Kanye Omari West (n. 1977) es un rapero, productor y diseñador de moda estadounidense, famoso por su innovación y controversia :contentReference[oaicite:5]{index=5}.",
       url_img: "../Statics/imagenes/wemajor.jpeg"
     },
     {
-      id: id_artista++,
+      id: id_artista,
       nombre: "Billie Eilish",
       descripcion: "Billie Eilish Pirate Baird O'Connell (n. 2001) es una cantante‑compositora estadounidense, surgida con 'Ocean Eyes' y conocida por su estilo dark pop :contentReference[oaicite:6]{index=6}.",
       url_img: "../Statics/imagenes/billie.jpeg"
     },
     {
-      id: id_artista++,
+      id: id_artista,
       nombre: "Lana Del Rey",
       descripcion: "Elizabeth Woolridge Grant (n. 1985), conocida como Lana Del Rey, es cantante‑compositora estadounidense de pop melancólico y cinematográfico :contentReference[oaicite:7]{index=7}.",
       url_img: "../Statics/imagenes/laotra.jpeg"
     },
     {
-      id: id_artista++,
+      id: id_artista,
       nombre: "Belanova",
       descripcion: "Belanova es un grupo mexicano de electropop fundado en Guadalajara, popular en los 2000s por su sonido bailable :contentReference[oaicite:9]{index=9}.",
       url_img: "../Statics/imagenes/belanova.webp"
-    }
+    },
   ],
   genero: [
     {
