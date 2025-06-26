@@ -1,7 +1,3 @@
-let id = 9;
-let id_artista = 9;
-let id_album = 11;
-let id_genero = 1;
 const baseDatosJSON = {
   canciones: [
     {
@@ -104,114 +100,114 @@ const baseDatosJSON = {
       id_genero: 3
     },
     {
-      id: id++,
+      id: 10,
       nombre: "It's Not a Fashion Statement, It's a Deathwish",
       artista: "My Chemical Romance",
       id_artista: 10,
       album: "Three Cheers for Sweet Revenge",
-      id_album: id_album++,
+      id_album: 9,
       link: "U2KiokcbHnA",
-      genero: "Rock Alternativo / Emo",
-      id_genero: id_genero++
+      genero: "Rock",
+      id_genero: 3
     },
     {
-      id: id++,
+      id: 11,
       nombre: "Motomami",
       artista: "Rosalía",
       id_artista: 11,
       album: "Motomami",
-      id_album: id_album++,
+      id_album: 10,
       link: "cfxq9q17AoA",
-      genero: "Reguetón Alternativo / Experimental",
-      id_genero: id_genero++
+      genero: "Pop",
+      id_genero: 2
     },
     {
-      id: id++,
+      id: 12,
       nombre: "Stronger Than Me",
       artista: "Amy Winehouse",
       id_artista: 12,
       album: "Frank",
-      id_album: id_album++,
+      id_album: 11,
       link: "s_vll3TOLog",
-      genero: "Soul / R&B",
-      id_genero: id_genero++
+      genero: "R&B",
+      id_genero: 5
     },
     {
-      id: id++,
+      id: 13,
       nombre: "Apocalypse",
       artista: "Cigarettes After Sex",
       id_artista: 13,
       album: "Cigarettes After Sex",
-      id_album: id_album++,
+      id_album: 12,
       link: "tLqfkSTtEAI",
-      genero: "Dream Pop / Indie Rock",
-      id_genero: id_genero++
+      genero: "Pop",
+      id_genero: 2
     },
     {
-      id: id++,
+      id: 14,
       nombre: "We Major",
       artista: "Kanye West",
       id_artista: 14,
       album: "Late Registration",
-      id_album: id_album++,
+      id_album: 13,
       link: "cSV8SEtJNE8",
       genero: "Hip Hop",
-      id_genero: id_genero++
+      id_genero: 4
     },
     {
-      id: id++,
+      id: 15,
       nombre: "NDA",
       artista: "Billie Eilish",
       id_artista: 15,
       album: "Happier Than Ever",
-      id_album: id_album++,
+      id_album: 14,
       link: "VseaNKlYXa8",
-      genero: "Alternative/Electropop",
-      id_genero: id_genero++
+      genero: "Música Electrónica",
+      id_genero: 1
     },
     {
-      id: id++,
+      id: 16,
       nombre: "Summertime Sadness",
       artista: "Lana Del Rey",
       id_artista: 16,
       album: "Born to Die",
-      id_album: id_album++,
+      id_album: 15,
       link: "NTola8dwutM",
-      genero: "Baroque Pop / Dream Pop",
-      id_genero: id_genero++
+      genero: "Pop",
+      id_genero: 2
     },
     {
-      id: id++,
+      id: 17,
       nombre: "Debajo de tu piel",
       artista: "Caifanes",
       id_artista: 8,
       album: "El Silencio",
       id_album: 10,
       link: "fNw-EcVwIKs",
-      genero: "Rock en Español",
-      id_genero: id_genero++
+      genero: "Rock",
+      id_genero: 2
     },
     {
-      id: id++,
+      id: 18,
       nombre: "Rosa Pastel",
       artista: "Belanova",
       id_artista: 17,
       album: "Dulce Beat",
-      id_album: id_album++,
+      id_album: 16,
       link: "wkJxbV1ZlE0",
-      genero: "Electropop",
-      id_genero: id_genero++
+      genero: "Pop",
+      id_genero: 2
     },
     {
-      id: id++,
+      id: 19,
       nombre: "Under Pressure",
       artista: "Queen & David Bowie",
       id_artista: 7,
       album: "Hot Space",
-      id_album: id_album++,
+      id_album: 17,
       link: "ZyT8mVwf_40",
-      genero: "Rock Clásico",
-      id_genero: id_genero++
+      genero: "Rock",
+      id_genero: 3
     }
   ],
 artistas: [
@@ -446,6 +442,6 @@ artistas: [
     }
   ]
 };
-
+console.log(baseDatosJSON.canciones);
 console.log(baseDatosJSON.artistas);
 
