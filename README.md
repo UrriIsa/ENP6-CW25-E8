@@ -2,11 +2,23 @@
 La página web permite al usuario reproducir canciones a partir de una pseudo-base de datos propia. En este reproductor, el usuario puede escuchar las canciones de su preferencia, crear playlists y guardar su información para acceder a su cuenta en un futuro. 
 ---
 ## Tabla de contenidos
+- [Desarrolladores](#Desarrolladores)
 - [Características](#Características) 
 - [Requisitos](#Requisitos)
 - [Instalación](#Instalación)
 - [Uso](#Uso)
 - [Licencia](#Licencia)
+---
+## Desarrolladores
+El equipo 8 está conformado por: 
+- Acevedo Rea Stefany Nahomi [@stefanyna1]
+- Alvarado Pérez Santiago [@Santiago-Alv](https://github.com/Santiago-Alv)
+- Carlos Alberto Pérez Banda (@Carlos-651)
+- Hirales Correa Paloma (@palomahirales)
+- Márquez Arias Luisa Yaretzi (@LuisaMarq)
+
+Y contamos con la asesoría de:
+- Isaac Arturo Urrutia Alfaro (@UrriIsa)
 ---
 ## Características
 - La página cuenta con 4 apartados: Home, Artistas, Playlist y Créditos, todas localizadas en el sidebar.
