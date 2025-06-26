@@ -109,7 +109,7 @@ nav #listaBusqueda{
 
 aside{
     width: 15%;
-    height: 90%;
+    height: 100vh; 
     padding: 3%;
     margin: 0;
     background-color: #021334 ;
@@ -134,6 +134,7 @@ aside button{ /*Diseño para los botones dentro de aside*/
 }
 
 main{
+    height: 100vh;  
     flex: 1; /*Lo mismo que main Content*/
     margin: 0; /*reiniciar propiedades*/
     padding: 0;
@@ -311,111 +312,199 @@ section [id="artists"]{
   font-size: 1em;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 600px) { /*Aplica estilos según el tamaño de la pantalla*/
   .playlistCuerpo {
-    flex-direction: column;
+    flex-direction: column;  /* Columna para que se acomoden uno debajo del otro */
   }
-  .grupoIzquierdo,
+  .grupoIzquierdo, /* Los elementos .grupoIzquierdo y .formPlaylist ahora ocupan el 100% del ancho disponible */
   .formPlaylist {
     max-width: 100%;
   }
 }
 
-/***********************************************************************************************************************************************/
-/*EMPIEZA CSS DE CRÉDITOS*/
+/*********************************************************************************************************************************************************/
+/*EMPIEZA CSS DE UNA SOLA PLAYLIST*/
 
-.creditHead {
-    background-color: #c86350;
-    padding: 20px;
-    margin:30px;
-    border-radius: 20px;
-    color: black;
+.playlistUnique{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    height: 100vh;
+    padding: 2em;
+    box-sizing: border-box;
+    background-color:6BA19B;
     align-items: center;
 }
 
-.creditHead h1{   /*SE MODIFICA EL TÍTULO DE CREDITOS*/
+.playlistUniqueHead{
+    width: 100%;
+    background-color: #5DAD8E;
+    border-radius: 0.7em;
+    padding: 0.5em 1em;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 2em;
+}
+.playlistUniqueHead h3 {
+    margin: 0;
+    font-size: 2em;
     font-family: 'Titulos';
-    font-size: 60px;
-
+    color: white;
 }
 
-.creditHead .texto {  /*TEXTO DE CRÉDITOS*/
+.playlistUniqueHead img{
+    margin-left: auto;
+    width: 200px;
+    height: 200px;
+}
+
+
+.canciones {
+    width: 100%;
+    background-color: #5DAD8E;
+    border-radius: 0.7em;
+    padding: 0.5em 1em;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 2em;
+    flex-wrap: wrap;
+}
+.individual {
+  background-color: #CC6E5D;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  width: 120px;
+}
+/*TERMINA CSS DE UNA SOLA PLAYLIST*/
+/**********************************************************************************************************************************************************/
+
+/***********************************************************************************************************************************************/
+/*EMPIEZA CSS DE CRÉDITOS*/
+
+/* CABECERA DE CRÉDITOS */
+
+.creditsContent{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    height: 100vh;
+    padding: 2em;
+    box-sizing: border-box;
+    background-color:6BA19B;
+    align-items: center;
+}
+
+.creditHead {
+    width: 100%;
+    background-color: #CC6E5D;
+    border-radius: 0.7em;
+    padding: 0.5em 1em;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 2em;
+}
+
+.creditHead h1 {
+    margin: 0;
+    font-size: 2em;
+    font-family: 'Titulos';
+    color: white;
+}
+
+.creditHead .texto {
     display: flex;
     flex-direction: column;
     font-family: 'Texto';
 }
 
-.creditHead img {  /*AJOLOTE EN CRÉDITOS*/
+.creditHead img {
+    margin-left: auto;
     width: 200px;
     height: 200px;
 }
 
-.tarjetas{ 
+/* CONTENEDOR GENERAL DE SECCIONES */
+.tarjetas {
     display: flex;
-    gap: 40px;  /*ESPACIO ENTRE LINEAS*/
+    flex-direction: row; /* logos a la derecha e integrantes a la izquierda */
+    justify-content: center;
+    width: 200%;
 }
 
+/* TARJETAS INDIVIDUALES */
 .tarjeta {
     background-color: #56a999;
-    padding: 15px;
+    padding: 20px;
     border-radius: 15px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-    flex: 0 0 auto;  /*MANTIENE SIEMPRE SU TAMAÑO NATURAL*/
 }
-
-.grupoIzquierdo{  /*SEPARACION DE RECUADROS*/
+/* GRUPO IZQUIERDO: INTEGRANTES Y MENTOR */
+.grupoIzquierdo {
+    width: 200%;
     display: flex;
     flex-direction: column;
-    margin:30px;
-    margin-left: 120px;
-    margin-right:100px;
-    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
 }
 
-.grupoIzquierdo h2{  /*SE AÑADE TIPOGRAFIA*/
-   font-family: 'Titulos';
+.grupoIzquierdo h2 {  /*TIPOGRAFIAS*/
+    font-family: 'Titulos';
 }
 
-.grupoIzquierdo p{  /*SE AÑADE TIPOGRAFIA*/
-   font-family: 'Texto';
+.grupoIzquierdo p {   /*TIPOGRAFIAS*/
+    font-family: 'Texto';
 }
 
-.grupoDerecho{
-    margin-top:50px;
-    align-items: end;
+/* GRUPO DERECHO: LOGOS */
+.grupoDerecho {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1em;
+     align-items: flex-end;
 }
 
-.grupoDerecho12{
+/* FILA DE DOS PRIMEROS LOGOS */
+.grupoDerecho12 {
     display: flex;
-    align-items: right;
+    gap: 1em;
+    justify-content: flex-end;
+    align-items: center;
 }
-   
-   
-.grupoDerecho3{
+
+/* LOGO GRANDE ABAJO */
+.grupoDerecho3 {
+    display: flex;
     justify-content: flex-end;
 }
+
+
+
+.tarjeta unam .tarjeta prepa {
+    max-width: 120px;
+    max-height: 120px;
+    display: block;
+}
+
+.tarjeta ete {
+    max-width: 250px;
+    max-height: 250px;
+    display: block;
+}
+
 /*TERMINA CSS DE CRÉDITOS*/
 /*******************************************************************************************************************************************/
 
 
-#reproductor{
-    width: 25%;
-    height: 100%;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-}
 
-#reproductor img{
-    width: 95%;
-    height: 30% ;
-    margin: 1%;
-}
 
 footer{
     width: 100%;
@@ -481,3 +570,54 @@ footer button{ /*SOLO AFECTA A LOS BOTONES DENTRO DE FOOTER*/
     width: 100%;
     height: 100%;
 }
+<<<<<<< HEAD
+=======
+
+#reproductor{
+    width: 25%;
+    height: 100%;
+    background-color: #AB4949;
+    display: flex;
+    flex-direction: column;
+}
+
+#reproductor img{
+    border-radius: 10px;
+    width: 95%;
+    height: 100% ;
+    margin: 1%;
+}
+
+#reproductor h1{
+    font-size: 200%;
+    width: fit-content;
+    margin: 10%;
+    color: #FDC787;
+}
+#player{
+    border-radius: 10px;
+    width: 95%;
+    height: 30% ;
+    margin: 1%;
+}
+
+.textCancion{
+    width: 75%;
+    font-size: 150%;
+    cursor: pointer;
+    font-family: "Texto";
+    margin: 10%;
+    color: #ffff;
+    border-radius: 10px;
+    border: .5em solid transparent;
+    transition-property: all;
+    transition-duration: .5s;
+}
+
+.textCancion:hover{
+    border: .5em solid #CC6E5D;
+}
+
+
+
+>>>>>>> main
