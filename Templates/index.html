@@ -10,12 +10,15 @@
         <title>[NOMBRE]</title> <!--DEBEMOS QUE ELEGIR EL NOMBRE-->
     </head>
     <body>
-        <header>   
+        <nav>   
             <label for="busqueda"></label>
             <input type="text" id="busqueda" name="busqueda" placeholder="Buscar canciones, artistas ..."> <!--INPUT PARA LA BARRA DE BUSQUEDA-->
             <button id="buscar" name="buscar"><i class="fa-solid fa-magnifying-glass"></i></button> <!--No se su funcionamiento (Santiago)-->
             <button id="perfil" onclick="location.href='./login.html'"><i class="fa-regular fa-circle-user"></i></i></button> <!--BOTON PARA IR A LA PAGINA DE INICIO DE SESION-->
-        </header>
+            <div id="listaBusqueda">
+                
+            </div>
+        </nav>
 
         <section class="mainCont">
             <aside>    <!--ESTA "ACABADO" SOLO FALTA LINKEAR LO QUE SE TENGA QUE LINKEAR-->
@@ -26,7 +29,7 @@
             </aside>
         <!--Main-->
             <main>
-                <section id="home">    
+                <main id="home">    
                     <article class="bienvenida"> <!--MENSAJE DE BIENVENIDOS-->
                         <div class="texto-bienvenida"> <!--Clase que da estructura al texto del contenedor-->
                         <h1>¡Bienvenido a (NOMBRE)!</h1>
@@ -37,8 +40,8 @@
                     <article id="artistas">
 
                     </article>
-                </section>
-                <section id="artists" >
+                </main>
+                <section id="artists">
 
                 </section>
                 <section id="playlist">
@@ -66,8 +69,7 @@
             <button id="soundBtn"><i class="fa-solid fa-volume-high"></i></button> <!--Boton apra ajustar el sonido-->
             <input type="range" max="100"  id="barraTiempo"> <!--Barra para mover la cancion-->
         </footer>
-    
-   
-    <script src="../Dynamics/Js/indexJs.js"></script> <!--LINKEO del JavaScript del index-->
+        
+    <script src="../Dynamics/JS/index.js"></script> <!--LINKEO del JavaScript del index-->
     </body>
 </html>

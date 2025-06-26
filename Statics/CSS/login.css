@@ -136,3 +136,7 @@ span{
 #cambio{
     align-self: flex-end;
 }
+
+#user,#password{
+    border: .3em solid transparent;
+}
