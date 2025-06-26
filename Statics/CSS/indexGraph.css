@@ -136,7 +136,7 @@ main{
     flex: 1; /*Lo mismo que main Content*/
     margin: 0; /*reiniciar propiedades*/
     padding: 0;
-    display: flex;
+    /*display: flex;*/
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -194,6 +194,33 @@ section [id="artists"]{
 }
 
 
+<<<<<<< HEAD
+=======
+/*************************************************************************************************************************************************/
+/*EMPIEZA CSS DE LISTAS DE PLAYLISTS*/
+
+.playlistHead{
+    background-color: #c86350;
+    padding: 20px;
+    margin:30px;
+    border-radius: 20px;
+    color: black;
+    flex-direction: row;
+}
+
+.playlistHead h1{
+    font-family: 'Titulos';
+}
+
+.playlistHead img{
+    width: 200px;
+    height: 200px;
+}
+
+
+
+/***********************************************************************************************************************************************/
+>>>>>>> LuisaMarquez
 /*EMPIEZA CSS DE CRÉDITOS*/
 
 .creditHead {
@@ -264,17 +291,17 @@ section [id="artists"]{
 }
 
 .grupoDerecho12{
-    display: flex;
-    align-items: right;
+    float: right;
+    flex-direction: row;
     gap: 20px;
 }
    
+   
 .grupoDerecho3{
-    display: flex;
     justify-content: flex-end;
 }
-
 /*TERMINA CSS DE CRÉDITOS*/
+/*******************************************************************************************************************************************/
 
 
 #reproductor{
