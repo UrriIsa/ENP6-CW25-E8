@@ -9,9 +9,9 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    background: #6BA19B;
+    background: #60948e;
     color: #f0f0f0;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: "Righteous", sans-serif;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -20,17 +20,20 @@ body {
 }
 
 main{
+    font-family: "Righteous", sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     align-items: center;
-    width: 50%;
+    width: 88%;
+    height: 88%;
 }
 
 
 form{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 22%;
+    font-family: "Righteous", sans-serif;
     font-size: 0.9em;
     position: relative;
     display: flex;
@@ -46,11 +49,12 @@ form{
 }
 
 h1 {
+    font-family: "Righteous", sans-serif;
     text-align: center;
     font-size: 2.5rem;
     padding: 10px;
     margin: 10px;
-    color: #ffffff;
+    color: #e7c6c6;
 }
 
 
@@ -62,6 +66,8 @@ input{
 } 
 
 button {
+    border-radius: 49%;
+    font-family: "Righteous", sans-serif;
     background: #C76B5D;
     color: #ffffff;
     border: none;
@@ -70,7 +76,8 @@ button {
     font-size: 1rem;
     margin: 5px 0;
     transition: background 0.3s ease;
-    width: 100%;
+    width: 28%;
+    height: 9%;
 }
 
 button:hover {
