@@ -299,6 +299,8 @@ footer{
 
     background-color: #012A61 ;
 
+    bottom:0;
+    position: fixed;
     display: flex;
     align-content: center;
     justify-content: center;
