@@ -9,7 +9,7 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    background: #b4fff9;
+    background: #6BA19B;
     color: #f0f0f0;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     display: flex;
@@ -41,7 +41,7 @@ form{
     width: 50%;
     height: max-content;
     padding: 2% 5%;
-    background: #008177;
+    background: #054C4E;
     overflow: hidden;   
 }
 
@@ -62,7 +62,7 @@ input{
 } 
 
 button {
-    background: #00302c;
+    background: #C76B5D;
     color: #ffffff;
     border: none;
     padding: 10px 15px;
@@ -74,12 +74,12 @@ button {
 }
 
 button:hover {
-    background: #135f58;
+    background: #5DB98E;
     color: black;
 }
 
 a{
-    color:#00302c;
+    color:#C76B5D;
 }
 
 
@@ -98,6 +98,8 @@ article{
     align-items:center;
     margin: 1em;
     width: 80%;
+
+ 
 }
 
 article p{
@@ -105,31 +107,18 @@ article p{
     align-self: start;
 }
 
-span{
-    color:rgb(255, 0, 0);
-    font-weight: bold;
-    text-align: center;
-}
-
-.span-fuera{
-    align-self:flex-start;
-    
-}
-
-.span-dentro{
-    width: 70%;
-    margin: 2%;
-}
-  
 
 .texto{
-    position: relative;
+     position: relative;
     display: flex;
     justify-content:flex-start;
     align-items: center;
     width: 100%;
-    height: max-content;
+    height: 3em;
+    margin: 1%;
     background-color: #ffffff;
+    text-indent: 2em;
+    border: .3em solid transparent;
 
 }
 
@@ -150,7 +139,6 @@ span{
     align-items: center;
     gap: 0.5em;
 }   
-
 
 
 
