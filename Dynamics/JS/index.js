@@ -143,11 +143,14 @@ const homeBtn = document.getElementById("homeBtn");
 const artistsBtn = document.getElementById("artistsBtn");
 const playlistsBtn = document.getElementById("playlistsBtn");
 const creditsBtn = document.getElementById("creditsBtn");
+const playlistUniqueBtn= document.getElementById("playlistBtn1");
 
 const sectionHome = document.getElementById("home");
 const sectionArtists = document.getElementById("artists");
 const sectionPlaylists = document.getElementById("playlist");
 const sectionCredits = document.getElementById("credits");
+const sectionPlaylist = document.getElementById("playlistUnico");
+const footer = document.querySelector('footer'); 
 
 activeColor = "#FDC787"; //DEFINE EL COLOR SI ESTA ACTIVO
 normalColor = "#ffff"; //DEFINE EL COLOR SI NO ESTA ACTIVO
@@ -161,6 +164,9 @@ function btnActivo(btn){/* Establece el color del boton*/
     sectionPlaylists.style.display = (btn === playlistsBtn) ? "flex" : "none"; 
     creditsBtn.style.color = (btn === creditsBtn) ? activeColor : normalColor;
     sectionCredits.style.display = (btn === creditsBtn) ? "flex" : "none"; 
+    footer.style.display = (btn === creditsBtn) ? "none" : "flex";
+    playlistUniqueBtn.style.color = (btn===playlistUniqueBtn) ? activeColor : normalColor;
+    sectionPlaylist .style.display = (btn === playlistUniqueBtn) ? "flex" : "none";
     /*Si el boton es igual al boton home por ejemplo, si eso devuelve TRUE el color se establece ACTIVECOLOR, si devuelve FALSE el color
     se establece  NORMALCOLOR*/
 }
@@ -175,6 +181,7 @@ playlistsBtn.addEventListener("click",()=> btnActivo(playlistsBtn));
 
 creditsBtn.addEventListener("click",()=> btnActivo(creditsBtn));
 
+playlistUniqueBtn.addEventListener("click",()=> btnActivo(playlistUniqueBtn));
 ///////////////////////////////////////////////////////////////////////////////////////
 
 let artistas = document.getElementById("artistas"); //EN EL ARTICULO ARTISTAS
