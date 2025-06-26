@@ -214,7 +214,6 @@ const baseDatosJSON = {
       id_genero: id_genero++
     }
     ],
-    
   artistas: [
     {
       id: 1,
@@ -317,7 +316,7 @@ const baseDatosJSON = {
       nombre: "Belanova",
       descripcion: "Belanova es un grupo mexicano de electropop fundado en Guadalajara, popular en los 2000s por su sonido bailable :contentReference[oaicite:9]{index=9}.",
       url_img: "../Statics/imagenes/belanova.webp"
-    },
+    }
   ],
   genero: [
     {
@@ -448,4 +447,4 @@ const baseDatosJSON = {
   ]
 };
 
-console.log(baseDatosJSON.canciones);
+console.log(baseDatosJSON.artistas);
