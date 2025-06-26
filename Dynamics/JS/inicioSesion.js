@@ -12,7 +12,8 @@ let cookies = document.cookie;
     for(i=0;i<cookies.length;i++){ //RECORRE LAS COOKIES
         let cookie = cookies[i].trim();
         if(cookie.indexOf("ACTUAL"+"=")===0){
-            window.location.href = "./index.html"; //VALOR DE LA COOKIE
+            console.log("hola")
+            window.location.href = "./inicio.html"; //VALOR DE LA COOKIE
         }
     }
 
