@@ -1,3 +1,18 @@
+@font-face {
+  font-family: 'Titulos'; 
+  src: url('../Fonts/titulos.ttf') 
+}
+
+@font-face {
+  font-family: 'Subtitulos'; 
+  src: url('../Fonts/subtitulos.ttf') 
+}
+
+@font-face {
+  font-family: 'Texto'; 
+  src: url('../Fonts/texto.ttf') 
+}
+
 html, body {
     height: 100%; /*OCUPAR EL 100% DE LA PANTALLA*/
     margin: 0; /*NO ME ACUERDO COMO SE LLAMA PERO REINICIA*/
@@ -137,6 +152,89 @@ article[id="artistas"]{
     height: 100%;
     border-radius: 150%;
 }
+
+/*EMPIEZA CSS DE CRÉDITOS*/
+
+.creditHead {
+    background-color: #c86350;
+    padding: 20px;
+    margin:30px;
+    border-radius: 20px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.creditHead h1{   /*SE MODIFICA EL TÍTULO DE CREDITOS*/
+    font-family: 'Titulos';
+    font-size: 60px;
+
+}
+
+.creditHead .texto {  /*TEXTO DE CRÉDITOS*/
+    display: flex;
+    flex-direction: column;
+    font-family: 'Texto';
+
+}
+
+.creditHead img {  /*AJOLOTE EN CRÉDITOS*/
+    width: 200px;
+    height: 200px;
+}
+
+.tarjetas{ 
+    display: flex;
+    gap: 40px;  /*ESPACIO ENTRE LINEAS*/
+}
+
+.tarjeta {
+    background-color: #56a999;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    flex: 0 0 auto;  /*MANTIENE SIEMPRE SU TAMAÑO NATURAL*/
+}
+
+.grupoIzquierdo{  /*SEPARACION DE RECUADROS*/
+    display: flex;
+    flex-direction: column;
+    margin:30px;
+    margin-left: 120px;
+    margin-right:100px;
+    gap: 20px;
+}
+
+.grupoIzquierdo h2{  /*SE AÑADE TIPOGRAFIA*/
+   font-family: 'Titulos';
+}
+
+.grupoIzquierdo p{  /*SE AÑADE TIPOGRAFIA*/
+   font-family: 'Texto';
+}
+
+.grupoDerecho{
+    margin-top:50px;
+    align-items: end;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.grupoDerecho12{
+    display: flex;
+    align-items: right;
+    gap: 20px;
+}
+   
+.grupoDerecho3{
+    display: flex;
+    justify-content: flex-end;
+}
+
+/*TERMINA CSS DE CRÉDITOS*/
+
 
 #reproductor{
     width: 25%;
