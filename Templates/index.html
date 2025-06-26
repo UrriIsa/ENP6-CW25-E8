@@ -44,9 +44,9 @@
                 <section id="artists">
 
                 </section>
-                <!--INICIA MAQUETADO DE UNA SOLA PLAYLIST-->
+               <!--APARTADO MAQUETADO DE LISTA DE PLAYLISTS-->
             <section id="playlist">
-                                    <!--APARTADO MAQUETADO DE LISTA DE PLAYLISTS-->
+                                  
                 <header class="playlistHead">
                     <div class="headPlay">
                         <h1>Playlists</h1>
@@ -57,28 +57,50 @@
                 <section class="playlistCuerpo">
                         <div class="grupoIzquierdo">
                                             <!-- Aquí van las playlists -->
-                            <button class="playlist">Playlist 1</button>
-                            <button class="playlist">Playlist 2</button>
-                            <button class="playlist">Playlist 3</button>
-                                            <!-- Agrega más botones según necesites -->
+                            <button class="playlist" id="playlistBtn1">Playlist 1</button>
+                            <button class="playlist" id="playlistBtn2">Playlist 2</button>
+                            <button class="playlist" id="playlistBtn3">Playlist 3</button>
+                                            <!-- Agregar más botones según se necesite -->
                         </div>
 
                         <form class="formPlaylist">
                             <label for="nombrePlaylist">Nombre de la playlist:</label>
-                            <br>
                             <input type="text" id="nombre" name="nombre" required>
                             <br>
                             <label for="Agregar canciones"> Agregar canciones: </label>
-                            <br>
-                            <input type="number" name="edad" id="ed" required>
+                            <input type="select" name="canciones" id="can" required>
                             <br>
                             
                             <button type="submit" class="submit-btn">Crear playlist</button>          
                         </form>                   
                 </section>
             </section>
+
+               <!--INICIA MAQUETADO DE UNA SOLA PLAYLIST-->
+            <section id="playlistUnico" class="playlistUnique">
+               <div class="playlistUniqueHead">
+                    <h3>Playlist 1</h3>
+                    <img src="../Statics/Imagenes/imagenesCréditos/ajolote.png" alt="Ajolote" />
+               </div>
+                    <div class="canciones">
+                        <div class="individual">
+                        <p>Nombre<br><span>canción</span></p>
+                        </div>
+                        <div class="individual">
+                        <p>Nombre<br><span>canción</span></p>
+                        </div>
+                        <div class="individual">
+                        <p>Nombre<br><span>canción</span></p>
+                        </div>
+                        <div class="individual">
+                        <p>Nombre<br><span>canción</span></p>
+                        </div>
+                    </div>
+            </section>
+
+
                 <!--APARTADO PARA MAQUETADO DE CRÉDITOS-->
-                <section id="credits">
+                <section id="credits" class="creditsContent">
                     <div class="creditHead">
                         <div class="texto">
                             <h1>Créditos</h1>
@@ -90,7 +112,6 @@
                         <div class="grupoIzquierdo">
                              <div class="tarjeta integrantes">
                                 <h2>Integrantes</h2>
-                                <br>
                                 <p>Carlos Alberto Perez Banda</p>
                                 <p>Márquez Arias Luisa Yaretzi</p>
                                 <p>Acevedo Rea Stefany Nahomi</p>
@@ -123,15 +144,10 @@
                     </div>                      
                 </section>
             </main>
-            <!--Reproductor de videos-->
-                <!--TERMINA APARTADO CRÉDITOS-->
-            
-
+        <!--TERMINA APARTADO CRÉDITOS-->
+        
+        <!--Reproductor de videos-->
         <section id="reproductor" style="display: none;">
-                <section class="video-container" >
-                    <div id="player">
-                    </div>
-                </section>
         </section>
 
         <footer>

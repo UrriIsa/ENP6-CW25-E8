@@ -1,3 +1,4 @@
+
 let busquedaInput = document.getElementById("busqueda"); 
 
 /////////////////////////////////////////////////
@@ -143,11 +144,14 @@ const homeBtn = document.getElementById("homeBtn");
 const artistsBtn = document.getElementById("artistsBtn");
 const playlistsBtn = document.getElementById("playlistsBtn");
 const creditsBtn = document.getElementById("creditsBtn");
+const playlistUniqueBtn= document.getElementById("playlistBtn1");
 
 const sectionHome = document.getElementById("home");
 const sectionArtists = document.getElementById("artists");
 const sectionPlaylists = document.getElementById("playlist");
 const sectionCredits = document.getElementById("credits");
+const sectionPlaylist = document.getElementById("playlistUnico");
+const footer = document.querySelector('footer'); 
 
 activeColor = "#FDC787"; //DEFINE EL COLOR SI ESTA ACTIVO
 normalColor = "#ffff"; //DEFINE EL COLOR SI NO ESTA ACTIVO
@@ -161,6 +165,9 @@ function btnActivo(btn){/* Establece el color del boton*/
     sectionPlaylists.style.display = (btn === playlistsBtn) ? "flex" : "none"; 
     creditsBtn.style.color = (btn === creditsBtn) ? activeColor : normalColor;
     sectionCredits.style.display = (btn === creditsBtn) ? "flex" : "none"; 
+    footer.style.display = (btn === creditsBtn) ? "none" : "flex";
+    playlistUniqueBtn.style.color = (btn===playlistUniqueBtn) ? activeColor : normalColor;
+    sectionPlaylist .style.display = (btn === playlistUniqueBtn) ? "flex" : "none";
     /*Si el boton es igual al boton home por ejemplo, si eso devuelve TRUE el color se establece ACTIVECOLOR, si devuelve FALSE el color
     se establece  NORMALCOLOR*/
 }
@@ -175,6 +182,7 @@ playlistsBtn.addEventListener("click",()=> btnActivo(playlistsBtn));
 
 creditsBtn.addEventListener("click",()=> btnActivo(creditsBtn));
 
+playlistUniqueBtn.addEventListener("click",()=> btnActivo(playlistUniqueBtn));
 ///////////////////////////////////////////////////////////////////////////////////////
 
 let artistas = document.getElementById("artistas"); //EN EL ARTICULO ARTISTAS
@@ -258,24 +266,26 @@ const seekBar = document.getElementById("barraTiempo");
 const volumeSlider = document.getElementById("volumeSlider");
 const playPauseBtn = document.getElementById("pauseBtn");
 const muteBtn = document.getElementById("soundBtn");
-//Falta hacer que tome cualquier link de la base de datos
 const canciones = [""];
 
 //Funcion que toma el link de un video y lo reproduce
 function reproduccion(link) {
     const playerContainer = document.getElementById("player");
-    const playerImg = document.getElementById("imgArt");
+    const imgArt = document.getElementById("imgArt");
+    const reproductorSection = document.getElementById("reproductor");
 
-    if (playerImg) {
-        playerImg.style.display = "none";
-    }
+    // Oculta la imagen y muestra el reproductor
+    if (imgArt) imgArt.style.display = "none";
+    playerContainer.style.display = "block";
+
     if (player) {
-        cambiarVideo(link);
+        cambiarVideo(link); // Si ya existe, solo cambia el video
     } else {
+        // Si no existe, crea el reproductor
         player = new YT.Player("player", {
             videoId: link,
             playerVars: {
-                controls: 0,
+                controls: 0,  
                 modestbranding: 1,
                 rel: 0,
                 showinfo: 0,
@@ -285,17 +295,10 @@ function reproduccion(link) {
             },
         });
     }
-
-    playerContainer.style.display = "block";
 }
 
-function cambiarVideo(nuevoVideoId) {
-    player.loadVideoById(nuevoVideoId); // Cambia el video sin iniciar la reproducción
-}
 
-function onYouTubeIframeAPIReady(videoId) {
-
-}
+/*sincroniza los controles de la pagina con el video de YouTube*/
 function onPlayerReady(event){
     duration = player.getDuration();
     player.playVideo();
@@ -354,29 +357,3 @@ seekBar.addEventListener("input", ()=>{
     let seekTo = seekBar.value;
     player.seekTo(seekTo, true);
 });
-
-
-// FUNCIÓN PARA MOSTRAR CANCIONES
-
-function mostrarCanciones() {
-    // 1. Obtiene el contenedor donde va a mostrarar las canciones
-    const contenedor = document.getElementById('canciones-container');
-
-    // 2. Genera el contenido del HTML para cada canción
-    let html = '';
-    baseDatosJSON.canciones.forEach(cancion => {
-        const linkVideo = cancion.link;
-        contenedor.innerHTML = `
-            <div class="cancion-item">
-                <div>
-                    <h3>${cancion.nombre}</h3>
-                    <p>${cancion.artista}</p>
-                <button class="btn-reproducir" onclick = "onYouTubeIframeAPIReady.replace("SsYXnH9lzC", cancion.link")">Reproducir</button>
-                console.log = ""
-            </div>
-        `;
-    });
-
-    // 3. Mandar el texto a el contenedor "Canciones-contenedor"
-    contenedor.innerHTML = html;
-}
