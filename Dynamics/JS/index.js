@@ -142,7 +142,7 @@ let artistas = document.getElementById("artistas");
 
 html = '';
 for(i=0;i<baseDatosJSON.artistas.length;i++){
-    html+= `<div class="artista" onclick ="reproduce()" id="${baseDatosJSON.artistas[i].id}"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
+    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].nombre}')"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
 }
 
 artistas.innerHTML += html;
@@ -150,36 +150,52 @@ artistas.innerHTML += html;
 html = '';
 html += `<h1>Artistas</h1>`
 for(i=0;i<baseDatosJSON.artistas.length;i++){
-    html+= `<div class="artista" onclick ="reproduce()" id="${baseDatosJSON.artistas[i].id}"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
+    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].nombre}')"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
 }
 html += `<h1>Albumes</h1>`
 for(i=0;i<baseDatosJSON.album.length;i++){
-    html+= `<div class="artista" onclick ="reproduce()" id="${baseDatosJSON.album[i].id}"><img src="${baseDatosJSON.album[i].url_img}"></div>`
+    html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.album[i].nombre}')" ><img src="${baseDatosJSON.album[i].url_img}"></div>`
 }
 sectionArtists.innerHTML += html;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-function reproduce(){
+let result
+function reproduce(nombre){
+
     let reproductor = document.getElementById("reproductor")
     isOn = reproductor.style.display === "none";
     reproductor.style.display = isOn ? "block" : "none";
+
+    nombre = nombre.trim().toUpperCase();
+
 }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // REPRODUCIR VIDEOS
 ////////////////////
 let player;
-const seekBar = document.getElementById("seekBar");
+let duration = 0;
+let lastVolume;
+let previousVolume = 0;
+let updateInterval;
+const seekBar = document.getElementById("barraTiempo");
 const volumeSlider = document.getElementById("volumeSlider");
-const playPauseBtn = document.getElementById("playPauseBtn");
-
+const playPauseBtn = document.getElementById("pauseBtn");
+const muteBtn = document.getElementById("soundBtn");
 //Falta hacer que tome cualquier link de la base de datos
 const canciones = [""];
 
 //Funcion que toma el link de un video y lo reproduce
+
+function cambiarVideo(nuevoVideoId) {
+  player.loadVideoById(nuevoVideoId); // Cambia el video sin iniciar la reproducción
+  // O usa player.loadVideoById(nuevoVideoId) para iniciar la reproducción
+}
+
 function onYouTubeIframeAPIReady() {
     player = new YT.Player("player", {
 //Hay que hacer que no sea necesario que tu escribas el link manulmente
-        videoId: "fJ9rUzIMcZQ",
+        videoId: "SsYXnH9lzCY",
         playerVars: {
             controls: 0,
             modestbranding: 1,
@@ -201,51 +217,48 @@ function onPlayerReady(event){
     updateInterval = setInterval(()=>{
         if(player && player.getPlayerState() === YT.PlayerState.PLAYING){
             seekBar.value = player.getCurrentTime();
-            CurrentVolume = player.getVolume();
+            currentVolume = player.getVolume();
             if (currentVolume !== previousVolume){
-                volumeSlider.value = CurrentVolume; 
-                previousVolume = CurrentVolume;
+                volumeSlider.value = currentVolume; 
+                previousVolume = currentVolume;
             }
         }
     },100)
 }
 
 /*BOTONES*/
-/*
-(Hay que linkearlos con los botes de la pagina)
-//Play/Pause
 
-playPauseBtn.addEventListener("click", ()=>{
+playPauseBtn.addEventListener("click", () => {
     let state = player.getPlayerState();
-    if(state === YT.getPlayerState.PLAYING){
+    if (state === YT.PlayerState.PLAYING) {
         player.pauseVideo();
-
-    }else {
+        playPauseBtn.innerHTML = `<i class="fa-solid fa-play">`;
+    } else {
         player.playVideo();
+        playPauseBtn.innerHTML = `</i><i class="fa-solid fa-pause"></i>`;
     }
-})
+});
 
 //volume
 volumeSlider.addEventListener("input", ()=>{
     let volume = parseInt(volumeSlider.value, 10);
     player.setVolume(volume);
 
-    if(player.isMute() && volume >0){
+    if(player.isMuted() && volume >0){
         player.UnMute();
     }
     lastVolume = volume;
     previousVolume = volume;
 })
 
-//mute
-const muteBtn = document.getElementById("muteBtn");
-muteBtn.addEventListener("click", ()=>{
-    if(player.isMute()){
+muteBtn.addEventListener("click", () => {
+    if (player.isMuted()) {
         player.unMute();
-        muteBtn.innerHTML = `<i class="fa-solid fa-volume-high"></i>`
+        muteBtn.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
+        volumeSlider.value = lastVolume;
     } else {
         player.mute();
-        muteBtn.innerHTML = `<i class="fa-solid fa-volume-off"></i>`
+        muteBtn.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
     }
 });
 
@@ -254,4 +267,3 @@ seekBar.addEventListener("input", ()=>{
     let seekTo = seekBar.value;
     player.seekTo(seekTo, true);
 });
-*/

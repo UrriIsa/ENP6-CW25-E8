@@ -30,7 +30,6 @@
         <!--Main-->
             <main>
                 <main id="home">    
-                <section id="home" style="display:none">    
                     <article class="bienvenida"> <!--MENSAJE DE BIENVENIDOS-->
                         <div class="texto-bienvenida"> <!--Clase que da estructura al texto del contenedor-->
                         <h1>¡Bienvenido a (NOMBRE)!</h1>
@@ -38,16 +37,11 @@
                         </div>
                         <div class="mascota"></div> <!--ES UNA REFERNCIA PARA DONDE COLOCAR A LA MASCOTA-->
                     </article>
-                </section>
-            </main>
-                <section>
-                
-                </section>
+                    <article id="artistas">
 
-                <article id="artistas">
-
-                </article>
-                <section id="artists" >
+                    </article>
+                </main>
+                <section id="artists">
 
                 </section>
                 <!--APARTADO MAQUETADO DE LISTA DE PLAYLISTS-->
@@ -68,7 +62,7 @@
 
 
                 <!--APARTADO PARA MAQUETADO DE CRÉDITOS-->
-                <section class="credits" style="display:none">
+                <section id="credits">
                     <div class="creditHead">
                         <div class="texto">
                             <h1>Créditos</h1>
@@ -131,7 +125,8 @@
             <button id="pauseBtn"><i class="fa-solid fa-play"></i></button> <!--Boton para pausar/play a la cancion-->
             <button id="skipBtn"><i class="fa-solid fa-forward"></i></button> <!--Boton para saltar a la siguiente cancion-->
             <button id="listRepo"><i class="fa-solid fa-bars"></i></button>  <!--Boton para ver la lista de Reproduccion-->
-            <button id="soundBtn"><i class="fa-solid fa-volume-high"></i></button> <!--Boton apra ajustar el sonido-->
+            <button id="soundBtn"><i class="fa-solid fa-volume-high"></i></button>
+            <input type="range" max="100"  id="volumeSlider"> <!--Boton apra ajustar el sonido-->
             <input type="range" max="100"  id="barraTiempo"> <!--Barra para mover la cancion-->
         </footer>
         
