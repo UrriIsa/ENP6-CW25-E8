@@ -45,7 +45,7 @@
 
                 </section>
                 <!--APARTADO MAQUETADO DE LISTA DE PLAYLISTS-->
-                <section class="listaPlaylist" style="display: none;">
+                <section class="listaPlaylist">
                     <div class="playlistHead">
                         <div class="headPlay">
                             <h1>Playlists</h1>
@@ -55,41 +55,24 @@
                         
                     <div class="playlistContenedor">
                         <div class="grupoIzquierdo">
-                            <button>
-
-                            </button>
+                            <button class="playlist">Playlist1</button>
+                            <button class="playlist">Playlist2</button>
+                            <button class="playlist">Playlist3</button>
                         </div>
 
-                    <form class="formPlaylist">
-                        <label for="nombrePlaylist">Nombre de la playlist:</label>
-                        <br>
-                        <input type="text" id="nombre" name="nombre" required>
-                        <br>
-                        <label for="Agregar canciones"> Agregar canciones: </label>
-                        <br>
-                        <input type="number" name="edad" id="ed" placeholder="Ingresa tu edad" required>
-                        <br>
+                        <form class="formPlaylist">
+                            <label for="nombrePlaylist">Nombre de la playlist:</label>
+                            <br>
+                            <input type="text" id="nombre" name="nombre" required>
+                            <br>
+                            <label for="Agregar canciones"> Agregar canciones: </label>
+                            <br>
+                            <input type="button" required>
+                            <br>
                         
-                        <button type="submit" class="submit-btn">Crear playlist</button>
-
-
-                        </div>
-                        <div class="grupoDerecho">
-                            <div class="grupoDerecho12">
-                                <div class="tarjeta unam">
-                                    <img src="../Statics/Imagenes/imagenesCréditos/logoUnam.png" alt="ENP6">
-                                </div>
-                                <div class="tarjeta prepa">
-                                    <img src="../Statics/Imagenes/imagenesCréditos/logoPrepa.png" alt="UNAM">
-                                </div>
-                            </div>
-                            <div class="grupoDerecho3">
-                                <div class="tarjeta ete">
-                                    <img src="../Statics/Imagenes/imagenesCréditos/logoEteCompu.png" alt="CM">
-                                </div>
-                            </div>
-                        </div>             
-                    </div>                      
+                            <button type="submit" class="submit-btn">Crear playlist</button>
+                        </form> 
+                    </div>                    
                     
 
                 </section>
@@ -115,6 +98,7 @@
 
                 <section id="credits">
 
+                <section class="credits" style="display: none;">
                     <div class="creditHead">
                         <div class="texto">
                             <h1>Créditos</h1>
