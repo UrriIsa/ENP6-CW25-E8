@@ -5,6 +5,11 @@ let busquedaInput = document.getElementById("busqueda");
 busquedaInput.addEventListener("input",()=>{ 
     const reproductor = document.getElementById("reproductor");
     reproductor.style.display = "none";
+    if(player){
+        player.destroy();
+        player=null;
+        cont = 0;
+    }
     let listaDeBusqueda  = []; //SE GUARDA LA LISTA DE BUSQUEDAS
     let j = 0;
     const listaBusquedaHtml = document.getElementById("listaBusqueda");
@@ -71,15 +76,22 @@ busquedaInput.addEventListener("input",()=>{
 });
 
 function busqueda(param) {
+    const reproductor = document.getElementById("reproductor");
+    isOn = reproductor.style.display === "none";
+    reproductor.style.display = isOn ? "block" : "none";
+    cont++;
+    if(cont === 2){
+        cont = 0;
+        player.destroy();
+        player=null;
+        return;
+    }
     param = param.split(",");
     id = param[0]
     id = Number(id)
     const listaBusquedaHtml = document.getElementById("listaBusqueda");
     listaBusquedaHtml.innerHTML = '';
     listaBusquedaHtml.style.display = "none"
-    const reproductor = document.getElementById("reproductor");
-    isOn = reproductor.style.display === "none";
-    reproductor.style.display = isOn ? "block" : "none";
 
 
     if(param[1]==="0"){
@@ -92,10 +104,10 @@ function busqueda(param) {
             };
             console.log("Artista", result);
             html ='';
-            html = `<div id="player"></div><img id="imgArt" src="${result.datos.url_img}">`;
+            html = `<div id="player"><img id="imgArt" src="${result.datos.url_img}"></div>`;
             html += `<h1>${result.datos.nombre}</h1>`;
             for(i = 0; i< result.canciones.length;i++){
-                html += `<p onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
+                html += `<p class="textCancion" onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
             }
             reproductor.innerHTML = html;
         }
@@ -109,10 +121,10 @@ function busqueda(param) {
                 canciones: cancionesAlbum
             };
             console.log("Album", result);
-            html = `<div id="player"></div><img id="imgArt" src="${result.datos.url_img}">`;
+            html = `<div id="player"><img id="imgArt" src="${result.datos.url_img}"></div>`;
             html += `<h1>${result.datos.nombre}</h1>`;
             for(i = 0; i< result.canciones.length;i++){
-                html += `<p onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
+                html += `<p class="textCancion" onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
             }
             reproductor.innerHTML = html;
         }
@@ -127,10 +139,10 @@ function busqueda(param) {
                 canciones: cancionesArtista
             };
             console.log("Artista", result);
-            html = `<div id="player"></div><img id="imgArt" src="${result.datos.url_img}">`;
+            html = `<div id="player"><img id="imgArt" src="${result.datos.url_img}"></div>`;
             html += `<h1>${result.datos.nombre}</h1>`;
             for(i = 0; i< result.canciones.length;i++){
-                html += `<p onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
+                html += `<p class="textCancion" onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
             }
             reproductor.innerHTML = html;
         }
@@ -197,13 +209,21 @@ for(i=0;i<baseDatosJSON.album.length;i++){
 } //CREA UN DIV con clase ARTISTA le asigna una funcion ONCLICK con parametros el id y el tipo  y coloca la imagen del album
 sectionArtists.innerHTML += html;
 //////////////////////////////////////////////////////////////////////////////////////////////////////
+let cont = 0;
 function reproduce(param){
+    const reproductor = document.getElementById("reproductor");
+    isOn = reproductor.style.display === "none";
+    reproductor.style.display = isOn ? "block" : "none";
+    cont++;
+    if(cont === 2){
+        cont = 0;
+        player.destroy();
+        player=null;
+        return;
+    }
     param = param.split(",");
     id = param[0]
     id = Number(id)
-    let reproductor = document.getElementById("reproductor");
-    isOn = reproductor.style.display === "none";
-    reproductor.style.display = isOn ? "block" : "none";
 
     if(param[1]==="0"){
         const artista = baseDatosJSON.artistas.find(a => a.id === id);
@@ -214,10 +234,10 @@ function reproduce(param){
                 canciones: cancionesArtista
             };
             console.log("Artista", result);
-            html = `<div id="player"></div><img id="imgArt" src="${result.datos.url_img}">`;
+            html = `<div id="player"><img id="imgArt" src="${result.datos.url_img}"></div>`;
             html += `<h1>${result.datos.nombre}</h1>`;
             for(i = 0; i< result.canciones.length;i++){
-                html += `<p onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
+                html += `<p class="textCancion"onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
             }
             reproductor.innerHTML = html;
         }
@@ -231,10 +251,10 @@ function reproduce(param){
                 canciones: cancionesAlbum
             };
             console.log("Album", result);
-            html = `<div id="player"></div><img id="imgArt" src="${result.datos.url_img}">`;
+            html = `<div id="player"><img id="imgArt" src="${result.datos.url_img}"></div>`;
             html += `<h1>${result.datos.nombre}</h1>`;
             for(i = 0; i< result.canciones.length;i++){
-                html += `<p onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
+                html += `<p  class="textCancion" onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
             }
             reproductor.innerHTML = html;
         }
