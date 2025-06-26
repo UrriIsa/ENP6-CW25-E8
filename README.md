@@ -22,12 +22,12 @@ La página web permite al usuario reproducir canciones a partir de una pseudo-ba
 ## Requisitos
 - Sistema operativo: contar con un sistema operativo, como Linux o Windows. Posteriormente se explica la instalación en cada uno de ellos. 
 - XAMPP: contar con el distribuidor de Apache y encender esta función.
-- Conexión a internet: para permitir la descarga del repositorio de github, así como el funcionamiento de la página. 
+- Conexión a internet: para permitir la descarga del repositorio de GitHub, así como el funcionamiento de la página. 
 - Navegador / Explorador web: para visualizar la página web (HTML).
 ---
 ## Instalación
-### Para usuaarios de Windows: 
-1. En el navegadaor o explorador web de preferencia de usuario, descargar XAMPP en su página oficial: https://www.apachefriends.org/es/download.html
+### Para usuarios de Windows: 
+1. En el navegador o explorador web de preferencia de usuario, descargar XAMPP en su página oficial: https://www.apachefriends.org/es/download.html
 2. Aceptando los términos necesarios, ejecutar el programa y encender el módulo "Apache". Es fundamental que se mantenga esta opción encendida para el correcto funcionamiento del API.
 3. Clonar este repositorio o descargar todas las carpetas en la siguiente ruta C:/xampp/htdocs
    
@@ -37,7 +37,7 @@ La página web permite al usuario reproducir canciones a partir de una pseudo-ba
   chmod +x xampp-Linux-x64-5.2.12-0-installer.run
   sudo ./xampp-linux-x64-8.2.12-0-installer.run
   sudo dnf provides libcrypt.so.1
-  sudo dnf install Libxcrypt-compat 
+  sudo dnf install libxcrypt-compat 
   sudo dnf install libnsl
 ```
 ! Es probable que se requiera la contraseña del usuario.
@@ -50,7 +50,7 @@ sudo rutaEnLaQueSeEncuentraXampp start
 ---
 ## Uso
 1. Abra el archivo ENP6-CW25-E8/Templates/index.html en el navegador.
-2. Cambie la ruta en el navegado localhost/ENP6-CW25-E8/Templates/index.html
+2. Cambie la ruta en el navegador localhost/ENP6-CW25-E8/Templates/index.html
 3. Si todo funcionó correctamente se debe desplegar la página con las características mencionadas.
 4. Interactúe reproduciendo canciones, creando una cuenta, reproduciendo playlists y escuchando a sus artistas preferidos.
 5. Para detener la página, basta con cerrar su sesión y quitar la ventana. 
