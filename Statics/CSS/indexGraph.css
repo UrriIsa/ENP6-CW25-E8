@@ -136,7 +136,7 @@ main{
     flex: 1; /*Lo mismo que main Content*/
     margin: 0; /*reiniciar propiedades*/
     padding: 0;
-    display: flex;
+    /*display: flex;*/
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -264,17 +264,17 @@ section [id="artists"]{
 }
 
 .grupoDerecho12{
-    display: flex;
-    align-items: right;
+    float: right;
+    flex-direction: row;
     gap: 20px;
 }
    
+   
 .grupoDerecho3{
-    display: flex;
     justify-content: flex-end;
 }
-
 /*TERMINA CSS DE CRÉDITOS*/
+/*******************************************************************************************************************************************/
 
 
 #reproductor{
