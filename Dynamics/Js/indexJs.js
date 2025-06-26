@@ -1,5 +1,9 @@
 let busquedaInput = document.getElementById("busqueda"); 
-
+////////////////////
+let player;
+let currentVideo = null;
+let playerReady = false;
+/////////////////////////////////////////////////
 
 busquedaInput.addEventListener("input",()=>{ 
     let listaDeBusqueda  = []; //SE GUARDA LA LISTA DE BUSQUEDAS
@@ -68,5 +72,95 @@ function reproduce(){
     let reproductor = document.getElementById("reproductor")
     isOn = reproductor.style.display === "none";
     reproductor.style.display = isOn ? "block" : "none";
-    
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// REPRODUCIR VIDEOS
+
+const seekBar = document.getElementById("seekBar");
+const volumeSlider = document.getElementById("volumeSlider");
+const playPauseBtn = document.getElementById("playPauseBtn");
+
+//Falta hacer que tome cualquier link de la base de datos
+const canciones = [""];
+
+//Funcion que toma el link de un video y lo reproduce
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player("player", {
+//Hay que hacer que no sea necesario que tu escribas el link manulmente
+        videoId: "fJ9rUzIMcZQ",
+        playerVars: {
+            controls: 0,
+            modestbranding: 1,
+            rel: 0,
+            showinfo: 0,
+        },
+        events: {
+            onReady: onPlayerReady,
+
+        },
+    });
+}
+function onPlayerReady(event){
+    duration = player.getDuration();
+    player.playVideo();
+
+    seekBar.max = duration;
+    volumeSlider.value = player.getVolume();
+    updateInterval = setInterval(()=>{
+        if(player && player.getPlayerState() === YT.PlayerState.PLAYING){
+            seekBar.value = player.getCurrentTime();
+            CurrentVolume = player.getVolume();
+            if (currentVolume !== previousVolume){
+                volumeSlider.value = CurrentVolume; 
+                previousVolume = CurrentVolume;
+            }
+        }
+    },100)
+}
+
+/*BOTONES*/
+/*
+(Hay que linkearlos con los botes de la pagina)
+//Play/Pause
+
+playPauseBtn.addEventListener("click", ()=>{
+    let state = player.getPlayerState();
+    if(state === YT.getPlayerState.PLAYING){
+        player.pauseVideo();
+
+    }else {
+        player.playVideo();
+    }
+})
+
+//volume
+volumeSlider.addEventListener("input", ()=>{
+    let volume = parseInt(volumeSlider.value, 10);
+    player.setVolume(volume);
+
+    if(player.isMute() && volume >0){
+        player.UnMute();
+    }
+    lastVolume = volume;
+    previousVolume = volume;
+})
+
+//mute
+const muteBtn = document.getElementById("muteBtn");
+muteBtn.addEventListener("click", ()=>{
+    if(player.isMute()){
+        player.unMute();
+        muteBtn.innerHTML = `<i class="fa-solid fa-volume-high"></i>`
+    } else {
+        player.mute();
+        muteBtn.innerHTML = `<i class="fa-solid fa-volume-off"></i>`
+    }
+});
+
+//duracion
+seekBar.addEventListener("input", ()=>{
+    let seekTo = seekBar.value;
+    player.seekTo(seekTo, true);
+});
+*/

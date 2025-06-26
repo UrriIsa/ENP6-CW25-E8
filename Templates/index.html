@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="../Statics/CSS/indexGraph.css">
         <script src="https://kit.fontawesome.com/19e0c4481e.js" crossorigin="anonymous"></script> <!--LINKEO DE LA PAGINA FONTAWESOME-->
         <script src="../Dynamics/BaseDeDatos/baseDeDatos.js"></script> <!--LINKEO DE LA PSEUDO-BASE-DE-DATOS que se subio al classroom-->
+         <script src="https://youtube.com/iframe_api"></script> <!--API de youtube-->
         <title>[NOMBRE]</title> <!--DEBEMOS QUE ELEGIR EL NOMBRE-->
     </head>
     <body>
@@ -47,8 +48,13 @@
 
                 </section>
             </main>
+            <!--Reproductor de videos-->
             <section id="reproductor" style="display: none;">
-                    
+                <section class="video-container" >
+                    <div id="player">
+
+                    </div>
+                </section>
             </section>
         </section>
 
@@ -60,7 +66,8 @@
             <button id="soundBtn"><i class="fa-solid fa-volume-high"></i></button> <!--Boton apra ajustar el sonido-->
             <input type="range" max="100"  id="barraTiempo"> <!--Barra para mover la cancion-->
         </footer>
-        
+    
+   
     <script src="../Dynamics/Js/indexJs.js"></script> <!--LINKEO del JavaScript del index-->
     </body>
 </html>
