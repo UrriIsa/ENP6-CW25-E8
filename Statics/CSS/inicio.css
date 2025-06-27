@@ -3,7 +3,7 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    background: #b4fff9;
+    background: #6BA19B;
     color: #f0f0f0;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
@@ -16,15 +16,16 @@ body {
 h1 {
     text-align: center;
     font-size: 2.5rem;
-    color: #ffffff;
+    color: #e7c6c6;
     background-color: #00302c;
     width: max-content;
     height: max-content;
     padding: 20px;
+    border-radius: 10px;
 }
 
 button {
-    background: #00302c;
+    background: #C76B5D;
     color: #ffffff;
     border: none;
     padding: 10px 15px;
@@ -33,9 +34,10 @@ button {
     margin: 5px 0;
     transition: background 0.3s ease;
     width: 10%;
+    border-radius: 10px;
 }
 
 button:hover {
-    background: #135f58;
+    background: #5DB98E;
     color: black;
 }
