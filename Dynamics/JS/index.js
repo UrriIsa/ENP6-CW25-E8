@@ -292,9 +292,7 @@ function reproduce(param){ //FUNCION REPRODUCE (SIMILAR A BUSQUEDA();)
             console.log("Artista", result);
             html = `<div id="player"><img id="imgArt" src="${result.datos.url_img}"></div>`;
             html += `<h1>${result.datos.nombre}</h1>`;
-            for(i = 0; i< result.canciones.length;i++){
-                html += `<p class="textCancion" onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
-            }
+            html += `<p class="textCancion" onclick="reproduccion('${cancion.link}')">${cancion.nombre}</p>`
             reproductor.innerHTML = html;
         }
     }
@@ -413,9 +411,38 @@ seekBar.addEventListener("input", ()=>{
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+function getCookie(nombre){ //FUNCION PARA VERIFICAR QUE "LA COOKIE EXISTA Y DEVUELVE SU VALOR"
+    let cookies = document.cookie;
+    cookies = cookies.split(";");
+    for(i=0;i<cookies.length;i++){ //RECORRE LAS COOKIES
+        let cookie = cookies[i].trim();
+        if(cookie.indexOf(nombre+"=")===0){
+            return cookie.slice(nombre.length+1); //VALOR DE LA COOKIE
+        }
+    }
+    return null;
+}
+function setCookie(nombre,datos){ //FUNCION PARA CREAR LA COOKIE
+  let valor = encodeURIComponent(JSON.stringify(datos));
+  document.cookie = `${nombre}=${valor};max-age=3600` //MAX AGE (AUN EN TRABAJO)**
+}
 
+const grupo= document.querySelector('#playlistsCreadas'); // Para mostrar playlists guardadas
 let playlistCreada = [];
 let playlistsGuardadas = [];
+if(getCookie("ACTUAL") !== null){
+    let decodedCookie = JSON.parse(decodeURIComponent(getCookie(getCookie("ACTUAL"))));
+    console.log(decodedCookie.playlists)
+    if(decodedCookie.playlists){
+        for(i=0;i<decodedCookie.playlists.length;i++){
+            playlistsGuardadas.push({  //Añade a playlist guardadas las playlists
+                nombre: decodedCookie.playlists[i].nombre,
+                canciones: decodedCookie.playlists[i].canciones //Los tres puntos es el operador spread que copia todas las canciones en un nuevo array
+            });  
+        }
+        actualizarVistaListasPlaylists();
+    }
+}
 
 const listaCanciones = document.getElementById("can");
 const listaBusquedaCanciones = document.getElementById("listaCanciones");
@@ -494,7 +521,16 @@ formulario.addEventListener('submit', function (e) {
         nombre: nombrePlaylist,
         canciones: [...playlistCreada] //Los tres puntos es el operador spread que copia todas las canciones en un nuevo array
     });
-
+    if(getCookie("ACTUAL") !== null){
+        let decodedCookie = JSON.parse(decodeURIComponent(getCookie(getCookie("ACTUAL"))));
+        newCookie = {
+            nombre: decodedCookie.nombre,
+            email: decodedCookie.email,
+            password: decodedCookie.password,
+            playlists: playlistsGuardadas
+        }
+        setCookie(newCookie.nombre,newCookie);
+    }
     playlistCreada = []; //Reinicia el array
     this.reset();  //Reestablece el formulario
 
@@ -502,7 +538,7 @@ formulario.addEventListener('submit', function (e) {
     alert(`Playlist "${nombrePlaylist}" creada correctamente.`);
 });
 
-const grupo= document.querySelector('#playlistsCreadas'); // Para mostrar playlists guardadas
+
 
 // Función para actualizar el listado de playlists
 function actualizarVistaListasPlaylists() {
