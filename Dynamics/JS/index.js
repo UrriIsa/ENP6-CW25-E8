@@ -301,30 +301,31 @@ function reproduce(param){ //FUNCION REPRODUCE (SIMILAR A BUSQUEDA();)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // REPRODUCIR VIDEOS
-////////////////////
-let player;
+
+let player; //Objeto del reproductor de YouTube
 let duration = 0;
 let lastVolume;
-let previousVolume = 0;
-let updateInterval;
-const seekBar = document.getElementById("barraTiempo");
-const volumeSlider = document.getElementById("volumeSlider");
-const playPauseBtn = document.getElementById("pauseBtn");
-const muteBtn = document.getElementById("soundBtn");
-//Falta hacer que tome cualquier link de la base de datos
-const canciones = [""];
+let previousVolume = 0; 
+let updateInterval; //Intervalo para que se actualice la barra de progreso
 
-//Funcion que toma el link de un video y lo reproduce
+const seekBar = document.getElementById("barraTiempo");  //Barra del tiempo
+const volumeSlider = document.getElementById("volumeSlider"); //Barra del volumen
+const playPauseBtn = document.getElementById("pauseBtn"); //Botón de play y pause
+const muteBtn = document.getElementById("soundBtn"); //Botón para silenciar el video
+
+const canciones = [""]; //Canción que se va a reproducir
+
+//Función la cuál toma el link de un video y lo reproduce
 function reproduccion(link) {
     const playerContainer = document.getElementById("player");
     const playerImg = document.getElementById("imgArt");
 
-    if (playerImg) {
+    if (playerImg) { //Oculta la foto si esta en pantalla
         playerImg.style.display = "none";
     }
-    if (player) { 
+    if (player) {     //Si ya existe un reproductor, solo reemplaza el link anterior por el nuevo
         cambiarVideo(link);
-    } else {
+    } else { //Sino crea un nuevo reproductor
         player = new YT.Player("player", {
             videoId: link,
             playerVars: {
@@ -334,31 +335,31 @@ function reproduccion(link) {
                 showinfo: 0,
             },
             events: {
-                onReady: onPlayerReady,
+                onReady: onPlayerReady, //Evento que llama la API de Youtube cuando el reproductor ya fue creado
             },
         });
     }
 
+    //Muestra el contenedor del reproductor
     playerContainer.style.display = "block";
 }
-
+//Cambia de video sin crear un nuevo reproductor
 function cambiarVideo(nuevoVideoId) {
-    player.loadVideoById(nuevoVideoId); // Cambia el video sin iniciar la reproducción
+    player.loadVideoById(nuevoVideoId); 
 }
 
-function onYouTubeIframeAPIReady(videoId) {
-
-}
+//Cuándo el reproductor esta listo
 function onPlayerReady(event){
-    duration = player.getDuration();
-    player.playVideo();
+    duration = player.getDuration(); //Obtiene la duración del video
+    player.playVideo(); //Comienza a reproducir el video
 
-    seekBar.max = duration;
+    seekBar.max = duration;  //Configura la barra de la duración del video
     volumeSlider.value = player.getVolume();
-    updateInterval = setInterval(()=>{
+    updateInterval = setInterval(()=>{  //Actualiza la barra duración
         if(player && player.getPlayerState() === YT.PlayerState.PLAYING){
-            seekBar.value = player.getCurrentTime();
-            currentVolume = player.getVolume();
+            seekBar.value = player.getCurrentTime();  //Actualiza la posción de la barra  conforme avanza el tiempo
+
+            currentVolume = player.getVolume(); //Actualiza el volumen si se cambió
             if (currentVolume !== previousVolume){
                 volumeSlider.value = currentVolume; 
                 previousVolume = currentVolume;
@@ -368,44 +369,49 @@ function onPlayerReady(event){
 }
 
 /*BOTONES*/
+
+// Botón de Play y Pause
 playPauseBtn.addEventListener("click", () => {
     let state = player.getPlayerState();
     if (state === YT.PlayerState.PLAYING) {
         player.pauseVideo();
-        playPauseBtn.innerHTML = `<i class="fa-solid fa-play">`;
+        playPauseBtn.innerHTML = `<i class="fa-solid fa-play">`; //Actualiza el icono de play
     } else {
         player.playVideo();
-        playPauseBtn.innerHTML = `</i><i class="fa-solid fa-pause"></i>`;
+        playPauseBtn.innerHTML = `</i><i class="fa-solid fa-pause"></i>`; //Actualiza el icono pause
     }
 });
 
-//volume
+//volumen
 volumeSlider.addEventListener("input", ()=>{
     let volume = parseInt(volumeSlider.value, 10);
-    player.setVolume(volume);
+    player.setVolume(volume); //Ajusta el volumen del video
 
+    //Si estaba silenciado y se sube volumen, reactiva el sonido
     if(player.isMuted() && volume >0){
         player.UnMute();
     }
-    lastVolume = volume;
-    previousVolume = volume;
+    //Guarda los valores del volumen
+    lastVolume = volume; //El último volumen antes de silenciar el video
+    previousVolume = volume; //Volumen actual
 })
 
+//Boton para silenciar el video
 muteBtn.addEventListener("click", () => {
     if (player.isMuted()) {
-        player.unMute();
+        player.unMute(); //Reactiva el sonido
         muteBtn.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
         volumeSlider.value = lastVolume;
     } else {
-        player.mute();
+        player.mute(); //Silencia el video
         muteBtn.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
     }
 });
 
-//duracion
+//Permite mover la barra de duración y actualizar el reproductor al momento en donde tu decidas al usar la barra
 seekBar.addEventListener("input", ()=>{
     let seekTo = seekBar.value;
-    player.seekTo(seekTo, true);
+    player.seekTo(seekTo, true); 
 });
 
 
