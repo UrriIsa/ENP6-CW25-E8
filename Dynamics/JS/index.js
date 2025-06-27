@@ -1,14 +1,14 @@
 let busquedaInput = document.getElementById("busqueda"); 
 
 /////////////////////////////////////////////////
-
+let cont = 0;
 busquedaInput.addEventListener("input",()=>{ 
     const reproductor = document.getElementById("reproductor");
     reproductor.style.display = "none";
+    cont = 0;
     if(player){
         player.destroy();
         player=null;
-        cont = 0;
     }
     let listaDeBusqueda  = []; //SE GUARDA LA LISTA DE BUSQUEDAS
     let j = 0;
@@ -216,7 +216,6 @@ for(i=0;i<baseDatosJSON.album.length;i++){
 } //CREA UN DIV con clase ARTISTA le asigna una funcion ONCLICK con parametros el id y el tipo  y coloca la imagen del album
 sectionArtists.innerHTML += html;
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-let cont = 0;
 function reproduce(param){
     const reproductor = document.getElementById("reproductor");
     isOn = reproductor.style.display === "none";
