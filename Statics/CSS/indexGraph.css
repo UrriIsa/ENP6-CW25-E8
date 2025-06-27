@@ -196,6 +196,19 @@ section [id="artists"]{
     flex-wrap: wrap;
     gap: 3%;
 }
+.artistTXT {
+    display: inline; 
+    width: 100%; 
+    color: rgb(253, 253, 253);
+    margin-left: 2.25%;
+}
+
+
+.artist-Container{
+    border-radius: 0.7em;
+    background-color: rgb(39, 39, 39);
+    margin: 2%;
+}
 
 
 /*************************************************************************************************************************************************/

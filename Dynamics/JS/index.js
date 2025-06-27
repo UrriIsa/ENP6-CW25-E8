@@ -206,11 +206,11 @@ for(i=0;i<baseDatosJSON.artistas.length;i++){ //RECORRE LA BASE DE DATOS
 artistas.innerHTML += html;
 
 html = '';
-html += `<h1>Artistas</h1>`
+html += `<h1 class="artistTXT">Artistas</h1>`
 for(i=0;i<baseDatosJSON.artistas.length;i++){
     html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].id},${0}')"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
 } //CREA UN DIV con clase ARTISTA le asigna una funcion ONCLICK con parametros el id y el tipo  y coloca la imagen del artista
-html += `<h1>Albumes</h1>`
+html += `<h1 class="artistTXT">Albumes</h1>`
 for(i=0;i<baseDatosJSON.album.length;i++){
     html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.album[i].id},${1}')" ><img src="${baseDatosJSON.album[i].url_img}"></div>`
 } //CREA UN DIV con clase ARTISTA le asigna una funcion ONCLICK con parametros el id y el tipo  y coloca la imagen del album
