@@ -76,28 +76,30 @@ busquedaInput.addEventListener("input",()=>{
 });
 
 function busqueda(param) {
-    const reproductor = document.getElementById("reproductor");
+    const reproductor = document.getElementById("reproductor"); 
     isOn = reproductor.style.display === "none";
-    reproductor.style.display = isOn ? "block" : "none";
+    reproductor.style.display = isOn ? "block" : "none"; //MUESTRA EL REPRODUCTOR
     cont++;
-    if(cont === 2){
+    if(cont === 2){ //DETECCION PARA EVITAR QUE DESTRUYA EL REPRODUCTOR EN MOMENTOS EQUIVOCADOS
         cont = 0;
-        player.destroy();
+        player.destroy(); //SI "PICAS POR SEGUNDA VEZ" DESTRUYE EL REPRODUCTOR
         player=null;
         return;
     }
-    param = param.split(",");
-    id = param[0]
-    id = Number(id)
-    const listaBusquedaHtml = document.getElementById("listaBusqueda");
+    param = param.split(","); //DIVIDE LOS PARAMETROS
+    id = param[0] 
+    id = Number(id) //VUELE NUMERO AL ID
+    const listaBusquedaHtml = document.getElementById("listaBusqueda"); 
     listaBusquedaHtml.innerHTML = '';
-    listaBusquedaHtml.style.display = "none"
+    listaBusquedaHtml.style.display = "none" //APAGA BUSQUEDA
 
 
-    if(param[1]==="0"){
-        const artista = baseDatosJSON.artistas.find(a => a.id === id);
+    if(param[1]==="0"){ //SI EL TIPO ES 0 == ARTISTA
+        const artista = baseDatosJSON.artistas.find(a => a.id === id); /*DEVUELVE EL PRIMER ELEMENTO QUE CUMPLE CON UNA CONDICION
+         (EN ESTE CASO DENTRO DE LA BASE DE DATOS EN ARTISTAS BUSCA EL ID QUE COINCIDA CON EL ID ENVIADO)*/
         if (artista) {
-            const cancionesArtista = baseDatosJSON.canciones.filter(c => c.id_artista === artista.id);
+            const cancionesArtista = baseDatosJSON.canciones.filter(c => c.id_artista === artista.id); /*IGUAL QUE ARRIBA PERO ESTE DEVUELVE TODOS LOS ELEMENTOS QUE COINCIDAN
+             (EN ESTE CASO DEVUELVE)*/
             result = {
                 datos: artista,
                 canciones: cancionesArtista
