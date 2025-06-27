@@ -177,6 +177,7 @@ function btnActivo(btn){/* Establece el color del boton*/
     creditsBtn.style.color = (btn === creditsBtn) ? activeColor : normalColor;
     sectionCredits.style.display = (btn === creditsBtn) ? "flex" : "none"; 
     footer.style.display = (btn === creditsBtn) ? "none" : "flex";
+    sectionPlaylist.style.display = "none";
     /*Si el boton es igual al boton home por ejemplo, si eso devuelve TRUE el color se establece ACTIVECOLOR, si devuelve FALSE el color
     se establece  NORMALCOLOR*/
 }
@@ -264,7 +265,21 @@ function reproduce(param){
     }
     if(param[1]==="2"){
         const cancion = baseDatosJSON.canciones.find(a=> a.id === id);
-        console.log(id)
+        const artista = baseDatosJSON.artistas.find(a => a.id === cancion.id_artista);
+        if (artista) {
+            const cancionesArtista = baseDatosJSON.canciones.filter(c => c.id_artista === artista.id);
+            result = {
+                datos: artista,
+                canciones: cancionesArtista
+            };
+            console.log("Artista", result);
+            html = `<div id="player"><img id="imgArt" src="${result.datos.url_img}"></div>`;
+            html += `<h1>${result.datos.nombre}</h1>`;
+            for(i = 0; i< result.canciones.length;i++){
+                html += `<p class="textCancion" onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
+            }
+            reproductor.innerHTML = html;
+        }
     }
 }
 
@@ -503,7 +518,7 @@ function mostrarPlaylist(index) {
         div.className = 'individual'; //Le asigna la clase individual al div
         div.innerHTML = ` 
             <img src="https://img.youtube.com/vi/${c.link}/default.jpg" alt="${c.nombre}" /> 
-            <p>${c.nombre}<br><span>${c.artista}</span></p>
+            <p onclick="reproduce('${c.id},${2}')">${c.nombre}<br><span>${c.artista}</span></p>
         `;
         contenedor.appendChild(div); //Añade el div al contenedor principal para que se muestre
     });
