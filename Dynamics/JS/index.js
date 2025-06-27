@@ -187,8 +187,7 @@ function btnActivo(btn){/* Establece el color del boton*/
     creditsBtn.style.color = (btn === creditsBtn) ? activeColor : normalColor;
     sectionCredits.style.display = (btn === creditsBtn) ? "flex" : "none"; 
     footer.style.display = (btn === creditsBtn) ? "none" : "flex";
-    playlistUniqueBtn.style.color = (btn===playlistUniqueBtn) ? activeColor : normalColor;
-    sectionPlaylist .style.display = (btn === playlistUniqueBtn) ? "flex" : "none";
+    sectionPlaylist.style.display = "none";
     /*Si el boton es igual al boton home por ejemplo, si eso devuelve TRUE el color se establece ACTIVECOLOR, si devuelve FALSE el color
     se establece  NORMALCOLOR, MISMA FUNCIONALIDAD PERO TAMBIEN LO MUESTRA O NO*/
 }
@@ -203,7 +202,6 @@ playlistsBtn.addEventListener("click",()=> btnActivo(playlistsBtn));
 
 creditsBtn.addEventListener("click",()=> btnActivo(creditsBtn));
 
-playlistUniqueBtn.addEventListener("click",()=> btnActivo(playlistUniqueBtn));
 ///////////////////////////////////////////////////////////////////////////////////////
 //APARTADO HOME
 let artistas = document.getElementById("artistas"); //EN EL ARTICULO ARTISTAS
@@ -282,8 +280,23 @@ function reproduce(param){ //FUNCION REPRODUCE (SIMILAR A BUSQUEDA();)
             reproductor.innerHTML = html;
         }
     }
-    if(param[1]==="2"){ //NO HACE NADA
-
+    if(param[1]==="2"){
+        const cancion = baseDatosJSON.canciones.find(a=> a.id === id);
+        const artista = baseDatosJSON.artistas.find(a => a.id === cancion.id_artista);
+        if (artista) {
+            const cancionesArtista = baseDatosJSON.canciones.filter(c => c.id_artista === artista.id);
+            result = {
+                datos: artista,
+                canciones: cancionesArtista
+            };
+            console.log("Artista", result);
+            html = `<div id="player"><img id="imgArt" src="${result.datos.url_img}"></div>`;
+            html += `<h1>${result.datos.nombre}</h1>`;
+            for(i = 0; i< result.canciones.length;i++){
+                html += `<p class="textCancion" onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
+            }
+            reproductor.innerHTML = html;
+        }
     }
 }
 
@@ -396,3 +409,135 @@ seekBar.addEventListener("input", ()=>{
     let seekTo = seekBar.value;
     player.seekTo(seekTo, true);
 });
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+let playlistCreada = [];
+let playlistsGuardadas = [];
+
+const listaCanciones = document.getElementById("can");
+const listaBusquedaCanciones = document.getElementById("listaCanciones");
+
+//Buscador
+listaCanciones.addEventListener("input", () => {
+    let listaDeBusqueda = []; //SE GUARDA LA LISTA DE BUSQUEDAS
+    let j = 0;
+
+    if (listaCanciones.value.trim() === "") { 
+        listaBusquedaCanciones.innerHTML = '';
+        listaBusquedaCanciones.style.display = "none";
+        return;
+    }
+
+    for (let i = 0; i < baseDatosJSON.canciones.length; i++) { //RECORRE EL ARREGLO CANCIONES
+        let palabra = listaCanciones.value.toUpperCase(); //VUELVE LO QUE INGRESO EL USUARIO EN MAYUSCULAS
+        let cancion = baseDatosJSON.canciones[i].nombre.toUpperCase();
+
+        if (cancion.includes(palabra)) { //SI LA PALABRA QUE INGRESO EL USUARIO ESTA INCLUIDA
+            listaDeBusqueda[j] = { //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
+                nombre: baseDatosJSON.canciones[i].nombre.trim(), //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
+                id: baseDatosJSON.canciones[i].id,//SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
+                tipo: 2 //Y LE DA UN TIPO (0=ARTISTA,1=ALBUM Y 2=CANCION)
+            }
+            j++;
+        }
+    }
+
+    listaDeBusqueda.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    listaDeBusqueda.sort((a, b) => {
+        let posA = a.nombre.indexOf(listaCanciones.value);//BUSCA LA POSICION DE X EN A (SI ES N Y LA PALABRA ES NARANJA ES IGUAL A 0)
+        let posB = b.nombre.indexOf(listaCanciones.value);//BUSCA LA POSICION DE X EN B (SI ES N Y LA PALABRA ES MANZANA ES IGUAL A 2)
+        return posA - posB;//SI EL VALOR A ES MENOR QUE EL VALOR B => A VA ANTES QUE B (0 - 2 = -2 como es negativo A va antes que B)
+    });
+
+    let html = '';
+    for (let i = 0; i < listaDeBusqueda.length; i++) { //recorre el arreglo listaDeBusqueda
+        html += `<div class="opcion" onclick="agregarCancion(${listaDeBusqueda[i].id})">
+                    <h1>${listaDeBusqueda[i].nombre}</h1>
+                 </div>`;
+    }//se crea un DIV con clase opcion y le añade una funcion onClick con parametos el id y el tipo y dentro el titulo(NOMBRE)
+    listaBusquedaCanciones.style.display = "block";
+    listaBusquedaCanciones.innerHTML = html;
+});
+
+
+// Función para agregar canción a playlist nueva
+function agregarCancion(id) {
+    const cancion = baseDatosJSON.canciones.find(c => c.id === id);
+    
+    
+    if (playlistCreada.some(c => c.id === id)) {   //Some es un método array que recorre los elementos del array, retorna true si al menos uno cumple la condicion y false si ninguno la cumple
+        alert(`La canción "${cancion.nombre}" ya está agregada.`); //Se muestra el texto...
+        return;
+    }
+    playlistCreada.push(cancion);  //Push es un método array que agrega un elemento al final de la lista
+    alert(`Canción "${cancion.nombre}" añadida a la playlist.`); //Se muestra el texto...
+}
+
+// Crear playlist al enviar formulario
+let formulario = document.getElementById("formularioPlaylist");
+formulario.addEventListener('submit', function (e) {
+    e.preventDefault(); //Metodo que evita que el navegador ejecute la acción por defecto de un evento
+    const nombrePlaylist = document.getElementById('nombrePlaylist').value.trim(); //Trim elimina los espacios de enfrente y atrás
+    if (nombrePlaylist === "") { //Si no hay nombre muestra mensaje...
+        alert("Escribe un nombre para la playlist.");
+        return;
+    }
+    if (playlistCreada.length === 0) { //Si no hay canciones agregadas muestra mensaje...
+        alert("Agrega al menos una canción antes de crear la playlist.");
+        return;
+    }
+
+    playlistsGuardadas.push({  //Añade a playlist guardadas las playlists
+        nombre: nombrePlaylist,
+        canciones: [...playlistCreada] //Los tres puntos es el operador spread que copia todas las canciones en un nuevo array
+    });
+
+    playlistCreada = []; //Reinicia el array
+    this.reset();  //Reestablece el formulario
+
+    actualizarVistaListasPlaylists(); //Muestra mensaje de éxito
+    alert(`Playlist "${nombrePlaylist}" creada correctamente.`);
+});
+
+const grupo= document.querySelector('#playlistsCreadas'); // Para mostrar playlists guardadas
+
+// Función para actualizar el listado de playlists
+function actualizarVistaListasPlaylists() {
+    grupo.innerHTML = '<h3>Playlists Guardadas</h3>';
+    playlistsGuardadas.forEach((pl, index) => { //Para cada playlist guardada con su indice...
+        const btn = document.createElement('button');
+        btn.className = 'playlist';
+        btn.innerText = pl.nombre; //Crea un boton con nombre de lo que el usuario coloco al llenar el formulario
+        btn.onclick = () => mostrarPlaylist(index); //Al dar click en el boton se muestra la playlist
+        grupo.appendChild(btn); //Agrega el boton al contenedor grupo 
+    });
+}
+
+// Función para mostrar canciones de la playlist seleccionada
+function mostrarPlaylist(index) {
+    const playlist = playlistsGuardadas[index];
+    const seccionPlaylist = document.getElementById("playlist");
+    const seccionPlaylistUnico = document.getElementById("playlistUnico");
+    seccionPlaylistUnico.style.display = "block"; //Se muestra la seccionPlaylistUnico 
+    seccionPlaylist.style.display = "none"; //Se esconde la seccionPlaylist
+
+
+    document.getElementById('nombrePlaylistSeleccionada').innerText = playlist.nombre; //Cambia el texto al nombre de la playlist
+
+    const contenedor = document.querySelector('#playlistUnico .canciones'); //Busca dentro de  playlistUnico  la clase canciones
+    contenedor.innerHTML = ''; //Borra el contenido que esté dentro de canciones
+
+    playlist.canciones.forEach(c => {
+        const div = document.createElement('div'); //Crea un nuevo div
+        div.className = 'individual'; //Le asigna la clase individual al div
+        div.innerHTML = ` 
+            <img src="https://img.youtube.com/vi/${c.link}/default.jpg" alt="${c.nombre}" /> 
+            <p onclick="reproduce('${c.id},${2}')">${c.nombre}<br><span>${c.artista}</span></p>
+        `;
+        contenedor.appendChild(div); //Añade el div al contenedor principal para que se muestre
+    });
+
+}

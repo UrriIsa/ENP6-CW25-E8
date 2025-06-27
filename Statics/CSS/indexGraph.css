@@ -96,6 +96,7 @@ nav #listaBusqueda{
 }
 
 .opcion h1{
+
     margin: 0;
     padding: 0;
 }
@@ -371,6 +372,7 @@ section #artists{
 
 /*********************************************************************************************************************************************************/
 /*EMPIEZA CSS DE UNA SOLA PLAYLIST*/
+
 
 .playlistUnique{
     display: flex;
