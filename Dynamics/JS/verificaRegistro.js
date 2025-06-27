@@ -1,6 +1,7 @@
 const mainForm = document.getElementById("form-registro");
 
 const usuario = document.getElementById("usuario");
+const verif = document.getElementById("terminos");
 const password = document.getElementById("contraseña");
 const email = document.getElementById("email");
 
@@ -25,13 +26,18 @@ function getCookie(nombre){ //FUNCION PARA VERIFICAR QUE "LA COOKIE EXISTA Y DEV
 
 mainForm.addEventListener("submit", (e)=>{
   getCookie(usuario.value); //MANDA A LLAMAR A getCookie();
+  if(verif.value !== "verif" || verif.value === ''){
+    e.preventDefault();
+    let verifArt = document.getElementById("veriArt")
+    verifArt.style.borderBlockColor = "red"
+  }
   if(usuario.value === ''||password.value === ''|| email.value === ''){ //SI X = '' EVITA QUE SE ENVIE EL FORMULARIO
-    e.preventDefault(); //FALTA MOSTRAR O DARLE A SABER AL USUARIO QUE SE EQUIVOCO***
-    password.value = '';
-    email.value = '';
-    usuario.placeholder = "USUARIO YA EXISTENTE"
-    let userArt = document.getElementById("user");
-    userArt.style.borderBlockColor = "red"
+      e.preventDefault(); //FALTA MOSTRAR O DARLE A SABER AL USUARIO QUE SE EQUIVOCO***
+      password.value = '';
+      email.value = '';
+      usuario.placeholder = "USUARIO YA EXISTENTE"
+      let userArt = document.getElementById("user");
+      userArt.style.borderBlockColor = "red"
   } else{ //SI PASO LOS FILTROS
     let datos = { //CREA DATOS
       nombre: usuario.value.trim(),
