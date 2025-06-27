@@ -2,7 +2,7 @@ const mainForm = document.getElementById("login");
 const usuarioI = document.getElementById("usuario");
 const passwordI = document.getElementById("contraseña")
 
-function setCookie(nombre,datos){ //CREA UNA COOKIE (AUN EN TRABAJO)***
+function setCookie(nombre,datos){ //CREA UNA COOKIE
   let valor = datos.trim();
   document.cookie = `${nombre}=${valor};`
 }
@@ -17,7 +17,7 @@ let cookies = document.cookie;
         }
     }
 
-function getCookie(nombre){ //FUNCION PARA VERIFICAR QUE "LA COOKIE EXISTA Y DEVUELVE SU VALOR"
+function getCookie(nombre){ //FUNCIÓN PARA VERIFICAR QUE "LA COOKIE EXISTA Y DEVUELVE SU VALOR"
     let cookies = document.cookie;
     cookies = cookies.split(";");
     for(i=0;i<cookies.length;i++){ //RECORRE LAS COOKIES
@@ -31,7 +31,7 @@ function getCookie(nombre){ //FUNCION PARA VERIFICAR QUE "LA COOKIE EXISTA Y DEV
 
 mainForm.addEventListener("submit",(e)=>{
     if(usuarioI.value === ''|| passwordI.value === ''){
-        return; //SI ALGUN VALOR ES '' DEVUELVE LA FUNCION
+        return; //SI ALGUN VALOR ES '' DEVUELVE LA FUNCIÓN
     }
     const cookieUser = getCookie(usuarioI.value.trim()); //MANDA A LLAMAR A getCookie(); y manda como parametro el USUARIO ingresado por el usuario
     if(cookieUser != null){ //SI NO REGRESA NULL (osea si la encontro)
@@ -48,7 +48,6 @@ mainForm.addEventListener("submit",(e)=>{
             let passwordArt = document.getElementById("password")
             passwordArt.style.borderBlockColor = "red";
             //BORRA EL VALOR DE LA PASSWORD
-            //FALTA MOSTRAR O DARLE A SABER AL USUARIO QUE SE EQUIVOCO***
         }
     }else{
         usuarioI.value = '';//BORRA EL VALOR DEL USUARIO
@@ -60,7 +59,6 @@ mainForm.addEventListener("submit",(e)=>{
         usuarioI.placeholder = "USUARIO INVALIDO"
         passwordI.placeholder = "CONTRASEÑA INVALIDA"//BORRA EL VALOR DE LA PASSWORD
         e.preventDefault(); //EVITA QUE SE MANDE EL FORMULARIO
-        //FALTA MOSTRAR O DARLE A SABER AL USUARIO QUE SE EQUIVOCO***
     }
 });
 
