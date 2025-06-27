@@ -462,6 +462,12 @@ listaCanciones.addEventListener("input", () => {
     listaBusquedaCanciones.innerHTML = html;
 });
 
+const AlertNombre = document.getElementById("mensajeAlertNombre");
+const AlertCancion = document.getElementById("mensajeAlertCancion");
+const CorrectCancion = document.getElementById("mensajeCorrectCancion");
+const Alert = document.getElementById("mensajeAlert");
+const Submit = document.getElementById("mensajeSubmit");
+
 
 // Función para agregar canción a playlist nueva
 function agregarCancion(id) {
@@ -469,11 +475,11 @@ function agregarCancion(id) {
     
     
     if (playlistCreada.some(c => c.id === id)) {   //Some es un método array que recorre los elementos del array, retorna true si al menos uno cumple la condicion y false si ninguno la cumple
-        alert(`La canción "${cancion.nombre}" ya está agregada.`); //Se muestra el texto...
+        AlertCancion.innerHTML = "La canción  ya está agregada."; //Se muestra el texto...
         return;
     }
-    playlistCreada.push(cancion);  //Push es un método array que agrega un elemento al final de la lista
-    alert(`Canción "${cancion.nombre}" añadida a la playlist.`); //Se muestra el texto...
+    playlistCreada.push(cancion);  //Push es un método array que agrega un elemento al final de la lista 
+    CorrectCancion.innerHTML = "Canción añadida a la playlist."; //Se muestra el texto...
 }
 
 // Crear playlist al enviar formulario
@@ -482,11 +488,11 @@ formulario.addEventListener('submit', function (e) {
     e.preventDefault(); //Metodo que evita que el navegador ejecute la acción por defecto de un evento
     const nombrePlaylist = document.getElementById('nombrePlaylist').value.trim(); //Trim elimina los espacios de enfrente y atrás
     if (nombrePlaylist === "") { //Si no hay nombre muestra mensaje...
-        alert("Escribe un nombre para la playlist.");
+        AlertNombre.innerHTML = "Escribe un nombre para la playlist."; 
         return;
     }
     if (playlistCreada.length === 0) { //Si no hay canciones agregadas muestra mensaje...
-        alert("Agrega al menos una canción antes de crear la playlist.");
+        Alert.innerHTML = "Agrega al menos una canción antes de crear la playlist."; 
         return;
     }
 
@@ -499,7 +505,7 @@ formulario.addEventListener('submit', function (e) {
     this.reset();  //Reestablece el formulario
 
     actualizarVistaListasPlaylists(); //Muestra mensaje de éxito
-    alert(`Playlist "${nombrePlaylist}" creada correctamente.`);
+    Submit.innerHTML = "Playlist creada correctamente."; 
 });
 
 const grupo= document.querySelector('#playlistsCreadas'); // Para mostrar playlists guardadas

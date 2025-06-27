@@ -71,13 +71,16 @@
 
                             <form id="formularioPlaylist" class="formPlaylist">
                             <label for="nombrePlaylist">Nombre de la playlist:</label>
-                            <input type="text" id="nombrePlaylist" name="nombre" required>
-                            <br>
+                            <input type="text" id="nombrePlaylist" name="nombre" placeholder="Ingresa el nombre de tu playlist" >
+                            <span id="mensajeAlertNombre" ></span>
                             <label for="can">Agregar canciones:</label>
-                            <input type="text" name="canciones" id="can" placeholder="Escribe para buscar...">
+                            <span id="mensajeAlertCancion"></span>
+                            <span id="mensajeCorrectCancion"></span>
+                            <input type="text" name="canciones" id="can" placeholder="Escribe para buscar..." >
                             <div id="listaCanciones" style="display:none;"></div>
-                            <br>
+                            <span id="mensajeAlert"></span>
                             <button type="submit" class="submit-btn">Crear playlist</button>
+                            <span id="mensajeSubmit"></span>
                         </form>    
                 </section>
             </section>
