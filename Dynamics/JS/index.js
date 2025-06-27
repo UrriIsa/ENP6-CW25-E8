@@ -99,41 +99,49 @@ function busqueda(param) {
          (EN ESTE CASO DENTRO DE LA BASE DE DATOS EN ARTISTAS BUSCA EL ID QUE COINCIDA CON EL ID ENVIADO)*/
         if (artista) {
             const cancionesArtista = baseDatosJSON.canciones.filter(c => c.id_artista === artista.id); /*IGUAL QUE ARRIBA PERO ESTE DEVUELVE TODOS LOS ELEMENTOS QUE COINCIDAN
-             (EN ESTE CASO DEVUELVE)*/
-            result = {
-                datos: artista,
-                canciones: cancionesArtista
+             (EN ESTE CASO DENTRO DE LA BASE DE DATOS EN ARTISTAS BUSCA EL ID_ARTISTA QUE COINCIDA CON EL ARTISTA.ID ENVIADO)*/
+            result = { //HACEMOS UN OBJETO
+                datos: artista, //GUARDAMOS EN DATOS LA INFORMACION DEL ARTISTA/EL ELEMENTO QUE REGRESO FIND
+                canciones: cancionesArtista //GUARDAMOS EN DATOS LAS CANCIONES RELACIONADAS CON EL ARTISTA/ LO QUE REGRESO FILTER
             };
             console.log("Artista", result);
-            html ='';
-            html = `<div id="player"><img id="imgArt" src="${result.datos.url_img}"></div>`;
-            html += `<h1>${result.datos.nombre}</h1>`;
-            for(i = 0; i< result.canciones.length;i++){
-                html += `<p class="textCancion" onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
+            html =''; 
+            html = `<div id="player"><img id="imgArt" src="${result.datos.url_img}"></div>`; //DENTRO DEL REPRODUCTOR ENVIA LA IMAGEN DEL ARTISTA
+            html += `<h1>${result.datos.nombre}</h1>`; //MANDA SU NOMBRE
+            for(i = 0; i< result.canciones.length;i++){ //RECORRE EL ARREGLO DE LAS CANCIONES
+                html += `<p class="textCancion" onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`/*
+                AÑADE UN PARRAFOR CON CLASE TEXTCANCION Y LE AÑADE UNA FUNCION ONCLICK QUE MANDA A LLAMAR A REPRODUCCION con un parametro que manda el link de la canción
+                y dentro del parrafo pone el nombre del artista */
             }
-            reproductor.innerHTML = html;
+            reproductor.innerHTML = html; //LO MANDA AL HTML
         }
     }    
-    if(param[1]==="1"){
-        const album = baseDatosJSON.album.find(a => a.id === id);
+    if(param[1]==="1"){ //SI EL TIPO ES 1 == ALBUM
+        const album = baseDatosJSON.album.find(a => a.id === id);/*DEVUELVE EL PRIMER ELEMENTO QUE CUMPLE CON UNA CONDICION
+         (EN ESTE CASO DENTRO DE LA BASE DE DATOS EN ALBUM BUSCA EL ID QUE COINCIDA CON EL ID ENVIADO)*/
         if (album) {
-            const cancionesAlbum = baseDatosJSON.canciones.filter(c => c.id_album === album.id);
+            const cancionesAlbum = baseDatosJSON.canciones.filter(c => c.id_album === album.id);/*IGUAL QUE ARRIBA PERO ESTE DEVUELVE TODOS LOS ELEMENTOS QUE COINCIDAN
+             (EN ESTE CASO DENTRO DE LA BASE DE DATOS EN CANCIONES BUSCA EL ID_ALBUM QUE COINCIDA CON EL ALBUM.ID ENVIADO)*/
             result = {
                 datos: album,
                 canciones: cancionesAlbum
             };
             console.log("Album", result);
-            html = `<div id="player"><img id="imgArt" src="${result.datos.url_img}"></div>`;
-            html += `<h1>${result.datos.nombre}</h1>`;
-            for(i = 0; i< result.canciones.length;i++){
-                html += `<p class="textCancion" onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
+            html = `<div id="player"><img id="imgArt" src="${result.datos.url_img}"></div>`; //DENTRO DEL REPRODUCTOR ENVIA LA IMAGEN DEL ARTISTA
+            html += `<h1>${result.datos.nombre}</h1>`; //MANDA SU NOMBRE
+            for(i = 0; i< result.canciones.length;i++){ //RECORRE EL ARREGLO DE LAS CANCIONES
+                html += `<p class="textCancion" onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`/*
+                AÑADE UN PARRAFOR CON CLASE TEXTCANCION Y LE AÑADE UNA FUNCION ONCLICK QUE MANDA A LLAMAR A REPRODUCCION con un parametro que manda el link de la canción
+                y dentro del parrafo pone el nombre del artista */
             }
-            reproductor.innerHTML = html;
+            reproductor.innerHTML = html; //LO MANDA AL HTML
         }
     }
-    if(param[1]==="2"){
-        const cancion = baseDatosJSON.canciones.find(a=> a.id === id);
-        const artista = baseDatosJSON.artistas.find(a => a.id === cancion.id_artista);
+    if(param[1]==="2"){ //SI EL TIPO ES 2 == CANCIÓN
+        const cancion = baseDatosJSON.canciones.find(a=> a.id === id); /*DEVUELVE EL PRIMER ELEMENTO QUE CUMPLE CON UNA CONDICION
+         (EN ESTE CASO DENTRO DE LA BASE DE DATOS EN CANCIONES BUSCA EL ID QUE COINCIDA CON EL ID ENVIADO)*/
+        const artista = baseDatosJSON.artistas.find(a => a.id === cancion.id_artista); //CON LA CANCION ENCONTRADA HACE LO MISMO PERO COMPARANDO EL ID ARTISTA EN LA BASE DE DATOS EN ARTISTA
+        //MISMA FUNCION QUE IF(PARAM[0]==="0")
         if (artista) {
             const cancionesArtista = baseDatosJSON.canciones.filter(c => c.id_artista === artista.id);
             result = {
@@ -182,7 +190,7 @@ function btnActivo(btn){/* Establece el color del boton*/
     playlistUniqueBtn.style.color = (btn===playlistUniqueBtn) ? activeColor : normalColor;
     sectionPlaylist .style.display = (btn === playlistUniqueBtn) ? "flex" : "none";
     /*Si el boton es igual al boton home por ejemplo, si eso devuelve TRUE el color se establece ACTIVECOLOR, si devuelve FALSE el color
-    se establece  NORMALCOLOR*/
+    se establece  NORMALCOLOR, MISMA FUNCIONALIDAD PERO TAMBIEN LO MUESTRA O NO*/
 }
 
 btnActivo(homeBtn); //ESTABLECE HOME CON EL COLOR DE ACTIVO AL INICIO DE LA PAGINA  
@@ -197,7 +205,7 @@ creditsBtn.addEventListener("click",()=> btnActivo(creditsBtn));
 
 playlistUniqueBtn.addEventListener("click",()=> btnActivo(playlistUniqueBtn));
 ///////////////////////////////////////////////////////////////////////////////////////
-
+//APARTADO HOME
 let artistas = document.getElementById("artistas"); //EN EL ARTICULO ARTISTAS
 
 html = '';
@@ -206,7 +214,8 @@ for(i=0;i<baseDatosJSON.artistas.length;i++){ //RECORRE LA BASE DE DATOS
 } //CREA UN DIV con clase ARTISTA le asigna una funcion ONCLICK con parametros el id y el tipo  y coloca la imagen del artista
 
 artistas.innerHTML += html;
-
+/////////////////////////////////////////////////////////////
+//APARTADO ARTISTAS
 html = '';
 html += `<h1 class="artistTXT">Artistas</h1>`
 html += `<div class="artist-Container">`
@@ -223,21 +232,21 @@ for(i=0;i<baseDatosJSON.album.length;i++){
 html += `</div></div>`
 sectionArtists.innerHTML += html;
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-function reproduce(param){
+function reproduce(param){ //FUNCION REPRODUCE (SIMILAR A BUSQUEDA();)
     const reproductor = document.getElementById("reproductor");
     isOn = reproductor.style.display === "none";
     reproductor.style.display = isOn ? "block" : "none";
     cont++;
-    if(cont === 2){
-        cont = 0;
-        player.destroy();
+    if(cont === 2){ //DETECCION PARA EVITAR QUE DESTRUYA EL REPRODUCTOR EN MOMENTOS EQUIVOCADOS
+        cont = 0; 
+        player.destroy();  //SI "PICAS POR SEGUNDA VEZ" DESTRUYE EL REPRODUCTOR
         player=null;
         return;
     }
     param = param.split(",");
     id = param[0]
     id = Number(id)
-
+    //MISMA FUNCIONALIDAD QUE BUSQUEDA();
     if(param[1]==="0"){
         const artista = baseDatosJSON.artistas.find(a => a.id === id);
         if (artista) {
@@ -273,9 +282,8 @@ function reproduce(param){
             reproductor.innerHTML = html;
         }
     }
-    if(param[1]==="2"){
-        const cancion = baseDatosJSON.canciones.find(a=> a.id === id);
-        console.log(id)
+    if(param[1]==="2"){ //NO HACE NADA
+
     }
 }
 
@@ -303,7 +311,7 @@ function reproduccion(link) {
     if (playerImg) {
         playerImg.style.display = "none";
     }
-    if (player) {
+    if (player) { 
         cambiarVideo(link);
     } else {
         player = new YT.Player("player", {
