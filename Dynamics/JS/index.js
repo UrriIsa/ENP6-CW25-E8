@@ -206,11 +206,16 @@ for(i=0;i<baseDatosJSON.artistas.length;i++){ //RECORRE LA BASE DE DATOS
 artistas.innerHTML += html;
 
 html = '';
+html += `<div class="artist-Container" >`
 html += `<h1 class="artistTXT">Artistas</h1>`
+
 for(i=0;i<baseDatosJSON.artistas.length;i++){
     html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].id},${0}')"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
-} //CREA UN DIV con clase ARTISTA le asigna una funcion ONCLICK con parametros el id y el tipo  y coloca la imagen del artista
+} 
+
+//CREA UN DIV con clase ARTISTA le asigna una funcion ONCLICK con parametros el id y el tipo  y coloca la imagen del artista
 html += `<h1 class="artistTXT">Albumes</h1>`
+html +=`<Selection class="artistTXT">Albumes</Selection>`
 for(i=0;i<baseDatosJSON.album.length;i++){
     html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.album[i].id},${1}')" ><img src="${baseDatosJSON.album[i].url_img}"></div>`
 } //CREA UN DIV con clase ARTISTA le asigna una funcion ONCLICK con parametros el id y el tipo  y coloca la imagen del album
@@ -263,6 +268,7 @@ function reproduce(param){
             for(i = 0; i< result.canciones.length;i++){
                 html += `<p  class="textCancion" onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
             }
+            html += `</div>`
             reproductor.innerHTML = html;
         }
     }
