@@ -40,14 +40,14 @@ body {
 
 
 nav{
-    
     width: 100%;
-    height: 10vh;
-    background-color: #000000;
+    height: 10vh ;
+
+    background-color: #000000 ;
     display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-left: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+
     color: #ffff;
     position: relative;
 }
@@ -107,7 +107,7 @@ nav #listaBusqueda{
 }
 
 aside{
-    width: 7%;
+    width: 15%;
     height: 90%;
     padding: 3%;
     background-color: #06414b;
@@ -132,35 +132,36 @@ aside button{
 }
 
 main{
-    flex: 1;
-    margin: 0;
+    flex: 1; /*Lo mismo que main Content*/
+    margin: 0; /*reiniciar propiedades*/
     padding: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
 }
-
-.bienvenida{
-    width: 87%;
-    margin: 25.79px; 
-    padding: 30px 45px;
+.bienvenida{ /*Clase para el contenedor del mensaje de bienvenida*/
+    width: 80%;
+    height: 8vh;
+    margin: 1% auto 0 auto;  /*contenedor centrado*/ 
+    padding: 5%; /* Menos padding vertical */
     background: #12b39eee;
     color: white;
     border-radius: 25px;
     display: flex;
-    justify-content: space-between;
-    position: relative;
+    justify-content: space-between; /* Separa texto y mascota */
+    position: relative; /* Para posicionamiento absoluto de la mascota */
 }
 
-.texto-bienvenida 
- {
+
+.texto-bienvenida {
+    font-size: 150%;
+    line-height: 1.3; /* Reduce espacio entre líneas */
+    margin-right: 1%; /* Espacio antes de la mascota */
+
     font-family: "VT323", monospace;
     font-weight: 400;
     font-style: normal;
-    font-size: 33px;
-    margin-right: 20px;
     color:#000;
 }
 
@@ -173,44 +174,32 @@ main{
   margin-bottom: 1em;
 }
 .ajolote-mascota{ 
-  display: absolute;
-  position: absolute;
-  /*right: 45px;*/
-  width: 169px;
-  height: 192px;
-  background-color: rgb(255, 255, 255);
-  border-radius: 50%;
-}
-
-
-article[id="artistas"]::before {
-  content: "ARTISTAS RECOMENDADOS";
-  
-  font-family: "Righteous", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 18px;
-  color: rgb(0, 0, 0);
-  width: 100%;
-  text-align: center;
-  margin-bottom: 20px;
-  display: block;
-  margin-left: 44px;
+    position: absolute;
+    right: 20%; /* Espacio a la derecha entre el borde del contenedor "bienvenida"
+                y el contenedor "mascota" (es igual al padding de "bienvenida")*/
+    width: 10%;
+    height: 40%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 100%;
+    display: absolute;
 }
 
 article[id="artistas"]{
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    content: "ARTISTAS RECOMENDADOS";
+    font-family: "Righteous", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 3%;
-    width: 90%;
-    justify-items: center;
-    margin-bottom: 40px;
 }
 
 .artista{
-    
-    width: 100px;
-    height: 100px;
+   
+    width: 10%;
     cursor: pointer;
 }
 
@@ -228,38 +217,359 @@ section [id="artists"]{
     gap: 3%;
 }
 
-footer{
+
+/*************************************************************************************************************************************************/
+/*EMPIEZA CSS DE LISTAS DE PLAYLISTS*/
+
+#playlist {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  height: 100vh;
+  padding: 2em;
+  box-sizing: border-box;
+  background-color:6BA19B;
+  align-items: center;
+}
+
+.playlistHead {
+  width: 100%;
+  background-color: #5DAD8E;
+  border-radius: 0.7em;
+  padding: 0.5em 1em;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 2em;
+}
+
+.headPlay h1 {
+  margin: 0;
+  font-size: 2em;
+  font-family: 'Titulos';
+  color: white;
+}
+.playlistHead img{
+    margin-left: auto;
+    width: 200px;
+    height: 200px;
+}
+/* Contenedor principal del cuerpo: playlist a la izquierda, formulario a la derecha */
+.playlistCuerpo {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2em;
+  flex-wrap: wrap;
+}
+
+/* Contenedor de las playlists a la izquierda */
+.grupoIzquierdo {
+  flex: 1;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* Botones playlist */
+.playlist {
+  background-color: #CC6E5D;
+  color: white;
+  border: none;
+  border-radius: 0.8em;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: left;
+  cursor: pointer;
+  padding: 0.5em 1em;
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+/* Contenedor del formulario a la derecha */
+.formPlaylist {
+  flex: 1 1 auto;
+  max-width: 450px;
+  background-color: #5DAD8E;
+  border-radius: 1em;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin:auto;
+}
+
+.formPlaylist label {
+  font-weight: bold;
+  color: white;
+  font-family: 'Titulos';
+}
+
+.formPlaylist input {
+  font-size: 1em;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border: none;
+  width: 100%;
+}
+
+.submit-btn {
+  margin-top: 1em;
+  padding: 0.7em;
+  background-color: #CC6E5D;
+  color: white;
+  border: none;
+  border-radius: 0.8em;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+@media (max-width: 600px) { /*Aplica estilos según el tamaño de la pantalla*/
+  .playlistCuerpo {
+    flex-direction: column;  /* Columna para que se acomoden uno debajo del otro */
+  }
+  .grupoIzquierdo, /* Los elementos .grupoIzquierdo y .formPlaylist ahora ocupan el 100% del ancho disponible */
+  .formPlaylist {
+    max-width: 100%;
+  }
+}
+
+/*********************************************************************************************************************************************************/
+/*EMPIEZA CSS DE UNA SOLA PLAYLIST*/
+
+.playlistUnique{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     width: 100%;
-    /*height: 12vh;*/
-    margin: 0;
-    background-color: #000;
-    color: coral;
-    position: fixed;
-    bottom: 0;
+    height: 100vh;
+    padding: 2em;
+    box-sizing: border-box;
+    background-color:6BA19B;
+    align-items: center;
+}
+
+.playlistUniqueHead{
+    width: 100%;
+    background-color: #5DAD8E;
+    border-radius: 0.7em;
+    padding: 0.5em 1em;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
+    gap: 1em;
+    margin-bottom: 2em;
+}
+.playlistUniqueHead h3 {
+    margin: 0;
+    font-size: 2em;
+    font-family: 'Titulos';
+    color: white;
+}
+
+.playlistUniqueHead img{
+    margin-left: auto;
+    width: 200px;
+    height: 200px;
+}
+
+
+.canciones {
+    width: 100%;
+    background-color: #5DAD8E;
+    border-radius: 0.7em;
+    padding: 0.5em 1em;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 2em;
+    flex-wrap: wrap;
+}
+.individual {
+  background-color: #CC6E5D;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  width: 120px;
+}
+/*TERMINA CSS DE UNA SOLA PLAYLIST*/
+/**********************************************************************************************************************************************************/
+
+/***********************************************************************************************************************************************/
+/*EMPIEZA CSS DE CRÉDITOS*/
+
+/* CABECERA DE CRÉDITOS */
+
+.creditsContent{
+    display: flex;
     flex-direction: column;
-    justify-items: space-around;
-    /*flex-wrap: wrap;*/
+    gap: 1rem;
+    width: 100%;
+    height: 100vh;
+    padding: 2em;
+    box-sizing: border-box;
+    background-color:6BA19B;
+    align-items: center;
+}
+
+.creditHead {
+    width: 100%;
+    background-color: #CC6E5D;
+    border-radius: 0.7em;
+    padding: 0.5em 1em;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 2em;
+}
+
+.creditHead h1 {
+    margin: 0;
+    font-size: 2em;
+    font-family: 'Titulos';
+    color: white;
+}
+
+.creditHead .texto {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Texto';
+}
+
+.creditHead img {
+    margin-left: auto;
+    width: 200px;
+    height: 200px;
+}
+
+/* CONTENEDOR GENERAL DE SECCIONES */
+.tarjetas {
+    display: flex;
+    flex-direction: row; /* logos a la derecha e integrantes a la izquierda */
+    justify-content: center;
+    width: 200%;
+}
+
+/* TARJETAS INDIVIDUALES */
+.tarjeta {
+    background-color: #56a999;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+/* GRUPO IZQUIERDO: INTEGRANTES Y MENTOR */
+.grupoIzquierdo {
+    width: 200%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.grupoIzquierdo h2 {  /*TIPOGRAFIAS*/
+    font-family: 'Titulos';
+}
+
+.grupoIzquierdo p {   /*TIPOGRAFIAS*/
+    font-family: 'Texto';
+}
+
+/* GRUPO DERECHO: LOGOS */
+.grupoDerecho {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+     align-items: flex-end;
+}
+
+/* FILA DE DOS PRIMEROS LOGOS */
+.grupoDerecho12 {
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* LOGO GRANDE ABAJO */
+.grupoDerecho3 {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+.tarjeta unam .tarjeta prepa {
+    max-width: 120px;
+    max-height: 120px;
+    display: block;
+}
+
+.tarjeta ete {
+    max-width: 250px;
+    max-height: 250px;
+    display: block;
+}
+
+/*TERMINA CSS DE CRÉDITOS*/
+/*******************************************************************************************************************************************/
+
+
+
+
+footer{
+    width: 100%;
+    height: 12vh;
+    padding: 0; /*Igual que arriba reinicia*/
+    margin: 0;
+
+    background-color: #000;
+    color: coral;
+    bottom:0;
+    position: fixed;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 3%; 
 }
 
-#contenedorBotones{
+footer button{ /*SOLO AFECTA A LOS BOTONES DENTRO DE FOOTER*/
+    width: 2%;
+    height: 40%;
+    margin: 1%;
+    padding: 0;
+
+    border: 0 transparent;
+    background-color: transparent;
+    color: #ffff;
+    font-size: 125%;
+
+    transition: .5s;
+    cursor: pointer;
+
     display: flex;
-    flex-direction: row;
-    justify-items: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    
 }
-
-
-
-
-
 #barraTiempo{
     width: 70%;
     height: 5px;
+
     background-color: coral;
     border-radius: 10px;
-    margin-top: 10px;
+    margin-bottom: 1%;
 }
 
 /********************************************************************************/
@@ -276,6 +586,51 @@ footer{
 .video-container iframe {
     width: 100%;
     height: 100%;
+}
+
+#reproductor{
+    width: 25%;
+    height: 100%;
+    background-color: #AB4949;
+    display: flex;
+    flex-direction: column;
+}
+
+#reproductor img{
+    border-radius: 10px;
+    width: 95%;
+    height: 100% ;
+    margin: 1%;
+}
+
+#reproductor h1{
+    font-size: 200%;
+    width: fit-content;
+    margin: 10%;
+    color: #FDC787;
+}
+#player{
+    border-radius: 10px;
+    width: 95%;
+    height: 30% ;
+    margin: 1%;
+}
+
+.textCancion{
+    width: 75%;
+    font-size: 150%;
+    cursor: pointer;
+    font-family: "Texto";
+    margin: 10%;
+    color: #ffff;
+    border-radius: 10px;
+    border: .5em solid transparent;
+    transition-property: all;
+    transition-duration: .5s;
+}
+
+.textCancion:hover{
+    border: .5em solid #CC6E5D;
 }
 
 

@@ -39,13 +39,13 @@
                 <main id="home">    
                     <article class="bienvenida"> <!--MENSAJE DE BIENVENIDOS-->
                         <div class="texto-bienvenida"> <!--Clase que da estructura al texto del contenedor-->
-                        <h1>¡Bienvenido a AXOLOFY!</h1>
-                        <p> Tu plataforma musical favorita</p>
+                            <h1>¡Bienvenido a AXOLOFY!</h1>
+                            <p> Tu plataforma musical favorita</p>
                         </div>
                        
-        <div class="ajolote-container">
-            <img src="../Statics/imagenes/ajolotito.jpg" alt="Ajolote mascota" class="ajolote-mascota">
-        </div>
+                    <div class="ajolote-container">
+                        <img src="../Statics/imagenes/imagenesCréditos/ajolote.png" alt="Ajolote mascota" class="ajolote-mascota">
+                    </div>
                     </article>
                     <article id="artistas">
 
@@ -54,77 +54,63 @@
                 <section id="artists">
 
                 </section>
-                <!--APARTADO MAQUETADO DE LISTA DE PLAYLISTS-->
-                <section class="listaPlaylist" style="display: none;">
-                    <div class="playlistHead">
-                        <div class="headPlay">
-                            <h1>Playlists</h1>
-                            <img src="../Statics/Imagenes/imagenesCréditos/ajolote.png" alt="Ajolote">
+               <!--APARTADO MAQUETADO DE LISTA DE PLAYLISTS-->
+            <section id="playlist">
+                                  
+                <header class="playlistHead">
+                    <div class="headPlay">
+                        <h1>Playlists</h1>
+                     </div>
+                        <img src="../Statics/Imagenes/imagenesCréditos/ajolote.png" alt="Ajolote" />
+                </header>
+
+                <section class="playlistCuerpo">
+                        <div class="grupoIzquierdo">
+                                            <!-- Aquí van las playlists -->
+                            <button class="playlist" id="playlistBtn1">Playlist 1</button>
+                            <button class="playlist" id="playlistBtn2">Playlist 2</button>
+                            <button class="playlist" id="playlistBtn3">Playlist 3</button>
+                                            <!-- Agregar más botones según se necesite -->
+                        </div>
+
+                        <form class="formPlaylist">
+                            <label for="nombrePlaylist">Nombre de la playlist:</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                            <br>
+                            <label for="Agregar canciones"> Agregar canciones: </label>
+                            <input type="select" name="canciones" id="can" required>
+                            <br>
+                            
+                            <button type="submit" class="submit-btn">Crear playlist</button>          
+                        </form>                   
+                </section>
+            </section>
+
+               <!--INICIA MAQUETADO DE UNA SOLA PLAYLIST-->
+            <section id="playlistUnico" class="playlistUnique">
+               <div class="playlistUniqueHead">
+                    <h3>Playlist 1</h3>
+                    <img src="../Statics/Imagenes/imagenesCréditos/ajolote.png" alt="Ajolote" />
+               </div>
+                    <div class="canciones">
+                        <div class="individual">
+                        <p>Nombre<br><span>canción</span></p>
+                        </div>
+                        <div class="individual">
+                        <p>Nombre<br><span>canción</span></p>
+                        </div>
+                        <div class="individual">
+                        <p>Nombre<br><span>canción</span></p>
+                        </div>
+                        <div class="individual">
+                        <p>Nombre<br><span>canción</span></p>
                         </div>
                     </div>
-                        
-                    <div class="playlistContenedor">
-                        <div class="grupoIzquierdo">
-                            <button>
-
-                            </button>
-                        </div>
-
-                    <form class="formPlaylist">
-                        <label for="nombrePlaylist">Nombre de la playlist:</label>
-                        <br>
-                        <input type="text" id="nombre" name="nombre" required>
-                        <br>
-                        <label for="Agregar canciones"> Agregar canciones: </label>
-                        <br>
-                        <input type="number" name="edad" id="ed" placeholder="Ingresa tu edad" required>
-                        <br>
-                        
-                        <button type="submit" class="submit-btn">Crear playlist</button>
-
-
-                        </div>
-                        <div class="grupoDerecho">
-                            <div class="grupoDerecho12">
-                                <div class="tarjeta unam">
-                                    <img src="../Statics/Imagenes/imagenesCréditos/logoUnam.png" alt="ENP6">
-                                </div>
-                                <div class="tarjeta prepa">
-                                    <img src="../Statics/Imagenes/imagenesCréditos/logoPrepa.png" alt="UNAM">
-                                </div>
-                            </div>
-                            <div class="grupoDerecho3">
-                                <div class="tarjeta ete">
-                                    <img src="../Statics/Imagenes/imagenesCréditos/logoEteCompu.png" alt="CM">
-                                </div>
-                            </div>
-                        </div>             
-                    </div>                      
-                    
-
-                </section>
-                <!--TERMINA MAQUETADO DE LISTA DE PLAYLIST-->
-
-
-
-                <!--INICIA MAQUETADO DE UNA SOLA PLAYLIST-->
-                <section id="playlist">
-
-                </section>
-
-                 <!--TERMINA MAQUETADO DE UNA SOLA PLAYLIST-->
-
-
+            </section>
 
 
                 <!--APARTADO PARA MAQUETADO DE CRÉDITOS-->
-
-                <section id="credits">
-
-                <section class="credits">
-
-                <section id="credits">
-
+                <section id="credits" class="creditsContent">
                     <div class="creditHead">
                         <div class="texto">
                             <h1>Créditos</h1>
@@ -136,7 +122,6 @@
                         <div class="grupoIzquierdo">
                              <div class="tarjeta integrantes">
                                 <h2>Integrantes</h2>
-                                <br>
                                 <p>Carlos Alberto Perez Banda</p>
                                 <p>Márquez Arias Luisa Yaretzi</p>
                                 <p>Acevedo Rea Stefany Nahomi</p>
@@ -173,33 +158,22 @@
                 <!--TERMINA APARTADO CRÉDITOS-->
             
 
-            <section id="reproductor" style="display: none;">
+        <section id="reproductor" style="display: none;">
                 <section class="video-container" >
                     <div id="player">
 
                     </div>
                 </section>
-            </section>
         </section>
 
         <footer>
-            <div id="contenedorBarraTiempo">
-                <input type="range" max="100"  id="barraTiempo"> <!--Barra para mover la canción-->
-            </div>
-            <div id="contenedorBotones">
-                <div id="controlLista">
-                    <button id="listRepo"><i class="fa-solid fa-bars"></i></button>  <!--Botón para ver la lista de reproducción-->
-                </div>
-                <div id="botonesControl">
-                    <button id="backBtn"><i class="fa-solid fa-backward"></i></button> <!--Botón para regresar a la canción pasada-->
-                    <button id="pauseBtn"><i class="fa-solid fa-play"></i></button> <!--Botón para pausar/play a la canción-->
-                    <button id="skipBtn"><i class="fa-solid fa-forward"></i></button> <!--Botón para saltar a la siguiente canción-->
-                </div>
-                <div id="controlSonido">
-                    <button id="soundBtn"><i class="fa-solid fa-volume-high"></i></button>
-                    <input type="range" max="100"  id="volumeSlider"> <!--Botón apra ajustar el sonido-->
-                </div>
-            </div>
+            <button id="backBtn"><i class="fa-solid fa-backward"></i></button> <!--Boton para regresar a la cancion pasada-->
+            <button id="pauseBtn"><i class="fa-solid fa-play"></i></button> <!--Boton para pausar/play a la cancion-->
+            <button id="skipBtn"><i class="fa-solid fa-forward"></i></button> <!--Boton para saltar a la siguiente cancion-->
+            <button id="listRepo"><i class="fa-solid fa-bars"></i></button>  <!--Boton para ver la lista de Reproduccion-->
+            <button id="soundBtn"><i class="fa-solid fa-volume-high"></i></button>
+            <input type="range" max="100"  id="volumeSlider"> <!--Boton apra ajustar el sonido-->
+            <input type="range" max="100"  id="barraTiempo"> <!--Barra para mover la cancion-->
         </footer>
         
     <script src="../Dynamics/JS/index.js"></script> <!--LINKEO del JavaScript del index-->

@@ -1,7 +1,3 @@
-let id = 9;
-let id_artista = 9;
-let id_album = 11;
-let id_genero = 1;
 const baseDatosJSON = {
   canciones: [
     {
@@ -104,117 +100,117 @@ const baseDatosJSON = {
       id_genero: 3
     },
     {
-      id: id++,
+      id: 10,
       nombre: "It's Not a Fashion Statement, It's a Deathwish",
       artista: "My Chemical Romance",
-      id_artista: id_artista++,
+      id_artista: 10,
       album: "Three Cheers for Sweet Revenge",
-      id_album: id_album++,
+      id_album: 9,
       link: "U2KiokcbHnA",
-      genero: "Rock Alternativo / Emo",
-      id_genero: id_genero++
+      genero: "Rock",
+      id_genero: 3
     },
     {
-      id: id++,
+      id: 11,
       nombre: "Motomami",
       artista: "Rosalía",
-      id_artista: id_artista++,
+      id_artista: 11,
       album: "Motomami",
-      id_album: id_album++,
+      id_album: 10,
       link: "cfxq9q17AoA",
-      genero: "Reguetón Alternativo / Experimental",
-      id_genero: id_genero++
+      genero: "Pop",
+      id_genero: 2
     },
     {
-      id: id++,
+      id: 12,
       nombre: "Stronger Than Me",
       artista: "Amy Winehouse",
-      id_artista: id_artista++,
+      id_artista: 12,
       album: "Frank",
-      id_album: id_album++,
+      id_album: 11,
       link: "s_vll3TOLog",
-      genero: "Soul / R&B",
-      id_genero: id_genero++
+      genero: "R&B",
+      id_genero: 5
     },
     {
-      id: id++,
+      id: 13,
       nombre: "Apocalypse",
       artista: "Cigarettes After Sex",
-      id_artista: id_artista++,
+      id_artista: 13,
       album: "Cigarettes After Sex",
-      id_album: id_album++,
+      id_album: 12,
       link: "tLqfkSTtEAI",
-      genero: "Dream Pop / Indie Rock",
-      id_genero: id_genero++
+      genero: "Pop",
+      id_genero: 2
     },
     {
-      id: id++,
+      id: 14,
       nombre: "We Major",
-      artista: "Kanye West feat. Nas & Really Doe",
-      id_artista: id_artista++,
+      artista: "Kanye West",
+      id_artista: 14,
       album: "Late Registration",
-      id_album: id_album++,
+      id_album: 13,
       link: "cSV8SEtJNE8",
       genero: "Hip Hop",
-      id_genero: id_genero++
+      id_genero: 4
     },
     {
-      id: id++,
+      id: 15,
       nombre: "NDA",
       artista: "Billie Eilish",
-      id_artista: id_artista++,
+      id_artista: 15,
       album: "Happier Than Ever",
-      id_album: id_album++,
+      id_album: 14,
       link: "VseaNKlYXa8",
-      genero: "Alternative/Electropop",
-      id_genero: id_genero++
+      genero: "Música Electrónica",
+      id_genero: 1
     },
     {
-      id: id++,
+      id: 16,
       nombre: "Summertime Sadness",
       artista: "Lana Del Rey",
-      id_artista: id_artista++,
+      id_artista: 16,
       album: "Born to Die",
-      id_album: id_album++,
+      id_album: 15,
       link: "NTola8dwutM",
-      genero: "Baroque Pop / Dream Pop",
-      id_genero: id_genero++
+      genero: "Pop",
+      id_genero: 2
     },
     {
-      id: id++,
+      id: 17,
       nombre: "Debajo de tu piel",
       artista: "Caifanes",
       id_artista: 8,
       album: "El Silencio",
       id_album: 10,
       link: "fNw-EcVwIKs",
-      genero: "Rock en Español",
-      id_genero: id_genero++
+      genero: "Rock",
+      id_genero: 2
     },
     {
-      id: id++,
+      id: 18,
       nombre: "Rosa Pastel",
       artista: "Belanova",
-      id_artista: id_artista++,
+      id_artista: 17,
       album: "Dulce Beat",
-      id_album: id_album++,
+      id_album: 16,
       link: "wkJxbV1ZlE0",
-      genero: "Electropop",
-      id_genero: id_genero++
+      genero: "Pop",
+      id_genero: 2
     },
     {
-      id: id++,
+      id: 19,
       nombre: "Under Pressure",
       artista: "Queen & David Bowie",
       id_artista: 7,
       album: "Hot Space",
-      id_album: id_album++,
+      id_album: 17,
       link: "ZyT8mVwf_40",
-      genero: "Rock Clásico",
-      id_genero: id_genero++
+      genero: "Rock",
+      id_genero: 3
     }
-    ],
-  artistas: [
+  ],
+artistas: [
     {
       id: 1,
       nombre: "Avicii",
@@ -270,53 +266,53 @@ const baseDatosJSON = {
       url_img: "https://i.scdn.co/image/ab6761610000e5eb99a6ccc4aae5ae5404c9eb30"
     },
     {
-      id: id_artista++,
+      id: 10,
       nombre: "My Chemical Romance",
       descripcion: "My Chemical Romance es una banda de rock alternativa de Nueva Jersey, influyente en la escena emo/pop-punk de los 2000‑tarde :contentReference[oaicite:1]{index=1}.",
       url_img: "../Statics/imagenes/miromanceconelchema.jpeg"
     },
     {
-      id: id_artista++,
+      id: 11,
       nombre: "Rosalía",
       descripcion: "Rosalía Vila Tobella es una cantante y productora española, ganadora de varios Grammy y conocida por fusionar flamenco con sonidos urbanos :contentReference[oaicite:2]{index=2}.",
       url_img: "../Statics/imagenes/rosalia.jpeg"
     },
     {
-      id: id_artista++,
+      id: 12,
       nombre: "Amy Winehouse",
       descripcion: "Amy Jade Winehouse (1983–2011) fue una cantante británica de soul/jazz, ganadora de Grammys y conocida por su potente voz contralto :contentReference[oaicite:3]{index=3}.",
       url_img: "../Statics/imagenes/amyw.jpeg"
     },
     {
-      id: id_artista++,
+      id: 13,
       nombre: "Cigarettes After Sex",
       descripcion: "Cigarettes After Sex es una banda estadounidense de dream pop/indie, liderada por Greg Gonzalez y conocida por su sonido etéreo y melancólico :contentReference[oaicite:4]{index=4}.",
       url_img: "../Statics/imagenes/cigarrosdespuesdesex.jpeg"
     },
     {
-      id: id_artista++,
+      id: 14,
       nombre: "Kanye West",
       descripcion: "Kanye Omari West (n. 1977) es un rapero, productor y diseñador de moda estadounidense, famoso por su innovación y controversia :contentReference[oaicite:5]{index=5}.",
       url_img: "../Statics/imagenes/wemajor.jpeg"
     },
     {
-      id: id_artista++,
+      id: 15,
       nombre: "Billie Eilish",
       descripcion: "Billie Eilish Pirate Baird O'Connell (n. 2001) es una cantante‑compositora estadounidense, surgida con 'Ocean Eyes' y conocida por su estilo dark pop :contentReference[oaicite:6]{index=6}.",
       url_img: "../Statics/imagenes/billie.jpeg"
     },
     {
-      id: id_artista++,
+      id: 16,
       nombre: "Lana Del Rey",
       descripcion: "Elizabeth Woolridge Grant (n. 1985), conocida como Lana Del Rey, es cantante‑compositora estadounidense de pop melancólico y cinematográfico :contentReference[oaicite:7]{index=7}.",
       url_img: "../Statics/imagenes/laotra.jpeg"
     },
     {
-      id: id_artista++,
+      id: 17,
       nombre: "Belanova",
       descripcion: "Belanova es un grupo mexicano de electropop fundado en Guadalajara, popular en los 2000s por su sonido bailable :contentReference[oaicite:9]{index=9}.",
       url_img: "../Statics/imagenes/belanova.webp"
-    }
+    },
   ],
   genero: [
     {
@@ -446,6 +442,6 @@ const baseDatosJSON = {
     }
   ]
 };
-
+console.log(baseDatosJSON.canciones);
 console.log(baseDatosJSON.artistas);
 
