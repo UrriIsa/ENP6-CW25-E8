@@ -1,20 +1,23 @@
+/*Márgenes y box-sizing*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/*Estilos generales del cuerpo de la página*/
 body {
     width: 100vw;
     height: 100vh;
     background: #2c867c;
-    color: #f0f0f0;
+    color: #f0f0f0; /* Color del texto */
     font-family: "Righteous", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/*Caja principal del formulario*/
 main {
     width: 90%;
     max-width: 500px;
@@ -22,20 +25,23 @@ main {
     background-color: #125658;
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0,0,0,0.4);
-    animation: fadeIn 1s;
+    animation: fadeIn 1s; /*Animación de entrada*/
 }
 
+/*Animación de aparición*/
 @keyframes fadeIn {
     from { opacity: 2; transform: scale(0.9); }
     to { opacity: 1; transform: scale(1); }
 }
 
+/*Estilo general del formulario*/
 form {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
 }
 
+/*Título*/
 h1 {
     font-size: 2rem;
     text-align: center;
@@ -43,6 +49,7 @@ h1 {
     margin-bottom: 1rem;
 }
 
+/*Contenedor de cada input*/
 .texto {
     background: #fff;
     border-radius: 1.5rem;
@@ -53,10 +60,12 @@ h1 {
     transition: border 0.3s;
 }
 
+/*Borde visible al enfocar el input*/
 .texto:focus-within {
     border-color: #C76B5D;
 }
 
+/*Input dentro del contenedor*/
 .texto input {
     flex: 1;
     border: none;
@@ -66,6 +75,7 @@ h1 {
     color: #000;
 }
 
+/*Botón que envia la información*/
 button {
     background-color: #C76B5D;
     color: #fff;
@@ -77,6 +87,7 @@ button {
     transition: 0.2s;
 }
 
+/*Hace que cambie de color al pasar el mouse*/
 button:hover {
     background-color: #5DB98E;
     color: #000;
@@ -92,12 +103,14 @@ article {
     font-size: 0.9rem;
 }
 
+/*Enlace en el texto que te lleva a el inicio de sesión si ya tienes una cuenta*/
 a {
     color: #FDC787;
     text-decoration: none;
     font-weight: bold;
 }
 
+/*Hace que se adapte a pantallas pequeñas*/
 @media (max-width: 500px) {
     main {
         padding: 1.5rem;
