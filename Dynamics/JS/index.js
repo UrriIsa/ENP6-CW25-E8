@@ -390,16 +390,16 @@ let busquedaCanciones = document.getElementById("can");
 
 /////////////////////////////////////////////////
 
-busquedaCanciones.addEventListener("input",()=>{ 
+busquedaCanciones.addEventListener("input",() =>{
     let listaDeBusqueda  = []; //SE GUARDA LA LISTA DE BUSQUEDAS
     let j = 0;
-    const listaBusquedaPlaylists = document.getElementById("listaBusqueda");
+    const listaBusquedaCanciones = document.getElementById("buscadorCanciones");
     if(busquedaCanciones.value.trim() === ""){
-        listaBusquedaPlaylists.innerHTML = '';
-        listaBusquedaPlaylists.style.display = "none"
+        listaBusquedaCanciones.innerHTML = '';
+        listaBusquedaCanciones.style.display = "none"
         return;
     }
-     /*DESPLIEGA BUSCADOR DE CANCIONES*/
+    
     for(i=0;i<baseDatosJSON.canciones.length;i++){ //RECORRE EL ARREGLO ARTISTAS
         let palabra = busquedaCanciones.value.toUpperCase(); //VUELVE LO QUE INGRESO EL USUARIO EN MAYUSCULAS
         let cancion = baseDatosJSON.canciones[i].nombre; 
@@ -423,42 +423,26 @@ busquedaCanciones.addEventListener("input",()=>{
     });
     html ='';
     for(i=0;i<listaDeBusqueda.length;i++){ //recorre el arreglo listaDeBusqueda
-        html += `<div class="opcion" onclick="busqueda('${listaDeBusqueda[i].id},${listaDeBusqueda[i].tipo}')"><h1>${listaDeBusqueda[i].nombre}</h1></div>`
+        html += `<div class=""> <h1> ${listaDeBusqueda[i].nombre} </h1> </div>`
     } //se crea un DIV con clase opcion y le añade una funcion onClick con parametos el id y el tipo y dentro el titulo(NOMBRE)
-    listaBusquedaPlaylists.style.display = "block";
-    listaBusquedaPlaylists.innerHTML = html;
+    listaBusquedaCanciones.style.display = "block";
+    listaBusquedaCanciones.innerHTML = html;
 });
 
-function busqueda(param) {
-    param = param.split(",");
-    id = param[0]
-    id = Number(id)
-    const listaBusquedaPlaylists = document.getElementById("listaBusqueda");
-    listaBusquedaPlaylists.innerHTML = '';
-    listaBusquedaPlaylists.style.display = "none"
-    const reproductor = document.getElementById("reproductor");
-    isOn = reproductor.style.display === "none";
-    reproductor.style.display = isOn ? "block" : "none";
 
-   if(param[1]==="2"){
-        const cancion = baseDatosJSON.canciones.find(a=> a.id === id);
-        const artista = baseDatosJSON.artistas.find(a => a.id === cancion.id_artista);
-        if (artista) {
-            const cancionesArtista = baseDatosJSON.canciones.filter(c => c.id_artista === artista.id);
-            result = {
-                datos: artista,
-                canciones: cancionesArtista
-            };
-            console.log("Artista", result);
-            html = `<div id="player"></div><img id="imgArt" src="${result.datos.url_img}">`;
-            html += `<h1>${result.datos.nombre}</h1>`;
-            for(i = 0; i< result.canciones.length;i++){
-                html += `<p onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
-            }
-            reproductor.innerHTML = html;
-        }
-    }
+
+seleccionCanciones.addEventListener("click", () =>{
+    new Array = getElementById("nombrePlaylist");
+
+});
+
+function almacena (id) {
+    
 }
+
+
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*CREACIÓN DE PLAYLIST*/
