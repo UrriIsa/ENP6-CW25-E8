@@ -1,157 +1,132 @@
-asi esta mi css y sigue sin verse dentro *{
+* {
     margin: 0;
     padding: 0;
-    overflow: visible;
-
+    box-sizing: border-box;
 }
 
 body {
-    border-radius: 66%;
-    font-family: "Righteous", sans-serif; 
     width: 100vw;
     height: 100vh;
-    margin: 0;
-    padding: 0;
-    background: #6BA19B;
-    color: #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;    
-    justify-content: center;
-}
-
-/* = FORM
---------------------------------------------- */
-main{
-    border-radius: 33%;
+    background: #28857b;
     font-family: "Righteous", sans-serif;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
     align-items: center;
-    width: 88%;
-    height: 88%
-
-}
-
-form{
-
-    border-radius: 22%;
-    font-family: "Righteous", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 0.9em;
-    position: relative;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 1em;
-    width: 41%;
-    height: 80%;
-    padding: 2% 5%;
-    background: #054C4E;
-    overflow: hidden;    
+    color: #fff;
+    overflow: hidden;
 }
 
-
-h1 {
-    font-family: "Righteous", sans-serif;
-    text-align: center;
-    font-size: 2.5rem;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: #e7c6c6;
+main {
+    height: 88%;
+    width: 566px;
+    max-width: 399px;
+    padding: 60px;
+    background-color: #084d50;
+    border-radius: 20px;
+    box-shadow: 0 11px 44px rgba(0, 0, 0, 0.4);
+    animation: aparecer 1s;
 }
 
-h3{
-    font-family: "Righteous", sans-serif;
-    width: 20%;
-    text-align: center;
-    
-}
-
-input{
-    width: 70%;
-    height: 100%;
-    right: 0;
-    border: none;
-    border-radius: 1.5em;
-    background: none;
-    outline: 0px;
-}
-
-button {
-    border-radius: 49%;
-    background: #C76B5D;
-    color: #ffffff;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-family: "Righteous", sans-serif;
-    font-size: 1rem;
-    margin: 5px 0;
-    transition: background 0.3s ease;
-    width: 28%;
-    height: 11%;
-}
-
-button:hover {
-    background: #5DB98E;
-    color: black;
-}
-
-a{
-    color:#C76B5D;
-}
-
-
-label {
-    position: static;
-    width: 80%;
-    height: auto;
-    pointer-events: auto;
-    margin: 2%;
-}
-
-.input{
-    position: relative;
-    display: flex;
-    justify-content:flex-start;
-    align-items: center;
-    width: 100%;
-    height: 3em;
-    margin: 1%;
-    background-color: #ffffff;
-    text-indent: 2em;
-
-}
-
-#cambio{
-    align-self: flex-end;
-}
-
-#user,#password{
-    border: .3em solid transparent;
+@keyframes aparecer {
+    from {
+        opacity: 3;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 4;
+        transform: scale(1);
+    }
 }
 
 .ajolote-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    margin-left: 13px;
 }
 
 .ajolote-mascota {
-  max-width: 120px;
-  height: auto;
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
-  transition: transform 0.3s ease;
+    width: 111px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s;
 }
 
 .ajolote-mascota:hover {
-  transform: scale(1.1) rotate(5deg);
+    transform: scale(1.5) rotate(11deg);
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #FDC787;
+    margin-bottom: 1rem;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 1.5em;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    border: 3px solid transparent;
+    transition: border 0.3s;
+}
+
+.input:focus-within {
+    border-color: #96554a;
+}
+
+.input input {
+    border: none;
+    outline: none;
+    background: transparent;
+    flex: 1;
+    font-size: 1rem;
+    color: #333;
+}
+
+button {
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 33px;
+    border: none;
+    background-color: #C76B5D;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.8s;
+}
+
+button:hover {
+    background-color: #5DB98E;
+    color: #000;
+}
+
+#cambio {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+#cambio a {
+    color: #FDC787;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+@media (max-width: 500px) {
+    main {
+        padding: 1.5rem;
+    }
+
+    .ajolote-mascota {
+        width: 80px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
 }
