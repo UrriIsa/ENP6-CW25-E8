@@ -19,58 +19,58 @@ busquedaInput.addEventListener("input",()=>{
         return;
     }
     for(i=0;i<baseDatosJSON.artistas.length;i++){ //RECORRE EL ARREGLO ARTISTAS
-        let palabra = busquedaInput.value.toUpperCase(); //VUELVE LO QUE INGRESO EL USUARIO EN MAYUSCULAS
+        let palabra = busquedaInput.value.toUpperCase(); //VUELVE LO QUE INGRESO EL USUARIO EN MAYÚSCULAS
         let artista = baseDatosJSON.artistas[i].nombre; 
         artista = artista.toUpperCase(); //VUELVE AL NOMBRE DEL ARTISTA A MAYUS
 
-        if(artista.includes(palabra)){ //SI LA PALABRA QUE INGRESO EL USUARIO ESTA INCLUIDA
+        if(artista.includes(palabra)){ //SI LA PALABRA QUE INGRESO EL USUARIO ESTÁ INCLUIDA
             listaDeBusqueda[j] = { //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
-                nombre: baseDatosJSON.artistas[i].nombre.trim(), //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
-                id: baseDatosJSON.artistas[i].id, //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
-                tipo: 0 //Y LE DA UN TIPO (0=ARTISTA,1=ALBUM Y 2=CANCION)
+                nombre: baseDatosJSON.artistas[i].nombre.trim(), //DENTRO DE ESTE SE GUARDA EL NOMBRE DEL ARTISTA
+                id: baseDatosJSON.artistas[i].id, //DENTRO DE ESTE SE GUARDA EL ID DEL ARTISTA
+                tipo: 0 //Y LE DA UN TIPO (0=ARTISTA,1=ALBUM Y 2=CANCIÓN)
             } 
             j++; //RECORRE EL ARREGLO DE BUSQUEDA
         }
     }
     for(i=0;i<baseDatosJSON.album.length;i++){ //RECORRE EL ARREGLO ARTISTAS
-        let palabra = busquedaInput.value.toUpperCase(); //VUELVE LO QUE INGRESO EL USUARIO EN MAYUSCULAS
+        let palabra = busquedaInput.value.toUpperCase(); //VUELVE LO QUE INGRESO EL USUARIO EN MAYÚSCULAS
         let album = baseDatosJSON.album[i].nombre; 
         album = album.toUpperCase(); //VUELVE AL NOMBRE DEL ARTISTA A MAYUS
 
-        if(album.includes(palabra)){ //SI LA PALABRA QUE INGRESO EL USUARIO ESTA INCLUIDA
+        if(album.includes(palabra)){ //SI LA PALABRA QUE INGRESO EL USUARIO ESTÁ INCLUIDA
             listaDeBusqueda[j] = { //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
-                nombre: baseDatosJSON.album[i].nombre.trim(), //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
-                id: baseDatosJSON.album[i].id, //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
-                tipo: 1 //Y LE DA UN TIPO (0=ARTISTA,1=ALBUM Y 2=CANCION)
+                nombre: baseDatosJSON.album[i].nombre.trim(), //DENTRO DE ESTE SE GUARDA EL NOMBRE DEL ALBUM
+                id: baseDatosJSON.album[i].id, //DENTRO DE ESTE SE GUARDA EL ID DE LA ALBUM
+                tipo: 1 //Y LE DA UN TIPO (0=ARTISTA,1=ALBUM Y 2=CANCIÓN)
             } 
             j++; //RECORRE EL ARREGLO DE BUSQUEDA
         }
     }
     for(i=0;i<baseDatosJSON.canciones.length;i++){ //RECORRE EL ARREGLO ARTISTAS
-        let palabra = busquedaInput.value.toUpperCase(); //VUELVE LO QUE INGRESO EL USUARIO EN MAYUSCULAS
+        let palabra = busquedaInput.value.toUpperCase(); //VUELVE LO QUE INGRESO EL USUARIO EN MAYÚSCULAS
         let cancion = baseDatosJSON.canciones[i].nombre; 
         cancion = cancion.toUpperCase(); //VUELVE AL NOMBRE DEL ARTISTA A MAYUS
 
-        if(cancion.includes(palabra)){ //SI LA PALABRA QUE INGRESO EL USUARIO ESTA INCLUIDA
+        if(cancion.includes(palabra)){ //SI LA PALABRA QUE INGRESO EL USUARIO ESTÁ INCLUIDA
             listaDeBusqueda[j] = { //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
-                nombre: baseDatosJSON.canciones[i].nombre.trim(), //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
-                id: baseDatosJSON.canciones[i].id, //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
-                tipo: 2 //Y LE DA UN TIPO (0=ARTISTA,1=ALBUM Y 2=CANCION)
+                nombre: baseDatosJSON.canciones[i].nombre.trim(), //DENTRO DE ESTE SE GUARDA EL NOMBRE DE LA CANCIÓN
+                id: baseDatosJSON.canciones[i].id, //DENTRO DE ESTE SE GUARDA EL ID DE LA CANCIÓN
+                tipo: 2 //Y LE DA UN TIPO (0=ARTISTA,1=ALBUM Y 2=CANCIÓN)
             }
             j++; //RECORRE EL ARREGLO DE BUSQUEDA
         }
     }
     listaDeBusqueda.sort(); //SORTEA POR ORDEN ALFABETICO LA LISTADEBUSQUEDA
     listaDeBusqueda.sort((a,b)=>{ //SORTEA POR LO QUE INGRESO EL USUARIO "SI INGRESA N" => COLOCA LAS N PRIMERO EN EL ARREGLO
-        let posA = a.nombre.indexOf(busquedaInput.value); //BUSCA LA POSICION DE X EN A (SI ES N Y LA PALABRA ES NARANJA ES IGUAL A 0)
-        let posB = b.nombre.indexOf(busquedaInput.value); //BUSCA LA POSICION DE X EN B (SI ES N Y LA PALABRA ES MANZANA ES IGUAL A 2)
+        let posA = a.nombre.indexOf(busquedaInput.value); //BUSCA LA POSICIÓN DE X EN A (SI ES N Y LA PALABRA ES NARANJA ES IGUAL A 0)
+        let posB = b.nombre.indexOf(busquedaInput.value); //BUSCA LA POSICIÓN DE X EN B (SI ES N Y LA PALABRA ES MANZANA ES IGUAL A 2)
         
         return posA - posB; //SI EL VALOR A ES MENOR QUE EL VALOR B => A VA ANTES QUE B (0 - 2 = -2 como es negativo A va antes que B)
     });
     html ='';
     for(i=0;i<listaDeBusqueda.length;i++){ //recorre el arreglo listaDeBusqueda
         html += `<div class="opcion" onclick="busqueda('${listaDeBusqueda[i].id},${listaDeBusqueda[i].tipo}')"><h1>${listaDeBusqueda[i].nombre}</h1></div>`
-    } //se crea un DIV con clase opcion y le añade una funcion onClick con parametos el id y el tipo y dentro el titulo(NOMBRE)
+    } //se crea un DIV con clase opcion y le añade una FUNCIÓN onClick con parametos el id y el tipo y dentro el titulo(NOMBRE)
     listaBusquedaHtml.style.display = "block";
     listaBusquedaHtml.innerHTML = html;
 });
@@ -110,7 +110,7 @@ function busqueda(param) {
             html += `<h1>${result.datos.nombre}</h1>`; //MANDA SU NOMBRE
             for(i = 0; i< result.canciones.length;i++){ //RECORRE EL ARREGLO DE LAS CANCIONES
                 html += `<p class="textCancion" onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`/*
-                AÑADE UN PARRAFOR CON CLASE TEXTCANCION Y LE AÑADE UNA FUNCION ONCLICK QUE MANDA A LLAMAR A REPRODUCCION con un parametro que manda el link de la canción
+                AÑADE UN PARRAFOR CON CLASE TEXTCANCION Y LE AÑADE UNA FUNCIÓN ONCLICK QUE MANDA A LLAMAR A REPRODUCCION con un parametro que manda el link de la canción
                 y dentro del parrafo pone el nombre del artista */
             }
             reproductor.innerHTML = html; //LO MANDA AL HTML
@@ -131,7 +131,7 @@ function busqueda(param) {
             html += `<h1>${result.datos.nombre}</h1>`; //MANDA SU NOMBRE
             for(i = 0; i< result.canciones.length;i++){ //RECORRE EL ARREGLO DE LAS CANCIONES
                 html += `<p class="textCancion" onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`/*
-                AÑADE UN PARRAFOR CON CLASE TEXTCANCION Y LE AÑADE UNA FUNCION ONCLICK QUE MANDA A LLAMAR A REPRODUCCION con un parametro que manda el link de la canción
+                AÑADE UN PARRAFOR CON CLASE TEXTCANCION Y LE AÑADE UNA FUNCIÓN ONCLICK QUE MANDA A LLAMAR A REPRODUCCION con un parametro que manda el link de la canción
                 y dentro del parrafo pone el nombre del artista */
             }
             reproductor.innerHTML = html; //LO MANDA AL HTML
@@ -141,7 +141,7 @@ function busqueda(param) {
         const cancion = baseDatosJSON.canciones.find(a=> a.id === id); /*DEVUELVE EL PRIMER ELEMENTO QUE CUMPLE CON UNA CONDICION
          (EN ESTE CASO DENTRO DE LA BASE DE DATOS EN CANCIONES BUSCA EL ID QUE COINCIDA CON EL ID ENVIADO)*/
         const artista = baseDatosJSON.artistas.find(a => a.id === cancion.id_artista); //CON LA CANCION ENCONTRADA HACE LO MISMO PERO COMPARANDO EL ID ARTISTA EN LA BASE DE DATOS EN ARTISTA
-        //MISMA FUNCION QUE IF(PARAM[0]==="0")
+        //MISMA FUNCIÓN QUE IF(PARAM[0]==="0")
         if (artista) {
             const cancionesArtista = baseDatosJSON.canciones.filter(c => c.id_artista === artista.id);
             result = {
@@ -174,8 +174,8 @@ const sectionCredits = document.getElementById("credits");
 const sectionPlaylist = document.getElementById("playlistUnico");
 const footer = document.querySelector('footer'); 
 
-activeColor = "#FDC787"; //DEFINE EL COLOR SI ESTA ACTIVO
-normalColor = "#ffff"; //DEFINE EL COLOR SI NO ESTA ACTIVO
+activeColor = "#FDC787"; //DEFINE EL COLOR SI ESTÁ ACTIVO
+normalColor = "#ffff"; //DEFINE EL COLOR SI NO ESTÁ ACTIVO
 
 function btnActivo(btn){/* Establece el color del boton*/
     homeBtn.style.color = (btn === homeBtn) ? activeColor : normalColor;
@@ -194,7 +194,7 @@ function btnActivo(btn){/* Establece el color del boton*/
 
 btnActivo(homeBtn); //ESTABLECE HOME CON EL COLOR DE ACTIVO AL INICIO DE LA PAGINA  
 
-homeBtn.addEventListener("click",()=>{ btnActivo(homeBtn)}); //SI HACES CLICK LLAMA A LA FUNCION btnActivo(); y manda como parametro el btn presionado
+homeBtn.addEventListener("click",()=>{ btnActivo(homeBtn)}); //SI HACES CLICK LLAMA A LA FUNCIÓN btnActivo(); y manda como parametro el btn presionado
 
 artistsBtn.addEventListener("click",()=> btnActivo(artistsBtn));
 
@@ -207,10 +207,11 @@ creditsBtn.addEventListener("click",()=> btnActivo(creditsBtn));
 let artistas = document.getElementById("artistas"); //EN EL ARTICULO ARTISTAS
 
 html = '';
+html += `<div class="artist-Container">`
 for(i=0;i<baseDatosJSON.artistas.length;i++){ //RECORRE LA BASE DE DATOS
     html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].id},${0}')"><img src="${baseDatosJSON.artistas[i].url_img}"></div>` 
-} //CREA UN DIV con clase ARTISTA le asigna una funcion ONCLICK con parametros el id y el tipo  y coloca la imagen del artista
-
+} //CREA UN DIV con clase ARTISTA le asigna una FUNCIÓN ONCLICK con parametros el id y el tipo  y coloca la imagen del artista
+html += `</div>`
 artistas.innerHTML += html;
 /////////////////////////////////////////////////////////////
 //APARTADO ARTISTAS
@@ -221,16 +222,16 @@ for(i=0;i<baseDatosJSON.artistas.length;i++){
     html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.artistas[i].id},${0}')"><img src="${baseDatosJSON.artistas[i].url_img}"></div>`
 } 
 html += `</div>`
-//CREA UN DIV con clase ARTISTA le asigna una funcion ONCLICK con parametros el id y el tipo  y coloca la imagen del artista
+//CREA UN DIV con clase ARTISTA le asigna una FUNCIÓN ONCLICK con parametros el id y el tipo  y coloca la imagen del artista
 html += `<h1 class="artistTXT">Albumes</h1>`
 html += `<div class="artist-Container">`
 for(i=0;i<baseDatosJSON.album.length;i++){
     html+= `<div class="artista" onclick ="reproduce('${baseDatosJSON.album[i].id},${1}')" ><img src="${baseDatosJSON.album[i].url_img}"></div>`
-} //CREA UN DIV con clase ARTISTA le asigna una funcion ONCLICK con parametros el id y el tipo  y coloca la imagen del album
+} //CREA UN DIV con clase ARTISTA le asigna una FUNCIÓN ONCLICK con parametros el id y el tipo  y coloca la imagen del album
 html += `</div></div>`
 sectionArtists.innerHTML += html;
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-function reproduce(param){ //FUNCION REPRODUCE (SIMILAR A BUSQUEDA();)
+function reproduce(param){ //FUNCIÓN REPRODUCE (SIMILAR A BUSQUEDA();)
     const reproductor = document.getElementById("reproductor");
     isOn = reproductor.style.display === "none";
     reproductor.style.display = isOn ? "block" : "none";
@@ -292,9 +293,7 @@ function reproduce(param){ //FUNCION REPRODUCE (SIMILAR A BUSQUEDA();)
             console.log("Artista", result);
             html = `<div id="player"><img id="imgArt" src="${result.datos.url_img}"></div>`;
             html += `<h1>${result.datos.nombre}</h1>`;
-            for(i = 0; i< result.canciones.length;i++){
-                html += `<p class="textCancion" onclick="reproduccion('${result.canciones[i].link}')">${result.canciones[i].nombre}</p>`
-            }
+            html += `<p class="textCancion" onclick="reproduccion('${cancion.link}')">${cancion.nombre}</p>`
             reproductor.innerHTML = html;
         }
     }
@@ -303,30 +302,31 @@ function reproduce(param){ //FUNCION REPRODUCE (SIMILAR A BUSQUEDA();)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // REPRODUCIR VIDEOS
-////////////////////
-let player;
+
+let player; //Objeto del reproductor de YouTube
 let duration = 0;
 let lastVolume;
-let previousVolume = 0;
-let updateInterval;
-const seekBar = document.getElementById("barraTiempo");
-const volumeSlider = document.getElementById("volumeSlider");
-const playPauseBtn = document.getElementById("pauseBtn");
-const muteBtn = document.getElementById("soundBtn");
-//Falta hacer que tome cualquier link de la base de datos
-const canciones = [""];
+let previousVolume = 0; 
+let updateInterval; //Intervalo para que se actualice la barra de progreso
 
-//Funcion que toma el link de un video y lo reproduce
+const seekBar = document.getElementById("barraTiempo");  //Barra del tiempo
+const volumeSlider = document.getElementById("volumeSlider"); //Barra del volumen
+const playPauseBtn = document.getElementById("pauseBtn"); //Botón de play y pause
+const muteBtn = document.getElementById("soundBtn"); //Botón para silenciar el video
+
+const canciones = [""]; //Canción que se va a reproducir
+
+//Función la cuál toma el link de un video y lo reproduce
 function reproduccion(link) {
     const playerContainer = document.getElementById("player");
     const playerImg = document.getElementById("imgArt");
 
-    if (playerImg) {
+    if (playerImg) { //Oculta la foto si ESTÁ en pantalla
         playerImg.style.display = "none";
     }
-    if (player) { 
+    if (player) {     //Si ya existe un reproductor, solo reemplaza el link anterior por el nuevo
         cambiarVideo(link);
-    } else {
+    } else { //Sino crea un nuevo reproductor
         player = new YT.Player("player", {
             videoId: link,
             playerVars: {
@@ -336,31 +336,31 @@ function reproduccion(link) {
                 showinfo: 0,
             },
             events: {
-                onReady: onPlayerReady,
+                onReady: onPlayerReady, //Evento que llama la API de Youtube cuando el reproductor ya fue creado
             },
         });
     }
 
+    //Muestra el contenedor del reproductor
     playerContainer.style.display = "block";
 }
-
+//Cambia de video sin crear un nuevo reproductor
 function cambiarVideo(nuevoVideoId) {
-    player.loadVideoById(nuevoVideoId); // Cambia el video sin iniciar la reproducción
+    player.loadVideoById(nuevoVideoId); 
 }
 
-function onYouTubeIframeAPIReady(videoId) {
-
-}
+//Cuándo el reproductor ESTÁ listo
 function onPlayerReady(event){
-    duration = player.getDuration();
-    player.playVideo();
+    duration = player.getDuration(); //Obtiene la duración del video
+    player.playVideo(); //Comienza a reproducir el video
 
-    seekBar.max = duration;
+    seekBar.max = duration;  //Configura la barra de la duración del video
     volumeSlider.value = player.getVolume();
-    updateInterval = setInterval(()=>{
+    updateInterval = setInterval(()=>{  //Actualiza la barra duración
         if(player && player.getPlayerState() === YT.PlayerState.PLAYING){
-            seekBar.value = player.getCurrentTime();
-            currentVolume = player.getVolume();
+            seekBar.value = player.getCurrentTime();  //Actualiza la posción de la barra  conforme avanza el tiempo
+
+            currentVolume = player.getVolume(); //Actualiza el volumen si se cambió
             if (currentVolume !== previousVolume){
                 volumeSlider.value = currentVolume; 
                 previousVolume = currentVolume;
@@ -370,52 +370,86 @@ function onPlayerReady(event){
 }
 
 /*BOTONES*/
+
+// Botón de Play y Pause
 playPauseBtn.addEventListener("click", () => {
     let state = player.getPlayerState();
     if (state === YT.PlayerState.PLAYING) {
         player.pauseVideo();
-        playPauseBtn.innerHTML = `<i class="fa-solid fa-play">`;
+        playPauseBtn.innerHTML = `<i class="fa-solid fa-play">`; //Actualiza el icono de play
     } else {
         player.playVideo();
-        playPauseBtn.innerHTML = `</i><i class="fa-solid fa-pause"></i>`;
+        playPauseBtn.innerHTML = `</i><i class="fa-solid fa-pause"></i>`; //Actualiza el icono pause
     }
 });
 
-//volume
+//volumen
 volumeSlider.addEventListener("input", ()=>{
     let volume = parseInt(volumeSlider.value, 10);
-    player.setVolume(volume);
+    player.setVolume(volume); //Ajusta el volumen del video
 
+    //Si estaba silenciado y se sube volumen, reactiva el sonido
     if(player.isMuted() && volume >0){
         player.UnMute();
     }
-    lastVolume = volume;
-    previousVolume = volume;
+    //Guarda los valores del volumen
+    lastVolume = volume; //El último volumen antes de silenciar el video
+    previousVolume = volume; //Volumen actual
 })
 
+//Boton para silenciar el video
 muteBtn.addEventListener("click", () => {
     if (player.isMuted()) {
-        player.unMute();
+        player.unMute(); //Reactiva el sonido
         muteBtn.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
         volumeSlider.value = lastVolume;
     } else {
-        player.mute();
+        player.mute(); //Silencia el video
         muteBtn.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
     }
 });
 
-//duracion
+//Permite mover la barra de duración y actualizar el reproductor al momento en donde tu decidas al usar la barra
 seekBar.addEventListener("input", ()=>{
     let seekTo = seekBar.value;
-    player.seekTo(seekTo, true);
+    player.seekTo(seekTo, true); 
 });
 
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+function getCookie(nombre){ //FUNCIÓN PARA VERIFICAR QUE "LA COOKIE EXISTA Y DEVUELVE SU VALOR"
+    let cookies = document.cookie;
+    cookies = cookies.split(";");
+    for(i=0;i<cookies.length;i++){ //RECORRE LAS COOKIES
+        let cookie = cookies[i].trim();
+        if(cookie.indexOf(nombre+"=")===0){
+            return cookie.slice(nombre.length+1); //VALOR DE LA COOKIE
+        }
+    }
+    return null;
+}
+function setCookie(nombre,datos){ //FUNCIÓN PARA CREAR LA COOKIE
+  let valor = encodeURIComponent(JSON.stringify(datos));
+  document.cookie = `${nombre}=${valor};max-age=3600` //MAX AGE (AUN EN TRABAJO)**
+}
 
+const grupo= document.querySelector('#playlistsCreadas'); // Para mostrar playlists guardadas
 let playlistCreada = [];
 let playlistsGuardadas = [];
+if(getCookie("ACTUAL") !== null){
+    let decodedCookie = JSON.parse(decodeURIComponent(getCookie(getCookie("ACTUAL"))));
+    console.log(decodedCookie.playlists)
+    if(decodedCookie.playlists){
+        for(i=0;i<decodedCookie.playlists.length;i++){
+            playlistsGuardadas.push({  //Añade a playlist guardadas las playlists
+                nombre: decodedCookie.playlists[i].nombre,
+                canciones: decodedCookie.playlists[i].canciones //Los tres puntos es el operador spread que copia todas las canciones en un nuevo array
+            });  
+        }
+        actualizarVistaListasPlaylists();
+    }
+}
 
 const listaCanciones = document.getElementById("can");
 const listaBusquedaCanciones = document.getElementById("listaCanciones");
@@ -435,11 +469,11 @@ listaCanciones.addEventListener("input", () => {
         let palabra = listaCanciones.value.toUpperCase(); //VUELVE LO QUE INGRESO EL USUARIO EN MAYUSCULAS
         let cancion = baseDatosJSON.canciones[i].nombre.toUpperCase();
 
-        if (cancion.includes(palabra)) { //SI LA PALABRA QUE INGRESO EL USUARIO ESTA INCLUIDA
+        if (cancion.includes(palabra)) { //SI LA PALABRA QUE INGRESO EL USUARIO ESTÁ INCLUIDA
             listaDeBusqueda[j] = { //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
                 nombre: baseDatosJSON.canciones[i].nombre.trim(), //SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
                 id: baseDatosJSON.canciones[i].id,//SE CREA UN NUEVO OBJETO EN EL ARREGLO DE BUSQUEDA
-                tipo: 2 //Y LE DA UN TIPO (0=ARTISTA,1=ALBUM Y 2=CANCION)
+                tipo: 2 //Y LE DA UN TIPO (0=ARTISTA,1=ALBUM Y 2=CANCIÓN)
             }
             j++;
         }
@@ -447,8 +481,8 @@ listaCanciones.addEventListener("input", () => {
 
     listaDeBusqueda.sort((a, b) => a.nombre.localeCompare(b.nombre));
     listaDeBusqueda.sort((a, b) => {
-        let posA = a.nombre.indexOf(listaCanciones.value);//BUSCA LA POSICION DE X EN A (SI ES N Y LA PALABRA ES NARANJA ES IGUAL A 0)
-        let posB = b.nombre.indexOf(listaCanciones.value);//BUSCA LA POSICION DE X EN B (SI ES N Y LA PALABRA ES MANZANA ES IGUAL A 2)
+        let posA = a.nombre.indexOf(listaCanciones.value);//BUSCA LA POSICIÓN DE X EN A (SI ES N Y LA PALABRA ES NARANJA ES IGUAL A 0)
+        let posB = b.nombre.indexOf(listaCanciones.value);//BUSCA LA POSICIÓN DE X EN B (SI ES N Y LA PALABRA ES MANZANA ES IGUAL A 2)
         return posA - posB;//SI EL VALOR A ES MENOR QUE EL VALOR B => A VA ANTES QUE B (0 - 2 = -2 como es negativo A va antes que B)
     });
 
@@ -457,10 +491,16 @@ listaCanciones.addEventListener("input", () => {
         html += `<div class="opcion" onclick="agregarCancion(${listaDeBusqueda[i].id})">
                     <h1>${listaDeBusqueda[i].nombre}</h1>
                  </div>`;
-    }//se crea un DIV con clase opcion y le añade una funcion onClick con parametos el id y el tipo y dentro el titulo(NOMBRE)
+    }//se crea un DIV con clase opcion y le añade una FUNCIÓN onClick con parametos el id y el tipo y dentro el titulo(NOMBRE)
     listaBusquedaCanciones.style.display = "block";
     listaBusquedaCanciones.innerHTML = html;
 });
+
+const AlertNombre = document.getElementById("mensajeAlertNombre");
+const AlertCancion = document.getElementById("mensajeAlertCancion");
+const CorrectCancion = document.getElementById("mensajeCorrectCancion");
+const Alert = document.getElementById("mensajeAlert");
+const Submit = document.getElementById("mensajeSubmit");
 
 
 // Función para agregar canción a playlist nueva
@@ -469,11 +509,11 @@ function agregarCancion(id) {
     
     
     if (playlistCreada.some(c => c.id === id)) {   //Some es un método array que recorre los elementos del array, retorna true si al menos uno cumple la condicion y false si ninguno la cumple
-        alert(`La canción "${cancion.nombre}" ya está agregada.`); //Se muestra el texto...
+        AlertCancion.innerHTML = "La canción  ya está agregada."; //Se muestra el texto...
         return;
     }
-    playlistCreada.push(cancion);  //Push es un método array que agrega un elemento al final de la lista
-    alert(`Canción "${cancion.nombre}" añadida a la playlist.`); //Se muestra el texto...
+    playlistCreada.push(cancion);  //Push es un método array que agrega un elemento al final de la lista 
+    CorrectCancion.innerHTML = "Canción añadida a la playlist."; //Se muestra el texto...
 }
 
 // Crear playlist al enviar formulario
@@ -482,11 +522,11 @@ formulario.addEventListener('submit', function (e) {
     e.preventDefault(); //Metodo que evita que el navegador ejecute la acción por defecto de un evento
     const nombrePlaylist = document.getElementById('nombrePlaylist').value.trim(); //Trim elimina los espacios de enfrente y atrás
     if (nombrePlaylist === "") { //Si no hay nombre muestra mensaje...
-        alert("Escribe un nombre para la playlist.");
+        AlertNombre.innerHTML = "Escribe un nombre para la playlist."; 
         return;
     }
     if (playlistCreada.length === 0) { //Si no hay canciones agregadas muestra mensaje...
-        alert("Agrega al menos una canción antes de crear la playlist.");
+        Alert.innerHTML = "Agrega al menos una canción antes de crear la playlist."; 
         return;
     }
 
@@ -494,15 +534,24 @@ formulario.addEventListener('submit', function (e) {
         nombre: nombrePlaylist,
         canciones: [...playlistCreada] //Los tres puntos es el operador spread que copia todas las canciones en un nuevo array
     });
-
+    if(getCookie("ACTUAL") !== null){
+        let decodedCookie = JSON.parse(decodeURIComponent(getCookie(getCookie("ACTUAL"))));
+        newCookie = {
+            nombre: decodedCookie.nombre,
+            email: decodedCookie.email,
+            password: decodedCookie.password,
+            playlists: playlistsGuardadas
+        }
+        setCookie(newCookie.nombre,newCookie);
+    }
     playlistCreada = []; //Reinicia el array
     this.reset();  //Reestablece el formulario
 
     actualizarVistaListasPlaylists(); //Muestra mensaje de éxito
-    alert(`Playlist "${nombrePlaylist}" creada correctamente.`);
+    Submit.innerHTML = "Playlist creada correctamente."; 
 });
 
-const grupo= document.querySelector('#playlistsCreadas'); // Para mostrar playlists guardadas
+
 
 // Función para actualizar el listado de playlists
 function actualizarVistaListasPlaylists() {

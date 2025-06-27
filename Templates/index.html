@@ -11,28 +11,28 @@
         <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 
-        <script src="https://kit.fontawesome.com/19e0c4481e.js" crossorigin="anonymous"></script> <!--LINKEO DE LA PAGINA FONTAWESOME-->
-        <script src="../Dynamics/BaseDeDatos/baseDeDatos.js"></script> <!--LINKEO DE LA PSEUDO-BASE-DE-DATOS que se subio al classroom-->
-         <script src="https://youtube.com/iframe_api"></script> <!--API de youtube-->
-        <title>[NOMBRE]</title> <!--DEBEMOS QUE ELEGIR EL NOMBRE-->
+        <script src="https://kit.fontawesome.com/19e0c4481e.js" crossorigin="anonymous"></script> <!--LINKEO DE LA PÁGINA FONTAWESOME-->
+        <script src="../Dynamics/BaseDeDatos/baseDeDatos.js"></script> <!--LINKEO DE LA BASE-DE-DATOS-->
+        <script src="https://youtube.com/iframe_api"></script> <!--LINKEO API de youtube-->
+        <title>AXOLOFY</title>
     </head>
     <body>
         <nav>   
             <label for="busqueda"></label>
             <input type="text" id="busqueda" name="busqueda" placeholder="Buscar canciones, artistas ..."> <!--INPUT PARA LA BARRA DE BUSQUEDA-->
             <button id="buscar" name="buscar"><i class="fa-solid fa-magnifying-glass"></i></button> <!--No se su funcionamiento (Santiago)-->
-            <button id="perfil" onclick="location.href='./login.html'"><i class="fa-regular fa-circle-user"></i></i></button> <!--BOTON PARA IR A LA PAGINA DE INICIO DE SESION-->
+            <button id="perfil" onclick="location.href='./login.html'"><i class="fa-regular fa-circle-user"></i></i></button> <!--BOTON PARA IR A LA PÁGINA DE INICIO DE SESIÓN-->
             <div id="listaBusqueda">
                 
             </div>
         </nav>
 
         <section class="mainCont">
-            <aside>    <!--ESTA "ACABADO" SOLO FALTA LINKEAR LO QUE SE TENGA QUE LINKEAR-->
-                <button id="homeBtn"><i class="fa-solid fa-house"></i> Home</button> <!--Boton para regresar a home-->
-                <button id="artistsBtn"><i class="fa-solid fa-user"></i> Artistas</button><!--Boton para ir a Artistas-->
-                <button id="playlistsBtn"><i class="fa-solid fa-list"></i> Playlist</button><!--Boton para ir a Playlists-->
-                <button id="creditsBtn"><i class="fa-solid fa-star"></i> Créditos</button><!--Boton para ir a Creditos-->
+            <aside>    <!--APARTADO BOTONES DE ASIDE-->
+                <button id="homeBtn"><i class="fa-solid fa-house"></i> Home</button> <!--Botón para regresar a home-->
+                <button id="artistsBtn"><i class="fa-solid fa-user"></i> Artistas</button><!--Botón para ir a Artistas-->
+                <button id="playlistsBtn"><i class="fa-solid fa-list"></i> Playlist</button><!--Botón para ir a Playlists-->
+                <button id="creditsBtn"><i class="fa-solid fa-star"></i> Créditos</button><!--Botón para ir a Créditos-->
             </aside>
         <!--Main-->
             <main>
@@ -41,56 +41,61 @@
                         <div class="texto-bienvenida"> <!--Clase que da estructura al texto del contenedor-->
                             <h1>¡Bienvenido a AXOLOFY!</h1>
                             <p> Tu plataforma musical favorita</p>
+                        </div>   
+                        <div class="ajolote-container">
+                            <img src="../Statics/imagenes/imagenesCréditos/ajolote.png" alt="Ajolote mascota" class="ajolote-mascota">
                         </div>
-                       
-                    <div class="ajolote-container">
-                        <img src="../Statics/imagenes/imagenesCréditos/ajolote.png" alt="Ajolote mascota" class="ajolote-mascota">
-                    </div>
                     </article>
-                    <article id="artistas">
+                    <article id="artistas"> <!--APARTADO DONDE SE COLOCAN LOS ARTISTAS EN HOME-->
 
                     </article>
                 </main>
-                <section id="artists">
+                <section id="artists">  <!--APARTADO DONDE SE COLOCAN LOS ARTISTAS Y ALBUMS EN ARTISTS-->
 
                 </section>
 
                <!--APARTADO MAQUETADO DE LISTA DE PLAYLISTS-->
-            <section id="playlist">
+                <section id="playlist">
                                   
-                <header class="playlistHead">
-                    <div class="headPlay">
-                        <h1>Playlists</h1>
-                     </div>
-                        <img src="../Statics/Imagenes/imagenesCréditos/ajolote.png" alt="Ajolote" />
-                </header>
+                    <header class="playlistHead">
+                        <div class="headPlay">
+                            <h1>Playlists</h1>
+                        </div>
+                            <img src="../Statics/Imagenes/imagenesCréditos/ajolote.png" alt="Ajolote" />
+                    </header>
 
-                <section class="playlistCuerpo">
-                <div id="playlistsCreadas">
-                </div>
-
-                            <form id="formularioPlaylist" class="formPlaylist">
+                    <section class="playlistCuerpo">
+                        <div id="playlistsCreadas"> <!--APARTADO DONDE APARECEN LAS PLAYLISTS CREADAS-->
+                            
+                        </div>
+                        <form id="formularioPlaylist" class="formPlaylist"> <!--FORMULARIO PARA LA CREACIÓN DE PLAYLISTS-->
                             <label for="nombrePlaylist">Nombre de la playlist:</label>
-                            <input type="text" id="nombrePlaylist" name="nombre" required>
-                            <br>
+                            <input type="text" id="nombrePlaylist" name="nombre" placeholder="Ingresa el nombre de tu playlist" >
+                            <span id="mensajeAlertNombre" ></span>
                             <label for="can">Agregar canciones:</label>
-                            <input type="text" name="canciones" id="can" placeholder="Escribe para buscar...">
-                            <div id="listaCanciones" style="display:none;"></div>
-                            <br>
+                            <span id="mensajeAlertCancion"></span>
+                            <span id="mensajeCorrectCancion"></span>
+                            <input type="text" name="canciones" id="can" placeholder="Escribe para buscar..." >
+                            <div id="listaCanciones" style="display:none;"><!--APARTADO DONDE APARECEN LA LISTA DE CANCIONES-->
+
+                            </div>
+                            <span id="mensajeAlert"></span>
                             <button type="submit" class="submit-btn">Crear playlist</button>
+                            <span id="mensajeSubmit"></span>
                         </form>    
+                    </section>
                 </section>
-            </section>
 
                <!--INICIA MAQUETADO DE UNA SOLA PLAYLIST-->
-            <section id="playlistUnico" class="playlistUnique" style="display:none;">
-               <div class="playlistUniqueHead">
-                    <h3 id="nombrePlaylistSeleccionada">Playlist</h3>
-                    <img src="../Statics/Imagenes/imagenesCréditos/ajolote.png" alt="Ajolote" />
-               </div>
-                    <div class="canciones">
+                <section id="playlistUnico" class="playlistUnique" style="display:none;">
+                    <div class="playlistUniqueHead">
+                            <h3 id="nombrePlaylistSeleccionada">Playlist</h3>
+                            <img src="../Statics/Imagenes/imagenesCréditos/ajolote.png" alt="Ajolote" />
                     </div>
-            </section>
+                    <div class="canciones"><!--APARTADO DONDE APARECEN LAS CANCIONES DE LA PLAYLIST-->
+
+                    </div>
+                </section>
 
 
                 <!--APARTADO PARA MAQUETADO DE CRÉDITOS-->
@@ -137,27 +142,24 @@
                         </div>             
                     </div>                      
                 </section>
-            </main>
-            <!--Reproductor de videos-->
                 <!--TERMINA APARTADO CRÉDITOS-->
-            
-
-        <section id="reproductor" style="display: none;">
+            </main>
+            <section id="reproductor" style="display: none;"> <!--APARTADO DE REPRODUCTOR-->
                 <section class="video-container" >
-                    <div id="player">
+                    <div id="player"> <!--APARTADO DEL PLAYER DE YOUTUBE-->
 
                     </div>
                 </section>
+            </section>
         </section>
-
         <footer>
-            <button id="backBtn"><i class="fa-solid fa-backward"></i></button> <!--Boton para regresar a la cancion pasada-->
-            <button id="pauseBtn"><i class="fa-solid fa-play"></i></button> <!--Boton para pausar/play a la cancion-->
-            <button id="skipBtn"><i class="fa-solid fa-forward"></i></button> <!--Boton para saltar a la siguiente cancion-->
-            <button id="listRepo"><i class="fa-solid fa-bars"></i></button>  <!--Boton para ver la lista de Reproduccion-->
+            <button id="backBtn"><i class="fa-solid fa-backward"></i></button> <!--Botón para regresar a la canción pasada-->
+            <button id="pauseBtn"><i class="fa-solid fa-play"></i></button> <!--Botón para pausar/play a la canción-->
+            <button id="skipBtn"><i class="fa-solid fa-forward"></i></button> <!--Botón para saltar a la siguiente canción-->
+            <button id="listRepo"><i class="fa-solid fa-bars"></i></button>  <!--Botón para ver la lista de Reproducción-->
             <button id="soundBtn"><i class="fa-solid fa-volume-high"></i></button>
-            <input type="range" max="100"  id="volumeSlider"> <!--Boton apra ajustar el sonido-->
-            <input type="range" max="100"  id="barraTiempo"> <!--Barra para mover la cancion-->
+            <input type="range" max="100"  id="volumeSlider"> <!--Botón apra ajustar el sonido-->
+            <input type="range" max="100"  id="barraTiempo"> <!--Barra para mover la canción-->
         </footer>
         
     <script src="../Dynamics/JS/index.js"></script> <!--LINKEO del JavaScript del index-->

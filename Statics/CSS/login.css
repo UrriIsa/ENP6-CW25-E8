@@ -20,7 +20,7 @@ body {
 
 /*Caja principal del formulario/login*/
 main {
-    height: 88%;
+    height: 50%;
     width: 566px;
     max-width: 399px; /*Ancho máximo limitado*/
     padding: 60px; /*Espaciado interno*/

@@ -5,12 +5,12 @@ const verif = document.getElementById("terminos");
 const password = document.getElementById("contraseña");
 const email = document.getElementById("email");
 
-function setCookie(nombre,datos){ //FUNCION PARA CREAR LA COOKIE
+function setCookie(nombre,datos){ //FUNCIÓN PARA CREAR LA COOKIE
   let valor = encodeURIComponent(JSON.stringify(datos));
   document.cookie = `${nombre}=${valor};max-age=3600` //MAX AGE (AUN EN TRABAJO)**
 }
 
-function getCookie(nombre){ //FUNCION PARA VERIFICAR QUE "LA COOKIE EXISTA Y DEVUELVE SU VALOR"
+function getCookie(nombre){ //FUNCIÓN PARA VERIFICAR QUE "LA COOKIE EXISTA Y DEVUELVE SU VALOR"
     let cookies = document.cookie;
     cookies = cookies.split(";");
     for(i=0;i<cookies.length;i++){ //RECORRE LAS COOKIES
@@ -32,7 +32,7 @@ mainForm.addEventListener("submit", (e)=>{
     verifArt.style.borderBlockColor = "red"
   }
   if(usuario.value === ''||password.value === ''|| email.value === ''){ //SI X = '' EVITA QUE SE ENVIE EL FORMULARIO
-      e.preventDefault(); //FALTA MOSTRAR O DARLE A SABER AL USUARIO QUE SE EQUIVOCO***
+      e.preventDefault(); 
       password.value = '';
       email.value = '';
       usuario.placeholder = "USUARIO YA EXISTENTE"
